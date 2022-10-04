@@ -3,15 +3,15 @@
   "rules": {
     "no-unused-vars": "warn",
     "no-console": "warn",
-    "quotes": ["error", "double"],
-    "jsx-quotes": ["error", "prefer-double"],
-    "prefer-const": "error",
+    "quotes": ["warn", "double"],
+    "jsx-quotes": ["warn", "prefer-double"],
+    "prefer-const": "warn",
     "indent": ["warn", 2],
-    "max-len": ["error", { "code": 200 }],
-    "comma-dangle": ["error", "always-multiline"],
+    "max-len": ["warn", { "code": 200 }],
+    "comma-dangle": ["warn", "always-multiline"],
     "semi": ["warn", "always"],
     "import/order": [
-      "error",
+      "warn",
       {
         "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
         "newlines-between": "always-and-inside-groups"

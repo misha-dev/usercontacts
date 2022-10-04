@@ -6,10 +6,10 @@ import { Login } from "../Login/Login";
 export const MainRouter = () => {
   return (
     <Routes>
-      <Route path="userscontacts" element={<Layout />}>
+      <Route path="usercontacts" element={<Layout />}>
         <Route index element={<Login />} />
       </Route>
-      <Route path="*" element={<Navigate to={"/userscontacts"} />} />
+      <Route path="*" element={<Navigate to={"/usercontacts"} />} />
     </Routes>
   );
 };
