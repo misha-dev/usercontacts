@@ -5,11 +5,8 @@
   border-radius: 20px;
   width: 380px;
   padding: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   font-size: 1rem;
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 input[type="password"].loginButton {
   font-family: Verdana;
