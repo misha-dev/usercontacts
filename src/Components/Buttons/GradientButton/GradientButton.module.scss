@@ -1,0 +1,28 @@
+@import "../../../styles/variables";
+
+.gradientButton {
+  background: $greenLinearGradient;
+  border-radius: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  text-align: center;
+  padding: 8px 62px;
+  color: #ffffff;
+
+  &:hover {
+    background-size: 400% 400%;
+    animation: gradient 1s ease forwards;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

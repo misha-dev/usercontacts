@@ -5,4 +5,7 @@ export type LoginInputType = {
   type: "password" | "email" | "text";
   value: string;
   onChange: (e: ChangeEvent<any>) => void;
+  id: string;
+  name: string;
+  required: boolean;
 };

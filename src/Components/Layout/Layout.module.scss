@@ -1,7 +1,8 @@
 @import "../../styles/templates";
+@import "../../styles/variables";
 
 .mainContent {
   height: 100vh;
   @extend %flexCenter;
-  background: linear-gradient(269.38deg, #00cb6a 15.51%, #4dc9fe 65.46%);
+  background: $greenLinearGradient;
 }

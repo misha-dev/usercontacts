@@ -1,4 +1,5 @@
 import { LinkType } from "../../../types/LinkType.types";
+
 import cl from "./SimpleLink.module.scss";
 
 export const SimpleLink = ({ text, fontSize, link }: LinkType) => {

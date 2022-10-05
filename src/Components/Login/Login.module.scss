@@ -16,6 +16,26 @@
     .loginForm {
       @extend %flexCenter;
       flex-direction: column;
+
+      .loginInputs {
+        @extend %flexCenter;
+        flex-direction: column;
+        margin-bottom: 15px;
+      }
+
+      .loginRegisterWrapper {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+
+        .formLogin {
+          margin-left: 12px;
+          margin-bottom: 32px;
+        }
+        .formRegister {
+          max-width: 200px;
+        }
+      }
     }
   }
 }
