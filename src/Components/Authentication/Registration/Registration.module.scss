@@ -7,30 +7,49 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: stretch;
-    height: 100%;
-    padding: 30px;
+    padding: 30px 30px 130px 30px;
     margin-right: 10vw;
 
     .logoWithText {
       @extend %flexCenter;
       flex-direction: column;
+      margin-bottom: auto;
+      img {
+        width: 100px;
+        height: 100px;
+        margin-right: 5px;
+        object-fit: contain;
+        margin-bottom: 15px;
+      }
       p {
         font-weight: 900;
-        font-size: 2rem;
+        font-size: 2.5rem;
         line-height: 3rem;
-        color: #ffffff;
+        color: #fff;
       }
     }
 
-    img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      margin-bottom: 15px;
+    .projectInfoWithText {
+      font-weight: 700;
+      font-size: 1.25rem;
+      line-height: 25px;
+      text-align: center;
+      color: #fff;
+
+      p {
+        font-weight: 700;
+        font-size: 0.9rem;
+        line-height: 25px;
+        text-align: center;
+
+        color: #ffffff;
+        &:last-of-type {
+          margin-bottom: 20px;
+        }
+      }
     }
   }
-  .loginSection {
+  .registrationSection {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,17 +58,19 @@
     height: 590px;
     background: url("../../../imgs/backgroundLogin.png") no-repeat center center/cover;
 
-    .loginForm {
+    .registrationForm {
       @extend %flexCenter;
       flex-direction: column;
 
-      .loginInputs {
+      .registrationInputs {
         @extend %flexCenter;
         flex-direction: column;
         margin-bottom: 15px;
+        height: 250px;
+        justify-content: space-between;
       }
 
-      .loginRegisterWrapper {
+      .loginWrapper {
         display: flex;
         width: 100%;
         flex-direction: column;

@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { Registration } from "../Authentication/Registration/Login";
+import { Registration } from "../Authentication/Registration/Registration";
 import { Layout } from "../Layout/Layout";
 
 export const MainRouter = () => {
