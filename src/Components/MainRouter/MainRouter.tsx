@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Layout } from "../Layout/Layout";
-import { Login } from "../Login/Login";
+import { Login } from "../Authentication/Login/Login";
 
 export const MainRouter = () => {
   return (

@@ -1,4 +1,4 @@
-@import "../../styles/templates";
+@import "../../../styles/templates";
 
 .mainWrapper {
   @extend %flexCenter;
@@ -11,7 +11,7 @@
     padding: 30px 30px 30px 110px;
     width: 600px;
     height: 590px;
-    background: url("../../imgs/backgroundLogin.png") no-repeat center center/cover;
+    background: url("../../../imgs/backgroundLogin.png") no-repeat center center/cover;
 
     .loginForm {
       @extend %flexCenter;

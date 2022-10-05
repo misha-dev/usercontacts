@@ -1,12 +1,12 @@
 import { useFormik } from "formik";
 
-import { GradientButton } from "../Buttons/GradientButton/GradientButton";
+import { GradientButton } from "../../Buttons/GradientButton/GradientButton";
 
-import { GradientHeader } from "../Headers/GradientHeader/GradientHeader";
-import { SimpleLink } from "../Links/SimpleLink/SimpleLink";
+import { GradientHeader } from "../../Headers/GradientHeader/GradientHeader";
+import { SimpleLink } from "../../Links/SimpleLink/SimpleLink";
 
 import cl from "./Login.module.scss";
-import { LoginInput } from "./LoginInput/LoginInput";
+import { LoginInput } from "../../FormInput/FormInput";
 
 export const Login = () => {
   interface ILoginFormik {
