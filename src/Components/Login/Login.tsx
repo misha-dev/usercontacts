@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { GradientHeader } from "../Headers/GradientHeader/GradientHeader";
 
 import cl from "./Login.module.scss";
-import { LoginButton } from "./LoginButton/LoginButton";
+import { LoginButton } from "./LoginInput/LoginInput";
 
 export const Login = () => {
   interface ILoginFormik {

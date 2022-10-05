@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 
-export type LoginButtonType = {
+export type LoginInputType = {
   text: string;
   type: "password" | "email" | "text";
   value: string;
