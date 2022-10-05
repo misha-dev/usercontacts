@@ -1,4 +1,4 @@
-import { LinkType } from "../../../types/LinkType.types";
+import { LinkType } from "../../../../types/LinkType.types";
 
 import cl from "./SimpleLink.module.scss";
 

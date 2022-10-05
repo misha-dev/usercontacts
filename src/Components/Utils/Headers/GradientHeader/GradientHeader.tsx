@@ -1,4 +1,4 @@
-import { HeaderType } from "../../../types/headerType.types";
+import { HeaderType } from "../../../../types/headerType.types";
 
 import cl from "./GradientHeader.module.scss";
 

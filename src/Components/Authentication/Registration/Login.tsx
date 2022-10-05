@@ -1,14 +1,13 @@
 import { useFormik } from "formik";
 
-import { GradientButton } from "../../Buttons/GradientButton/GradientButton";
+import logo from "../../../imgs/logo.png";
+import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
+import { LoginInput } from "../../Utils/FormInput/FormInput";
+import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
+import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
+import cl from "./Registration.module.scss";
 
-import { GradientHeader } from "../../Headers/GradientHeader/GradientHeader";
-import { SimpleLink } from "../../Links/SimpleLink/SimpleLink";
-
-import cl from "./Login.module.scss";
-import { LoginInput } from "../../FormInput/FormInput";
-
-export const Login = () => {
+export const Registration = () => {
   interface ILoginFormik {
     name: string;
     username: string;
@@ -23,7 +22,16 @@ export const Login = () => {
   });
   return (
     <div className={cl.mainWrapper}>
-      <div className={cl.logoSection}>k</div>
+      <div className={cl.logoSection}>
+        <div className={cl.logoWithText}>
+          <img src={logo} alt="logo" />
+          <p>JOIN US</p>
+        </div>
+
+        <div className="projectInfoWithText">
+          <p>See project info</p>
+        </div>
+      </div>
       <div className={cl.loginSection}>
         <GradientHeader text="Register Here" />
         <form className={cl.loginForm} onSubmit={formik.handleSubmit}>

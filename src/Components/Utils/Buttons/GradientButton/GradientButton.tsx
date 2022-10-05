@@ -1,4 +1,4 @@
-import { ButtonType } from "../../../types/ButtonType.types";
+import { ButtonType } from "../../../../types/ButtonType.types";
 
 import cl from "./GradientButton.module.scss";
 

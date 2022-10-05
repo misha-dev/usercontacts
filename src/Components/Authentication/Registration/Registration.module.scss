@@ -2,7 +2,33 @@
 
 .mainWrapper {
   @extend %flexCenter;
+  align-items: stretch;
   .logoSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    height: 100%;
+    padding: 30px;
+    margin-right: 10vw;
+
+    .logoWithText {
+      @extend %flexCenter;
+      flex-direction: column;
+      p {
+        font-weight: 900;
+        font-size: 2rem;
+        line-height: 3rem;
+        color: #ffffff;
+      }
+    }
+
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
   }
   .loginSection {
     display: flex;

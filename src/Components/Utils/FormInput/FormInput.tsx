@@ -1,4 +1,4 @@
-import { LoginInputType } from "../../types/InputType.types";
+import { LoginInputType } from "../../../types/InputType.types";
 
 import cl from "./FormInput.module.scss";
 export const LoginInput = ({ text, type, onChange, id, name, value, required }: LoginInputType) => {
