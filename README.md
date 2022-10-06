@@ -25,11 +25,15 @@ This project implements contact list.
    ```sh
    npm install
    ```
-3. Start project
+3. Start Frontend part
    ```sh
    npm start
    ```
-4. Test project
+4. Start Backend part
+   ```sh
+   npm run server
+   ```
+5. Test project
    ```sh
    npm test
    ```

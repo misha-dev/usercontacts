@@ -1,5 +1,7 @@
 import { ErrorMessage, Form, Formik } from "formik";
 
+import * as Yup from "yup";
+
 import logo from "../../../imgs/logo.png";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
 import { LoginInput } from "../../Utils/FormInput/FormInput";
@@ -7,7 +9,6 @@ import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeade
 import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
 import { WhiteLink } from "../../Utils/Links/WhiteLink/WhiteLink";
 
-import * as Yup from "yup";
 
 import cl from "./Registration.module.scss";
 
@@ -20,7 +21,17 @@ export const Registration = () => {
   }
 
   const onSubmit = (values: ILoginFormik) => {
-    console.log(values);
+    fetch("http://localhost:3001/register", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    })
+      .then((res) => {
+        console.log("OKKK!!!");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const validationSchema = Yup.object({
