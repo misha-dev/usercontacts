@@ -36,7 +36,7 @@ export const Registration = () => {
       if (!values.username) {
         errors.username = "Required";
       } else if (!/.{3,}/gi.test(values.username)) {
-        errors.username = "Username should be at least 3 letters!";
+        errors.username = "Should be at least 3 letters!";
       }
       if (!values.password) {
         errors.password = "Required";
@@ -47,8 +47,6 @@ export const Registration = () => {
       return errors;
     },
   });
-
-  console.log(formik.errors);
 
   return (
     <div className={cl.mainWrapper}>
@@ -70,23 +68,23 @@ export const Registration = () => {
         <form className={cl.registrationForm} onSubmit={formik.handleSubmit}>
           <div className={cl.registrationInputs}>
             <div className={cl.inputWrapper}>
-              <LoginInput required={true} id="name" name="name" type="text" value={formik.values.name} onChange={formik.handleChange} text="Name" />
-              {formik.errors.name ? <div className={cl.registerFormError}>{formik.errors.name}</div> : null}
+              <LoginInput required={true} onBlur={formik.handleBlur} id="name" name="name" type="text" value={formik.values.name} onChange={formik.handleChange} text="Name" />
+              {formik.touched.name && formik.errors.name ? <div className={cl.registerFormError}>{formik.errors.name}</div> : null}
             </div>
 
             <div className={cl.inputWrapper}>
-              <LoginInput required={true} id="username" name="username" type="text" onChange={formik.handleChange} value={formik.values.username} text="Username" />
-              {formik.errors.username ? <div className={cl.registerFormError}>{formik.errors.username}</div> : null}
+              <LoginInput required={true} onBlur={formik.handleBlur} id="username" name="username" type="text" onChange={formik.handleChange} value={formik.values.username} text="Username" />
+              {formik.touched.username && formik.errors.username ? <div className={cl.registerFormError}>{formik.errors.username}</div> : null}
             </div>
 
             <div className={cl.inputWrapper}>
-              <LoginInput required={true} id="email" name="email" type="email" onChange={formik.handleChange} value={formik.values.email} text="Email" />
-              {formik.errors.email ? <div className={cl.registerFormError}>{formik.errors.email}</div> : null}
+              <LoginInput required={true} onBlur={formik.handleBlur} id="email" name="email" type="email" onChange={formik.handleChange} value={formik.values.email} text="Email" />
+              {formik.touched.email && formik.errors.email ? <div className={cl.registerFormError}>{formik.errors.email}</div> : null}
             </div>
 
             <div className={cl.inputWrapper}>
-              <LoginInput required={true} id="password" name="password" type="password" onChange={formik.handleChange} value={formik.values.password} text="Password" />
-              {formik.errors.password ? <div className={cl.registerFormError}>{formik.errors.password}</div> : null}
+              <LoginInput required={true} onBlur={formik.handleBlur} id="password" name="password" type="password" onChange={formik.handleChange} value={formik.values.password} text="Password" />
+              {formik.touched.password && formik.errors.password ? <div className={cl.registerFormError}>{formik.errors.password}</div> : null}
             </div>
           </div>
           <div className={cl.loginWrapper}>

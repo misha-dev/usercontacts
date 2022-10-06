@@ -8,4 +8,5 @@ export type LoginInputType = {
   id: string;
   name: string;
   required: boolean;
+  onBlur: (e: React.FocusEvent<any, Element>) => void;
 };
