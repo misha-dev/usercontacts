@@ -68,22 +68,22 @@ export const Registration = () => {
         <form className={cl.registrationForm} onSubmit={formik.handleSubmit}>
           <div className={cl.registrationInputs}>
             <div className={cl.inputWrapper}>
-              <LoginInput required={true} onBlur={formik.handleBlur} id="name" name="name" type="text" value={formik.values.name} onChange={formik.handleChange} text="Name" />
+              <LoginInput required={true} fieldProps={formik.getFieldProps("name")} id="name" name="name" type="text" text="Name" />
               {formik.touched.name && formik.errors.name ? <div className={cl.registerFormError}>{formik.errors.name}</div> : null}
             </div>
 
             <div className={cl.inputWrapper}>
-              <LoginInput required={true} onBlur={formik.handleBlur} id="username" name="username" type="text" onChange={formik.handleChange} value={formik.values.username} text="Username" />
+              <LoginInput required={true} fieldProps={formik.getFieldProps("username")} id="username" name="username" type="text" text="Username" />
               {formik.touched.username && formik.errors.username ? <div className={cl.registerFormError}>{formik.errors.username}</div> : null}
             </div>
 
             <div className={cl.inputWrapper}>
-              <LoginInput required={true} onBlur={formik.handleBlur} id="email" name="email" type="email" onChange={formik.handleChange} value={formik.values.email} text="Email" />
+              <LoginInput required={true} fieldProps={formik.getFieldProps("email")} id="email" name="email" type="email" text="Email" />
               {formik.touched.email && formik.errors.email ? <div className={cl.registerFormError}>{formik.errors.email}</div> : null}
             </div>
 
             <div className={cl.inputWrapper}>
-              <LoginInput required={true} onBlur={formik.handleBlur} id="password" name="password" type="password" onChange={formik.handleChange} value={formik.values.password} text="Password" />
+              <LoginInput required={true} fieldProps={formik.getFieldProps("password")} id="password" name="password" type="password" text="Password" />
               {formik.touched.password && formik.errors.password ? <div className={cl.registerFormError}>{formik.errors.password}</div> : null}
             </div>
           </div>
