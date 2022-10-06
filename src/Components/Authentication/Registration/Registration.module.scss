@@ -68,6 +68,18 @@
         justify-content: space-between;
       }
 
+      .inputWrapper {
+        position: relative;
+        .registerFormError {
+          font-size: 0.95rem;
+          position: absolute;
+          color: red;
+          user-select: none;
+          left: 10px;
+          top: -38%;
+        }
+      }
+
       .loginWrapper {
         display: flex;
         width: 100%;
@@ -122,12 +134,18 @@
     .registrationSection {
       padding: 0 0 0 50px;
       width: 350px;
-      height: 350px;
+      height: 355px;
 
       .registrationForm {
         .registrationInputs {
-          height: 180px;
+          height: 190px;
           margin-bottom: 3px;
+
+          .inputWrapper {
+            .registerFormError {
+              font-size: 0.8rem;
+            }
+          }
         }
         .loginWrapper {
           .formLogin {

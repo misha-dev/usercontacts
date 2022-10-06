@@ -21,7 +21,35 @@ export const Registration = () => {
     onSubmit: (values) => {
       console.log(values);
     },
+    validate: (values) => {
+      const errors = {} as ILoginFormik;
+      if (!values.name) {
+        errors.name = "Required";
+      } else if (!/.{3,}/gi.test(values.name)) {
+        errors.name = "Name should be at least 3 letters!";
+      }
+      if (!values.email) {
+        errors.email = "Required";
+      } else if (!/^[a-z0-9]+@[a-z]+\.[a-z]{2,4}$/gi.test(values.email)) {
+        errors.email = "Invalid email format!";
+      }
+      if (!values.username) {
+        errors.username = "Required";
+      } else if (!/.{3,}/gi.test(values.username)) {
+        errors.username = "Username should be at least 3 letters!";
+      }
+      if (!values.password) {
+        errors.password = "Required";
+      } else if (!/.{5,}/gi.test(values.password)) {
+        errors.password = "Pass should be at least 5 letters!";
+      }
+
+      return errors;
+    },
   });
+
+  console.log(formik.errors);
+
   return (
     <div className={cl.mainWrapper}>
       <div className={cl.logoSection}>
@@ -31,20 +59,35 @@ export const Registration = () => {
         </div>
 
         <div className={cl.projectInfoWithText}>
-          <p>See how it project</p>
+          <p>See how is project</p>
           <p>is implemented</p>
           <p>on GitHub</p>
-          <WhiteLink text="About Project" link="https://github.com/misha-dev/usercontacts"  />
+          <WhiteLink text="About Project" link="https://github.com/misha-dev/usercontacts" />
         </div>
       </div>
       <div className={cl.registrationSection}>
         <GradientHeader text="Register Here" />
         <form className={cl.registrationForm} onSubmit={formik.handleSubmit}>
           <div className={cl.registrationInputs}>
-            <LoginInput required={true} id="name" name="name" type="text" value={formik.values.name} onChange={formik.handleChange} text="Name" />
-            <LoginInput required={true} id="username" name="username" type="text" onChange={formik.handleChange} value={formik.values.username} text="Username" />
-            <LoginInput required={true} id="email" name="email" type="email" onChange={formik.handleChange} value={formik.values.email} text="Email" />
-            <LoginInput required={true} id="password" name="password" type="password" onChange={formik.handleChange} value={formik.values.password} text="Password" />
+            <div className={cl.inputWrapper}>
+              <LoginInput required={true} id="name" name="name" type="text" value={formik.values.name} onChange={formik.handleChange} text="Name" />
+              {formik.errors.name ? <div className={cl.registerFormError}>{formik.errors.name}</div> : null}
+            </div>
+
+            <div className={cl.inputWrapper}>
+              <LoginInput required={true} id="username" name="username" type="text" onChange={formik.handleChange} value={formik.values.username} text="Username" />
+              {formik.errors.username ? <div className={cl.registerFormError}>{formik.errors.username}</div> : null}
+            </div>
+
+            <div className={cl.inputWrapper}>
+              <LoginInput required={true} id="email" name="email" type="email" onChange={formik.handleChange} value={formik.values.email} text="Email" />
+              {formik.errors.email ? <div className={cl.registerFormError}>{formik.errors.email}</div> : null}
+            </div>
+
+            <div className={cl.inputWrapper}>
+              <LoginInput required={true} id="password" name="password" type="password" onChange={formik.handleChange} value={formik.values.password} text="Password" />
+              {formik.errors.password ? <div className={cl.registerFormError}>{formik.errors.password}</div> : null}
+            </div>
           </div>
           <div className={cl.loginWrapper}>
             <div className={cl.formLogin}>
