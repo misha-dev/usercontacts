@@ -1,4 +1,4 @@
-import { useFormik } from "formik";
+import { ErrorMessage, Form, Formik } from "formik";
 
 import logo from "../../../imgs/logo.png";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
@@ -19,7 +19,7 @@ export const Registration = () => {
     password: string;
   }
 
-  const submit = (values: ILoginFormik) => {
+  const onSubmit = (values: ILoginFormik) => {
     console.log(values);
   };
 
@@ -31,12 +31,6 @@ export const Registration = () => {
   });
 
   const initialValues: ILoginFormik = { name: "", username: "", email: "", password: "" };
-
-  const formik = useFormik<ILoginFormik>({
-    initialValues,
-    onSubmit: submit,
-    validationSchema,
-  });
 
   return (
     <div className={cl.mainWrapper}>
@@ -55,37 +49,39 @@ export const Registration = () => {
       </div>
       <div className={cl.registrationSection}>
         <GradientHeader text="Register Here" />
-        <form className={cl.registrationForm} onSubmit={formik.handleSubmit}>
-          <div className={cl.registrationInputs}>
-            <div className={cl.inputWrapper}>
-              <LoginInput required={true} fieldProps={formik.getFieldProps("name")} id="name" name="name" type="text" text="Name" />
-              {formik.touched.name && formik.errors.name ? <div className={cl.registerFormError}>{formik.errors.name}</div> : null}
-            </div>
+        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+          <Form className={cl.registrationForm}>
+            <div className={cl.registrationInputs}>
+              <div className={cl.inputWrapper}>
+                <LoginInput required={true} id="name" name="name" type="text" text="Name" />
+                <ErrorMessage component="div" className={cl.registerFormError} name="name" />
+              </div>
 
-            <div className={cl.inputWrapper}>
-              <LoginInput required={true} fieldProps={formik.getFieldProps("username")} id="username" name="username" type="text" text="Username" />
-              {formik.touched.username && formik.errors.username ? <div className={cl.registerFormError}>{formik.errors.username}</div> : null}
-            </div>
+              <div className={cl.inputWrapper}>
+                <LoginInput required={true} id="username" name="username" type="text" text="Username" />
+                <ErrorMessage component="div" className={cl.registerFormError} name="username" />
+              </div>
 
-            <div className={cl.inputWrapper}>
-              <LoginInput required={true} fieldProps={formik.getFieldProps("email")} id="email" name="email" type="email" text="Email" />
-              {formik.touched.email && formik.errors.email ? <div className={cl.registerFormError}>{formik.errors.email}</div> : null}
-            </div>
+              <div className={cl.inputWrapper}>
+                <LoginInput required={true} id="email" name="email" type="email" text="Email" />
+                <ErrorMessage component="div" className={cl.registerFormError} name="email" />
+              </div>
 
-            <div className={cl.inputWrapper}>
-              <LoginInput required={true} fieldProps={formik.getFieldProps("password")} id="password" name="password" type="password" text="Password" />
-              {formik.touched.password && formik.errors.password ? <div className={cl.registerFormError}>{formik.errors.password}</div> : null}
+              <div className={cl.inputWrapper}>
+                <LoginInput required={true} id="password" name="password" type="password" text="Password" />
+                <ErrorMessage component="div" className={cl.registerFormError} name="password" />
+              </div>
             </div>
-          </div>
-          <div className={cl.loginWrapper}>
-            <div className={cl.formLogin}>
-              <SimpleLink link="#" text="Log in here" />
+            <div className={cl.loginWrapper}>
+              <div className={cl.formLogin}>
+                <SimpleLink link="#" text="Log in here" />
+              </div>
+              <div className={cl.formRegister}>
+                <GradientButton text="Register" type="submit" />
+              </div>
             </div>
-            <div className={cl.formRegister}>
-              <GradientButton text="Register" type="submit" />
-            </div>
-          </div>
-        </form>
+          </Form>
+        </Formik>
       </div>
     </div>
   );

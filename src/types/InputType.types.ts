@@ -6,5 +6,4 @@ export type LoginInputType = {
   id: string;
   name: string;
   required: boolean;
-  fieldProps: FieldInputProps<any>;
 };
