@@ -34,7 +34,7 @@ export const Registration = () => {
           <p>See how it project</p>
           <p>is implemented</p>
           <p>on GitHub</p>
-          <WhiteLink text="About Project" link="https://github.com/misha-dev/usercontacts" fontSize={1.3} />
+          <WhiteLink text="About Project" link="https://github.com/misha-dev/usercontacts"  />
         </div>
       </div>
       <div className={cl.registrationSection}>
@@ -48,10 +48,10 @@ export const Registration = () => {
           </div>
           <div className={cl.loginWrapper}>
             <div className={cl.formLogin}>
-              <SimpleLink link="#" text="Log in here" fontSize={1} />
+              <SimpleLink link="#" text="Log in here" />
             </div>
             <div className={cl.formRegister}>
-              <GradientButton fontSize={1.2} text="Register" type="submit" />
+              <GradientButton text="Register" type="submit" />
             </div>
           </div>
         </form>

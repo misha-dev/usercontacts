@@ -8,6 +8,7 @@
   text-align: center;
   padding: 8px 62px;
   color: #ffffff;
+  font-size: 1.2rem;
 
   &:hover {
     background-size: 200% 200%;
@@ -24,5 +25,13 @@
   }
   100% {
     background-position: 0% 41%;
+  }
+}
+@media (max-width: 1180px) {
+  .gradientButton {
+    line-height: 20px;
+    font-size: 1rem !important;
+
+    padding: 8px 30px;
   }
 }

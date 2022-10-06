@@ -17,3 +17,11 @@ input[type="password"].loginInput {
 input:focus.loginInput {
   border: 2px solid rgba($color: #53cbce, $alpha: 0.75);
 }
+
+@media (max-width: 1180px) {
+  input.loginInput {
+    width: 240px;
+    padding: 7px;
+    font-size: 0.85rem;
+  }
+}

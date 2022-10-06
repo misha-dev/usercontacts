@@ -1,9 +1,15 @@
 a.loginLink {
   color: #4dc9fe;
   font-weight: 600;
-  margin-bottom: 25px;
   transition: all 0.2s ease;
+  font-size: 1rem;
   &:hover {
     color: #80e6ff;
+  }
+}
+
+@media (max-width: 1180px) {
+  a.loginLink {
+    font-size: 0.8rem;
   }
 }

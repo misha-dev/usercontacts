@@ -4,6 +4,7 @@
   background: #ffffff;
   border-radius: 40px;
   transition: all 0.2s ease;
+  font-size: 1.3rem;
 
   a {
     display: block;
@@ -18,5 +19,14 @@
 
   &:hover {
     box-shadow: inset 0px 0px 4px grey;
+  }
+}
+
+@media (max-width: 1180px) {
+  .whiteLink {
+    a {
+      font-size: 1rem;
+      padding: 10px 25px;
+    }
   }
 }

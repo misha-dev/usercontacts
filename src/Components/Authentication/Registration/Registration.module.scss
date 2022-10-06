@@ -31,8 +31,6 @@
 
     .projectInfoWithText {
       font-weight: 700;
-      font-size: 1.25rem;
-      line-height: 25px;
       text-align: center;
       color: #fff;
 
@@ -76,11 +74,67 @@
         flex-direction: column;
 
         .formLogin {
-          margin-left: 12px;
+          margin-left: 15px;
           margin-bottom: 32px;
         }
         .formRegister {
           max-width: 200px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1180px) {
+  .mainWrapper {
+    flex-direction: column;
+    justify-content: center;
+
+    .logoSection {
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 0 0 20px 0;
+      align-items: center;
+      margin-right: 0;
+
+      .logoWithText {
+        img {
+          width: 70px;
+          height: 70px;
+          margin-bottom: 0;
+        }
+
+        p {
+          font-size: 2rem;
+        }
+      }
+
+      .projectInfoWithText {
+        p {
+          font-size: 0.8rem;
+          &:last-of-type {
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+
+    .registrationSection {
+      padding: 0 0 0 50px;
+      width: 350px;
+      height: 350px;
+
+      .registrationForm {
+        .registrationInputs {
+          height: 180px;
+          margin-bottom: 3px;
+        }
+        .loginWrapper {
+          .formLogin {
+            margin-bottom: 10px;
+          }
+          .formRegister {
+          }
         }
       }
     }
