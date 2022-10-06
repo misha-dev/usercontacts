@@ -16,36 +16,42 @@ export const Registration = () => {
     email: string;
     password: string;
   }
-  const formik = useFormik<ILoginFormik>({
-    initialValues: { name: "", username: "", email: "", password: "" },
-    onSubmit: (values) => {
-      console.log(values);
-    },
-    validate: (values) => {
-      const errors = {} as ILoginFormik;
-      if (!values.name) {
-        errors.name = "Required";
-      } else if (!/.{3,}/gi.test(values.name)) {
-        errors.name = "Name should be at least 3 letters!";
-      }
-      if (!values.email) {
-        errors.email = "Required";
-      } else if (!/^[a-z0-9]+@[a-z]+\.[a-z]{2,4}$/gi.test(values.email)) {
-        errors.email = "Invalid email format!";
-      }
-      if (!values.username) {
-        errors.username = "Required";
-      } else if (!/.{3,}/gi.test(values.username)) {
-        errors.username = "Should be at least 3 letters!";
-      }
-      if (!values.password) {
-        errors.password = "Required";
-      } else if (!/.{5,}/gi.test(values.password)) {
-        errors.password = "Pass should be at least 5 letters!";
-      }
 
-      return errors;
-    },
+  const submit = (values: ILoginFormik) => {
+    console.log(values);
+  };
+  const validate = (values: ILoginFormik) => {
+    const errors = {} as ILoginFormik;
+    if (!values.name) {
+      errors.name = "Required";
+    } else if (!/.{3,}/gi.test(values.name)) {
+      errors.name = "Name should be at least 3 letters!";
+    }
+    if (!values.email) {
+      errors.email = "Required";
+    } else if (!/^[a-z0-9]+@[a-z]+\.[a-z]{2,4}$/gi.test(values.email)) {
+      errors.email = "Invalid email format!";
+    }
+    if (!values.username) {
+      errors.username = "Required";
+    } else if (!/.{3,}/gi.test(values.username)) {
+      errors.username = "Should be at least 3 letters!";
+    }
+    if (!values.password) {
+      errors.password = "Required";
+    } else if (!/.{5,}/gi.test(values.password)) {
+      errors.password = "Pass should be at least 5 letters!";
+    }
+
+    return errors;
+  };
+
+  const initialValues: ILoginFormik = { name: "", username: "", email: "", password: "" };
+
+  const formik = useFormik<ILoginFormik>({
+    initialValues,
+    onSubmit: submit,
+    validate,
   });
 
   return (
