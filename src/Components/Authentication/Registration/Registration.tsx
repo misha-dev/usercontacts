@@ -3,24 +3,17 @@ import { ErrorMessage, Form, Formik } from "formik";
 import * as Yup from "yup";
 
 import logo from "../../../imgs/logo.png";
+import { userType } from "../../../types/reduxUserType.types";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
 import { LoginInput } from "../../Utils/FormInput/FormInput";
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
 import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
 import { WhiteLink } from "../../Utils/Links/WhiteLink/WhiteLink";
 
-
 import cl from "./Registration.module.scss";
 
 export const Registration = () => {
-  interface ILoginFormik {
-    name: string;
-    username: string;
-    email: string;
-    password: string;
-  }
-
-  const onSubmit = (values: ILoginFormik) => {
+  const onSubmit = (values: userType) => {
     fetch("http://localhost:3001/register", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -41,7 +34,7 @@ export const Registration = () => {
     password: Yup.string().required("Required").min(5, "Should be at least 5 letters"),
   });
 
-  const initialValues: ILoginFormik = { name: "", username: "", email: "", password: "" };
+  const initialValues: userType = { name: "", username: "", email: "", password: "" };
 
   return (
     <div className={cl.mainWrapper}>
