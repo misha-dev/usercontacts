@@ -39,7 +39,7 @@ This project implements contact list.
 - React (TypeScript)
 - React Router (v6)
 - SCSS modules
-- Formik
+- Formik + Yup
 - Redux (Typescript)
 - Jest
 

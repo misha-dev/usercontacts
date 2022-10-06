@@ -7,6 +7,8 @@ import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeade
 import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
 import { WhiteLink } from "../../Utils/Links/WhiteLink/WhiteLink";
 
+import * as Yup from "yup";
+
 import cl from "./Registration.module.scss";
 
 export const Registration = () => {
@@ -20,38 +22,20 @@ export const Registration = () => {
   const submit = (values: ILoginFormik) => {
     console.log(values);
   };
-  const validate = (values: ILoginFormik) => {
-    const errors = {} as ILoginFormik;
-    if (!values.name) {
-      errors.name = "Required";
-    } else if (!/.{3,}/gi.test(values.name)) {
-      errors.name = "Name should be at least 3 letters!";
-    }
-    if (!values.email) {
-      errors.email = "Required";
-    } else if (!/^[a-z0-9]+@[a-z]+\.[a-z]{2,4}$/gi.test(values.email)) {
-      errors.email = "Invalid email format!";
-    }
-    if (!values.username) {
-      errors.username = "Required";
-    } else if (!/.{3,}/gi.test(values.username)) {
-      errors.username = "Should be at least 3 letters!";
-    }
-    if (!values.password) {
-      errors.password = "Required";
-    } else if (!/.{5,}/gi.test(values.password)) {
-      errors.password = "Pass should be at least 5 letters!";
-    }
 
-    return errors;
-  };
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Required").min(3, "Should be at least 3 letters!"),
+    username: Yup.string().required("Required").min(3, "Should be at least 3 letters!"),
+    email: Yup.string().required("Required").email("Invalid email format!"),
+    password: Yup.string().required("Required").min(5, "Should be at least 5 letters"),
+  });
 
   const initialValues: ILoginFormik = { name: "", username: "", email: "", password: "" };
 
   const formik = useFormik<ILoginFormik>({
     initialValues,
     onSubmit: submit,
-    validate,
+    validationSchema,
   });
 
   return (
