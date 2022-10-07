@@ -1,11 +1,11 @@
-import { ErrorMessage, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 
 import * as Yup from "yup";
 
 import logo from "../../../imgs/logo.png";
 import { userType } from "../../../types/UserType.types";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
-import { LoginInput } from "../../Utils/FormInput/FormInput";
+import { FormInputWithValidation } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidation";
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
 import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
 import { WhiteLink } from "../../Utils/Links/WhiteLink/WhiteLink";
@@ -56,25 +56,13 @@ export const Registration = () => {
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
           <Form className={cl.registrationForm}>
             <div className={cl.registrationInputs}>
-              <div className={cl.inputWrapper}>
-                <LoginInput required={true} id="name" name="name" type="text" text="Name" />
-                <ErrorMessage component="div" className={cl.registerFormError} name="name" />
-              </div>
+              <FormInputWithValidation required={true} id="name" name="name" type="text" text="Name" />
 
-              <div className={cl.inputWrapper}>
-                <LoginInput required={true} id="username" name="username" type="text" text="Username" />
-                <ErrorMessage component="div" className={cl.registerFormError} name="username" />
-              </div>
+              <FormInputWithValidation required={true} id="username" name="username" type="text" text="Username" />
 
-              <div className={cl.inputWrapper}>
-                <LoginInput required={true} id="email" name="email" type="email" text="Email" />
-                <ErrorMessage component="div" className={cl.registerFormError} name="email" />
-              </div>
+              <FormInputWithValidation required={true} id="email" name="email" type="email" text="Email" />
 
-              <div className={cl.inputWrapper}>
-                <LoginInput required={true} id="password" name="password" type="password" text="Password" />
-                <ErrorMessage component="div" className={cl.registerFormError} name="password" />
-              </div>
+              <FormInputWithValidation required={true} id="password" name="password" type="password" text="Password" />
             </div>
             <div className={cl.loginWrapper}>
               <div className={cl.formLogin}>

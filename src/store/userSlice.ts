@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 import { UserReduxType } from "../types/UserType.types";
 
 const initialState: UserReduxType = {
