@@ -3,7 +3,7 @@ import { ErrorMessage, Form, Formik } from "formik";
 import * as Yup from "yup";
 
 import logo from "../../../imgs/logo.png";
-import { userType } from "../../../types/reduxUserType.types";
+import { userType } from "../../../types/UserType.types";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
 import { LoginInput } from "../../Utils/FormInput/FormInput";
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";

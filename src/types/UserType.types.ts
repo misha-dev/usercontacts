@@ -4,3 +4,5 @@ export type userType = {
   email: string;
   password: string;
 };
+
+export type UserReduxType = Omit<userType, "password">;
