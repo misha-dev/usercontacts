@@ -1,9 +1,10 @@
-import { ErrorMessage, Form, Formik, FormikHelpers, FormikState } from "formik";
+import { Form, Formik, FormikHelpers, FormikState } from "formik";
 import * as Yup from "yup";
 
 import { UserLogin } from "../../../types/UserType.types";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
-import { LoginInput } from "../../Utils/FormInput/FormInput";
+import { FormInputWithValidation } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidation";
+import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
 import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
 
 import cl from "./Login.module.scss";
@@ -15,7 +16,7 @@ export const Login = () => {
 
   const validationSchema = Yup.object({
     email: Yup.string().required("Required").email("Invalid email!"),
-    password: Yup.string().required("Required").min(5, "Should be at least 5 letters"),
+    password: Yup.string().required("Required"),
   });
 
   const onSubmit = (values: UserLogin, actions: FormikHelpers<any>) => {
@@ -29,33 +30,31 @@ export const Login = () => {
       })
       .catch((error) => {
         actions.resetForm({ email: "", password: "" } as Partial<FormikState<any>>);
+        alert("Login or password are incorrect");
       });
   };
   return (
     <div className={cl.mainWrapper}>
-      <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-        <Form className={cl.registrationForm}>
-          <div className={cl.registrationInputs}>
-            <div className={cl.inputWrapper}>
-              <LoginInput required={true} id="email" name="email" type="email" text="Email" />
-              <ErrorMessage component="div" className={cl.registerFormError} name="email" />
-            </div>
+      <div className={cl.formWrapper}>
+        <GradientHeader text="Login" />
+        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+          <Form className={cl.registrationForm}>
+            <div className={cl.registrationInputs}>
+              <FormInputWithValidation required={true} id="email" name="email" type="email" text="Email" />
 
-            <div className={cl.inputWrapper}>
-              <LoginInput required={true} id="password" name="password" type="password" text="Password" />
-              <ErrorMessage component="div" className={cl.registerFormError} name="password" />
+              <FormInputWithValidation required={true} id="password" name="password" type="password" text="Password" />
             </div>
-          </div>
-          <div className={cl.loginWrapper}>
-            <div className={cl.formLogin}>
-              <SimpleLink link="#" text="Register" />
+            <div className={cl.loginWrapper}>
+              <div className={cl.formLogin}>
+                <SimpleLink link="/usercontacts/register" text="Register here" />
+              </div>
+              <div className={cl.formLogin}>
+                <GradientButton text="Login" type="submit" />
+              </div>
             </div>
-            <div className={cl.formRegister}>
-              <GradientButton text="Login" type="submit" />
-            </div>
-          </div>
-        </Form>
-      </Formik>
+          </Form>
+        </Formik>
+      </div>
     </div>
   );
 };

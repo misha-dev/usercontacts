@@ -23,7 +23,7 @@ export const Registration = () => {
         console.log("OKKK!!!");
       })
       .catch((error) => {
-        console.log(error);
+        alert("Something went wrong:(");
       });
   };
 
@@ -66,7 +66,7 @@ export const Registration = () => {
             </div>
             <div className={cl.loginWrapper}>
               <div className={cl.formLogin}>
-                <SimpleLink link="#" text="Log in here" />
+                <SimpleLink link="/usercontacts/login" text="Log in here" />
               </div>
               <div className={cl.formRegister}>
                 <GradientButton text="Register" type="submit" />

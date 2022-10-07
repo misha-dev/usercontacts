@@ -1,3 +1,40 @@
+@import "../../../styles/variables";
+@import "../../../styles/templates";
 .mainWrapper {
-    
+  padding: 40px 30px;
+  background-color: #fff;
+  .formWrapper {
+    border: 4px solid;
+    border-image: $greenLinearGradient 30;
+    padding: 30px 20px;
+    background-color: #fff;
+    .registrationForm {
+      .registrationInputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 140px;
+      }
+
+      .formLogin {
+        margin-left: 15px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+@media (max-width: 1180px) {
+  .mainWrapper {
+    .formWrapper {
+      .registrationForm {
+        .registrationInputs {
+          height: 105px;
+        }
+      }
+    }
+    .formLogin {
+      margin-bottom: 10px;
+    }
+  }
 }

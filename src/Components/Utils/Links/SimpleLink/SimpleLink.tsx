@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
 import { LinkType } from "../../../../types/LinkType.types";
 
 import cl from "./SimpleLink.module.scss";
 
 export const SimpleLink = ({ text, link }: LinkType) => {
   return (
-    <a className={cl.loginLink} href={link}>
+    <Link to={link} className={cl.loginLink}>
       {text}
-    </a>
+    </Link>
   );
 };
