@@ -1,4 +1,12 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "misha@mail.ru",
+      "password": "$2a$10$rMLUgf269Ip4o/9ftW966umhVe916Hf3.SwpUdEUYlJGXLrnVzPiK",
+      "name": "misha",
+      "username": "misha",
+      "id": 1
+    }
+  ],
   "contacts": []
 }

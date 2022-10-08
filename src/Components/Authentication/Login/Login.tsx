@@ -1,7 +1,9 @@
 import { Form, Formik, FormikHelpers, FormikState } from "formik";
 import * as Yup from "yup";
+import { useAppDispatch } from "../../../store/hooks";
+import { setUser } from "../../../store/userSlice";
 
-import { UserLogin } from "../../../types/UserType.types";
+import { UserLogin, UserReduxType } from "../../../types/UserType.types";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
 import { FormInputWithValidation } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidation";
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
@@ -9,6 +11,7 @@ import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
 
 import cl from "./Login.module.scss";
 export const Login = () => {
+  const dispatch = useAppDispatch();
   const initialValues: UserLogin = {
     email: "",
     password: "",
@@ -26,13 +29,18 @@ export const Login = () => {
       body: JSON.stringify(values),
     })
       .then((res) => {
-        console.log("OKKK!!!");
+        return res.json();
+      })
+      .then(({ user }: { user: UserReduxType }) => {
+        localStorage.setItem("user", JSON.stringify(user));
+        dispatch(setUser(user));
       })
       .catch((error) => {
         actions.resetForm({ email: "", password: "" } as Partial<FormikState<any>>);
         alert("Login or password are incorrect");
       });
   };
+
   return (
     <div className={cl.mainWrapper}>
       <div className={cl.formWrapper}>
