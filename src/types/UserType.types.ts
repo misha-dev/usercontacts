@@ -8,4 +8,9 @@ export type userType = {
   username: string;
 } & UserLogin;
 
-export type UserReduxType = Omit<userType, "password"> & { id: number; accessToken: string };
+export type UserAuth = {
+  id: number;
+  accessToken: string;
+};
+
+export type UserReduxType = Omit<userType, "password"> & { id: number };

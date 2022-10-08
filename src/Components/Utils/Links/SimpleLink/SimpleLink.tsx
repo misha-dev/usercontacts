@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import { LinkType } from "../../../../types/LinkType.types";
 
 import cl from "./SimpleLink.module.scss";

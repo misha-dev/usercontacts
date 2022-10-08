@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setUser } from "../../store/userSlice";
-import { UserReduxType } from "../../types/UserType.types";
+import { UserAuth } from "../../types/UserType.types";
 
 import { Login } from "../Authentication/Login/Login";
 
@@ -16,14 +17,15 @@ export const MainRouter = () => {
   const [checkedLogged, setCheckedLogged] = useState(false);
 
   useEffect(() => {
-    const user: UserReduxType = JSON.parse(localStorage.getItem("user")!) as UserReduxType;
+    const userAuth: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
 
     const checkIfLogged = async () => {
-      const response = await fetch(`http://localhost:3001/600/users/${user.id}`, {
+      const response = await fetch(`http://localhost:3001/600/users/${userAuth.id}`, {
         method: "get",
-        headers: { Authorization: `Bearer ${user.accessToken}` },
+        headers: { Authorization: `Bearer ${userAuth.accessToken}` },
       });
       if (response.ok) {
+        const user = await response.json();
         dispatch(setUser(user));
       } else {
         localStorage.clear();
@@ -31,7 +33,7 @@ export const MainRouter = () => {
       setCheckedLogged(true);
     };
 
-    if (user?.accessToken) {
+    if (userAuth?.accessToken) {
       checkIfLogged();
     } else {
       setCheckedLogged(true);

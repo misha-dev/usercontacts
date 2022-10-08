@@ -26,8 +26,7 @@ export const Registration = () => {
         return res.json();
       })
       .then(({ user, accessToken }: { user: UserReduxType; accessToken: string }) => {
-        user.accessToken = accessToken;
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("userAuth", JSON.stringify({ accessToken, id: user.id }));
         dispatch(setUser(user));
       })
       .catch((error) => {

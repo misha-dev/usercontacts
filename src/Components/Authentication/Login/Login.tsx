@@ -1,5 +1,6 @@
 import { Form, Formik, FormikHelpers, FormikState } from "formik";
 import * as Yup from "yup";
+
 import { useAppDispatch } from "../../../store/hooks";
 import { setUser } from "../../../store/userSlice";
 
@@ -32,8 +33,7 @@ export const Login = () => {
         return res.json();
       })
       .then(({ user, accessToken }: { user: UserReduxType; accessToken: string }) => {
-        user.accessToken = accessToken;
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("userAuth", JSON.stringify({ accessToken, id: user.id }));
         dispatch(setUser(user));
       })
       .catch((error) => {
