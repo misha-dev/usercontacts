@@ -8,4 +8,4 @@ export type userType = {
   username: string;
 } & UserLogin;
 
-export type UserReduxType = Omit<userType, "password">;
+export type UserReduxType = Omit<userType, "password"> & { id: number };

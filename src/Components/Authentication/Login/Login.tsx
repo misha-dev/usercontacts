@@ -46,7 +46,7 @@ export const Login = () => {
             </div>
             <div className={cl.loginWrapper}>
               <div className={cl.formLogin}>
-                <SimpleLink link="/usercontacts/register" text="Register here" />
+                <SimpleLink link="/usercontacts" text="Register here" />
               </div>
               <div className={cl.formLogin}>
                 <GradientButton text="Login" type="submit" />

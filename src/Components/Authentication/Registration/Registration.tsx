@@ -3,7 +3,9 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 
 import logo from "../../../imgs/logo.png";
-import { userType } from "../../../types/UserType.types";
+import { useAppDispatch } from "../../../store/hooks";
+import { setUser } from "../../../store/userSlice";
+import { UserReduxType, userType } from "../../../types/UserType.types";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
 import { FormInputWithValidation } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidation";
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
@@ -13,6 +15,7 @@ import { WhiteLink } from "../../Utils/Links/WhiteLink/WhiteLink";
 import cl from "./Registration.module.scss";
 
 export const Registration = () => {
+  const dispatch = useAppDispatch();
   const onSubmit = (values: userType) => {
     fetch("http://localhost:3001/register", {
       method: "post",
@@ -20,7 +23,11 @@ export const Registration = () => {
       body: JSON.stringify(values),
     })
       .then((res) => {
-        console.log("OKKK!!!");
+        return res.json();
+      })
+      .then(({ user }: { user: UserReduxType }) => {
+        localStorage.setItem("user", JSON.stringify(user));
+        dispatch(setUser(user));
       })
       .catch((error) => {
         alert("Something went wrong:(");
