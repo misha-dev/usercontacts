@@ -1,10 +1,10 @@
 {
   "users": [
     {
-      "email": "ksdjfs@mail.ru",
-      "password": "$2a$10$LO1Zh2gCarCSRsuJ4V4DxeyghPpr2dfTSeWGe2NJWhUIMoOk5uQEa",
-      "name": "mis",
-      "username": "kdfsjdkj",
+      "email": "misha@mail.ru",
+      "password": "$2a$10$7B.eeeIskCLjwc5uZ7LScOZ4wIH54QNOdGnSFOsw476oKUDmECaei",
+      "name": "misha",
+      "username": "misha",
       "id": 1
     }
   ],

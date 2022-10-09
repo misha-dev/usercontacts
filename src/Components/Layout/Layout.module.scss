@@ -3,6 +3,12 @@
 
 .mainContent {
   height: 100vh;
+  position: relative;
   @extend %flexCenter;
   background: $greenLinearGradient;
+  .menuWrapper {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+  }
 }
