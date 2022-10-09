@@ -9,11 +9,11 @@ const user = createSlice({
   initialState,
   reducers: {
     setUser(state: UserReduxType, action: PayloadAction<UserReduxType>) {
-      const { id, email, name, username } = action.payload;
+      const { id, email, name, phoneNumber } = action.payload;
       state.id = id;
       state.email = email;
       state.name = name;
-      state.username = username;
+      state.phoneNumber = phoneNumber;
     },
     logOut(state: UserReduxType) {
       return {} as UserReduxType;

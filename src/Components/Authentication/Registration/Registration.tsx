@@ -33,15 +33,16 @@ export const Registration = () => {
         alert("Something went wrong:(");
       });
   };
+  const phoneRegExp = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Required").min(3, "Should be at least 3 letters!"),
-    username: Yup.string().required("Required").min(3, "Should be at least 3 letters!"),
+    phoneNumber: Yup.string().required("Required").matches(phoneRegExp, "Invalid phone number!"),
     email: Yup.string().required("Required").email("Invalid email format!"),
     password: Yup.string().required("Required").min(5, "Should be at least 5 letters"),
   });
 
-  const initialValues: userType = { name: "", username: "", email: "", password: "" };
+  const initialValues: userType = { name: "", phoneNumber: "", email: "", password: "" };
 
   return (
     <div className={cl.mainWrapper}>
@@ -65,7 +66,7 @@ export const Registration = () => {
             <div className={cl.registrationInputs}>
               <FormInputWithValidation required={true} id="name" name="name" type="text" text="Name" />
 
-              <FormInputWithValidation required={true} id="username" name="username" type="text" text="Username" />
+              <FormInputWithValidation required={true} id="phoneNumber" name="phoneNumber" type="tel" text="Phone number" />
 
               <FormInputWithValidation required={true} id="email" name="email" type="email" text="Email" />
 
