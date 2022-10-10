@@ -1,6 +1,7 @@
 import { useAppDispatch } from "../../../../store/hooks";
 import { logOut } from "../../../../store/userSlice";
 import { ButtonType } from "../../../../types/ButtonType.types";
+
 import cl from "./LogoutButton.module.scss";
 
 export const LogoutButton = ({ text, type }: ButtonType) => {

@@ -11,6 +11,13 @@ input.loginInput {
     margin-bottom: 0;
   }
 }
+
+input[type="tel"] {
+  font-family: serif;
+  &::placeholder {
+    font-family: "Merriweather", serif;
+  }
+}
 input[type="password"].loginInput {
   font-family: Verdana;
 }
