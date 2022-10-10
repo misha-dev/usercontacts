@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { setUser } from "../../store/userSlice";
+import { logOut, setUser } from "../../store/userSlice";
 import { UserAuth } from "../../types/UserType.types";
 
 import { Login } from "../Authentication/Login/Login";
@@ -29,6 +29,7 @@ export const MainRouter = () => {
         dispatch(setUser(user));
       } else {
         localStorage.clear();
+        dispatch(logOut());
       }
       setCheckedLogged(true);
     };
