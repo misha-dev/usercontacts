@@ -1,7 +1,10 @@
-import React from "react";
+import { SearchInput } from "../Utils/SearchInput/SearchInput";
+import cl from "./Contacts.module.scss";
 
 export const Contacts = () => {
   return (
-    <div>Contacts</div>
+    <div className={cl.mainWrapper}>
+      <SearchInput />
+    </div>
   );
 };

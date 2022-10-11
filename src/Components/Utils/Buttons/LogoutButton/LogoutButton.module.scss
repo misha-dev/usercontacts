@@ -1,8 +1,13 @@
 .logoutButton {
   padding: 12px;
-  font-size: 1rem;
+  font-size: 1.05rem;
   border-radius: 35vh;
   border: 2px solid #fff;
   color: #fff;
   background-color: transparent;
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: inset 0px 0px 8px #fff;
+  }
 }
