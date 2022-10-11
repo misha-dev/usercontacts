@@ -7,7 +7,7 @@ import { useAppDispatch } from "../../../store/hooks";
 import { setUser } from "../../../store/userSlice";
 import { UserReduxType, userType } from "../../../types/UserType.types";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
-import { FormInputWithValidation } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidation";
+import { FormInputWithValidationFormik } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidationFormik";
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
 import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
 import { WhiteLink } from "../../Utils/Links/WhiteLink/WhiteLink";
@@ -64,13 +64,13 @@ export const Registration = () => {
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
           <Form className={cl.registrationForm}>
             <div className={cl.registrationInputs}>
-              <FormInputWithValidation required={true} id="name" name="name" type="text" text="Name" />
+              <FormInputWithValidationFormik required={true} id="name" name="name" type="text" text="Name" />
 
-              <FormInputWithValidation required={true} id="phoneNumber" name="phoneNumber" type="tel" text="Phone number" />
+              <FormInputWithValidationFormik required={true} id="phoneNumber" name="phoneNumber" type="tel" text="Phone number" />
 
-              <FormInputWithValidation required={true} id="email" name="email" type="email" text="Email" />
+              <FormInputWithValidationFormik required={true} id="email" name="email" type="email" text="Email" />
 
-              <FormInputWithValidation required={true} id="password" name="password" type="password" text="Password" />
+              <FormInputWithValidationFormik required={true} id="password" name="password" type="password" text="Password" />
             </div>
             <div className={cl.loginWrapper}>
               <div className={cl.formLogin}>

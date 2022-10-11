@@ -6,7 +6,7 @@ import { setUser } from "../../../store/userSlice";
 
 import { UserLogin, UserReduxType } from "../../../types/UserType.types";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
-import { FormInputWithValidation } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidation";
+import { FormInputWithValidationFormik } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidationFormik";
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
 import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
 
@@ -49,9 +49,9 @@ export const Login = () => {
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
           <Form className={cl.registrationForm}>
             <div className={cl.registrationInputs}>
-              <FormInputWithValidation required={true} id="email" name="email" type="email" text="Email" />
+              <FormInputWithValidationFormik required={true} id="email" name="email" type="email" text="Email" />
 
-              <FormInputWithValidation required={true} id="password" name="password" type="password" text="Password" />
+              <FormInputWithValidationFormik required={true} id="password" name="password" type="password" text="Password" />
             </div>
             <div className={cl.loginWrapper}>
               <div className={cl.formLogin}>
