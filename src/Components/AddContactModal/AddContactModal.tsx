@@ -22,9 +22,9 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
         className={cl.modalContent}
       >
         <form>
-          <FormInputWithValidation id="name" name="name" required={true} text={"name"} type="text" value={name} setValue={setName} />
-          <FormInputWithValidation id="surname" name="surname" required={false} text={"surname"} type="text" value={surname} setValue={setSurname} />
-          <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"phoneNumber"} type="tel" value={phoneNumber} setValue={setPhoneNumber} />
+          <FormInputWithValidation id="name" name="name" required={true} text={"Name"} type="text" value={name} setValue={setName} />
+          <FormInputWithValidation id="surname" name="surname" required={false} text={"Surname"} type="text" value={surname} setValue={setSurname} />
+          <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"Phone"} type="tel" value={phoneNumber} setValue={setPhoneNumber} />
         </form>
         {/* #TODO ADD role of the person*/}
       </div>
