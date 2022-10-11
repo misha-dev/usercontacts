@@ -18,7 +18,7 @@
     }
     input {
       font-family: "Open Sans", sans-serif;
-        font-size: 1rem;
+      font-size: 1rem;
       background-color: #ebedea;
       padding: 5px 20px;
       width: 50%;
@@ -26,12 +26,16 @@
       border: 1px solid rgba(0, 0, 0, 0.25);
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       transition: all 0.2s ease;
-      &:focus {
+
+      &:focus,
+      &:valid {
         width: 90%;
       }
+      &:valid ~ .placeholder,
       &:focus ~ .placeholder {
         display: none;
       }
+      &:valid ~ .searchLogo,
       &:focus ~ .searchLogo {
         display: none;
       }
