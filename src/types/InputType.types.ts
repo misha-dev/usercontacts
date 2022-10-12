@@ -1,9 +1,19 @@
-export type LoginInputTypeFormik = {
-  text: string;
-  type: "password" | "email" | "text" | "tel";
+type baseParams = {
   id: string;
   name: string;
   required: boolean;
 };
 
-export type LoginInputType = LoginInputTypeFormik & { value: string; setValue: React.Dispatch<React.SetStateAction<string>> };
+type stateHandler<T> = { value: T; setValue: React.Dispatch<React.SetStateAction<T>> };
+
+export type LoginInputTypeFormik = {
+  text: string;
+  type: "password" | "email" | "text" | "tel";
+} & baseParams;
+
+export type LoginInputType = LoginInputTypeFormik & stateHandler<string>;
+
+export type SelectInputType = {
+  options: Array<string>;
+} & baseParams &
+  stateHandler<string>;
