@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+import { ImCross } from "react-icons/im";
+import { GradientButton } from "../Utils/Buttons/GradientButton/GradientButton";
+
 import { FormInputWithValidation } from "../Utils/FormInput/FormInputWithValidation/FormInputWithValidation";
 
 import cl from "./AddContactModal.module.scss";
@@ -21,10 +24,19 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
         }}
         className={cl.modalContent}
       >
+        <ImCross
+          className={cl.cross}
+          onClick={() => {
+            setModalVisible(false);
+          }}
+        />
         <form>
           <FormInputWithValidation id="name" name="name" required={true} text={"Name"} type="text" value={name} setValue={setName} />
           <FormInputWithValidation id="surname" name="surname" required={false} text={"Surname"} type="text" value={surname} setValue={setSurname} />
           <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"Phone"} type="tel" value={phoneNumber} setValue={setPhoneNumber} />
+          <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"Phone"} type="tel" value={phoneNumber} setValue={setPhoneNumber} />
+
+          <GradientButton text="Add contact" type="submit" />
         </form>
         {/* #TODO ADD role of the person*/}
       </div>
