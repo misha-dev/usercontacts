@@ -26,7 +26,7 @@
     pointer-events: none;
     font-size: 1.2rem;
     top: 50%;
-    left: 90%;
+    right: 18px;
     transform: translateY(-45%);
   }
 }
@@ -37,6 +37,9 @@
       width: 240px;
       padding: 7px;
       font-size: 0.85rem;
+    }
+    .arrow {
+      font-size: 1rem;
     }
   }
 }
