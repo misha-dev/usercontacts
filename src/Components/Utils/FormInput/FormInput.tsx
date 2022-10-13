@@ -6,10 +6,21 @@ export const FormInput = ({ text, type, id, name, required, value, setValue }: L
     <input
       value={value}
       onChange={(e) => {
+        const value = e.target.value;
+        const matchDeleting = [8, 127];
         if (type === "tel") {
-          setValue(e.target.value);
+          console.log(value);
+
+          if ((/[0-9]/g.test(value) && value.length <= 12) || value === "") {
+            setValue(value);
+          }
+          // if ((lastCharacterCharCode >= 48 && lastCharacterCharCode <= 57) || matchDeleting.includes(lastCharacterCharCode) || lastCharacterCharCode === 43 || value === "") {
+          //   setValue(value);
+          // }
         } else {
-          setValue(e.target.value);
+          if ((/^[a-zA-Z].*/g.test(value) && value.length <= 12) || value === "") {
+            setValue(value);
+          }
         }
       }}
       required={required}

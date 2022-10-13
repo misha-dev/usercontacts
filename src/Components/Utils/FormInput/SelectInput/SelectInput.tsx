@@ -11,6 +11,7 @@ export const SelectInput = ({ id, name, options, required, value, setValue }: Se
         className={cl.selectInput}
         value={value}
         onChange={(e) => {
+          
           setValue(e.target.value);
         }}
         required={required}
