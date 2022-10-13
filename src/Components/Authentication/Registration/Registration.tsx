@@ -66,7 +66,7 @@ export const Registration = () => {
             <div className={cl.registrationInputs}>
               <FormInputWithValidationFormik required={true} id="name" name="name" type="text" text="Name" />
 
-              <FormInputWithValidationFormik required={true} id="phoneNumber" name="phoneNumber" type="tel" text="Phone number" />
+              <FormInputWithValidationFormik required={true} id="phoneNumber" name="phoneNumber" type="tel" text="Phone number (+7...)" />
 
               <FormInputWithValidationFormik required={true} id="email" name="email" type="email" text="Email" />
 
