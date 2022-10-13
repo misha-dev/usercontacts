@@ -43,7 +43,8 @@ This project implements contact list.
 - React (TypeScript)
 - React Router (v6)
 - SCSS modules
-- Formik + Yup
+- Formik + Yup (Registration, Login pages)
+- Custom phone number formatting, form (Contacts page)
 - Redux (Typescript)
 - Jest
 

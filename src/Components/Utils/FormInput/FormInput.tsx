@@ -1,4 +1,5 @@
 import { LoginInputType } from "../../../types/InputType.types";
+import { formatRussianNumber } from "../../../Utils/formatRussianNumber";
 
 import cl from "./FormInput.module.scss";
 export const FormInput = ({ text, type, id, name, required, value, setValue }: LoginInputType) => {
@@ -11,45 +12,33 @@ export const FormInput = ({ text, type, id, name, required, value, setValue }: L
         }
       }}
       onChange={(e) => {
-        let value = e.target.value;
-        const lastChar = value[value.length - 1];
+        const value = e.target.value;
+        const selectionStart = e.target.selectionStart;
         if (type === "tel") {
-          let formattedInputValue = "";
-          value = value.replace(/[\D]/g, "");
-          if (value.length <= 12) {
-            if (!value) {
-              setValue("");
-            } else {
-              if (["7", "8", "9"].includes(value[0])) {
-                if (value[0] === "9") {
-                  value = "7" + value;
-                }
-                const firstSymbols = value[0] === "8" ? "8" : "+7";
-                formattedInputValue = firstSymbols + " ";
+          const phoneValue = value.replace(/[\D]/g, "");
+          if (value.length !== selectionStart) {
+            const event = e.nativeEvent as InputEvent;
+            if ((event.data && !/\D/g.test(event.data) && phoneValue.length <= 11) || event.data === null) {
+              setValue(value);
+              return;
+            }
+          }
 
-                if (value.length > 1) {
-                  formattedInputValue += "(" + value.substring(1, 4);
-                }
-
-                if (value.length >= 5) {
-                  formattedInputValue += ") " + value.substring(4, 7);
-                }
-
-                if (value.length >= 8) {
-                  formattedInputValue += "-" + value.substring(7, 9);
-                }
-
-                if (value.length >= 10) {
-                  formattedInputValue += "-" + value.substring(9, 11);
-                }
-                setValue(formattedInputValue);
-              } else {
-                setValue(`+${value.substring(0, 16)}`);
+          if (!phoneValue) {
+            setValue("");
+          } else {
+            const isRussian = ["7", "8", "9"].includes(phoneValue[0]);
+            if (isRussian) {
+              const russianNumber = formatRussianNumber(phoneValue);
+              if (russianNumber) {
+                setValue(russianNumber);
               }
+            } else if (phoneValue.length <= 16 && !isRussian) {
+              setValue(`+${phoneValue}`);
             }
           }
         } else {
-          if ((/^[a-zA-Z]/g.test(value) && value.length <= 12 && /\w\w*/.test(lastChar)) || value === "") {
+          if ((/^[a-zA-Z](\w\w*)*/g.test(value) && value.length <= 12) || value === "") {
             setValue(value);
           }
         }
