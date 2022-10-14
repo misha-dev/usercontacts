@@ -5,7 +5,6 @@ export type UserLogin = {
 
 export type userType = {
   name: string;
-  phoneNumber: string;
 } & UserLogin;
 
 export type UserAuth = {

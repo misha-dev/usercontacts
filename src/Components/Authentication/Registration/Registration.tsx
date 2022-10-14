@@ -16,11 +16,11 @@ import cl from "./Registration.module.scss";
 
 export const Registration = () => {
   const dispatch = useAppDispatch();
-  const onSubmit = (values: userType) => {
+  const onSubmit = ({ email, name, password }: userType) => {
     fetch("http://localhost:3001/register", {
       method: "post",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
+      body: JSON.stringify({ email, name, password }),
     })
       .then((res) => {
         return res.json();
@@ -30,19 +30,20 @@ export const Registration = () => {
         dispatch(setUser(user));
       })
       .catch((error) => {
-        alert("Something went wrong:(");
+        alert("Email is taken!");
       });
   };
-  const phoneRegExp = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Required").min(3, "Should be at least 3 letters!"),
-    phoneNumber: Yup.string().required("Required").matches(phoneRegExp, "Invalid phone number!"),
     email: Yup.string().required("Required").email("Invalid email format!"),
-    password: Yup.string().required("Required").min(5, "Should be at least 5 letters"),
+    password: Yup.string().required("Required").min(5, "Should be at least 5 letters!"),
+    confirmPassword: Yup.string()
+      .required("Required")
+      .oneOf([Yup.ref("password")], "Password is not the same!"),
   });
 
-  const initialValues: userType = { name: "", phoneNumber: "", email: "", password: "" };
+  const initialValues: userType & { confirmPassword: string } = { name: "", email: "", password: "", confirmPassword: "" };
 
   return (
     <div className={cl.mainWrapper}>
@@ -62,25 +63,29 @@ export const Registration = () => {
       <div className={cl.registrationSection}>
         <GradientHeader text="Register Here" />
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-          <Form className={cl.registrationForm}>
-            <div className={cl.registrationInputs}>
-              <FormInputWithValidationFormik required={true} id="name" name="name" type="text" text="Name" />
+          {({ dirty, isValid }) => {
+            return (
+              <Form className={cl.registrationForm}>
+                <div className={cl.registrationInputs}>
+                  <FormInputWithValidationFormik required={true} id="name" name="name" type="text" text="Name" />
 
-              <FormInputWithValidationFormik required={true} id="phoneNumber" name="phoneNumber" type="tel" text="Phone number (+7...)" />
+                  <FormInputWithValidationFormik required={true} id="email" name="email" type="email" text="Email" />
 
-              <FormInputWithValidationFormik required={true} id="email" name="email" type="email" text="Email" />
+                  <FormInputWithValidationFormik required={true} id="password" name="password" type="password" text="Password" />
 
-              <FormInputWithValidationFormik required={true} id="password" name="password" type="password" text="Password" />
-            </div>
-            <div className={cl.loginWrapper}>
-              <div className={cl.formLogin}>
-                <SimpleLink link="/usercontacts/login" text="Log in here" />
-              </div>
-              <div className={cl.formRegister}>
-                <GradientButton text="Register" type="submit" />
-              </div>
-            </div>
-          </Form>
+                  <FormInputWithValidationFormik required={true} id="confirmPassword" name="confirmPassword" type="password" text="Confirm password" />
+                </div>
+                <div className={cl.loginWrapper}>
+                  <div className={cl.formLogin}>
+                    <SimpleLink link="/usercontacts/login" text="Log in here" />
+                  </div>
+                  <div className={cl.formRegister}>
+                    <GradientButton disabled={!dirty || !isValid} text="Register" type="submit" />
+                  </div>
+                </div>
+              </Form>
+            );
+          }}
         </Formik>
       </div>
     </div>

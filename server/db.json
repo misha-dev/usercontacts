@@ -2,17 +2,9 @@
   "users": [
     {
       "email": "misha@mail.ru",
-      "password": "$2a$10$AMN4bLFt64a8/HVhnRm5hubeHxuOwaiM2ItymWGGY5ivAJSEtBMHm",
+      "password": "$2a$10$gkX7JIFXcyNxasuQVkmSfe6./S2hGTdKOoTAVF/VOt70aNn8fMx6G",
       "name": "misha",
-      "phoneNumber": "+79514688597",
       "id": 1
-    },
-    {
-      "email": "mik@mail.ru",
-      "password": "$2a$10$s2SIDfiAbynMN.3S45hka.1BGvhUlYSkzsj71O2go.OGFZrs3E/f.",
-      "name": "mik",
-      "phoneNumber": "+79514688597",
-      "id": 2
     }
   ],
   "contacts": []
