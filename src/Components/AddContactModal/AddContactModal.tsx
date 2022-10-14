@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ImCross } from "react-icons/im";
 
@@ -17,6 +17,20 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
   const [selectGroupType, setSelectGroupType] = useState("Friend");
 
   // form errors
+
+  useEffect(() => {
+    const escapeHandler = (e: KeyboardEvent) => {
+      const value = e.key;
+      if (value === "Escape") {
+        setModalVisible(false);
+      }
+    };
+    document.addEventListener("keydown", escapeHandler);
+
+    return () => {
+      document.removeEventListener("keydown", escapeHandler);
+    };
+  }, []);
 
   return (
     <div
@@ -45,7 +59,6 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
 
           <GradientButton text="Add contact" type="submit" />
         </form>
-        {/* #TODO ADD role of the person*/}
       </div>
     </div>
   );
