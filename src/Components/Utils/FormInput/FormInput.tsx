@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-import { LoginInputType } from "../../../types/InputType.types";
+import { InputType } from "../../../types/InputType.types";
 import { formatRussianNumber } from "../../../Utils/formatRussianNumber";
 
 import cl from "./FormInput.module.scss";
-export const FormInput = ({ text, type, id, name, required, value, setValue }: LoginInputType) => {
+export const FormInput = ({ text, type, id, name, required, value, setValue, onBlur }: InputType) => {
   const phoneInputRef = useRef<HTMLInputElement>(null);
   // for setting cursor after deleting in the middle of input
   const [selectionStart, setSelectionStart] = useState(0);
@@ -15,6 +15,7 @@ export const FormInput = ({ text, type, id, name, required, value, setValue }: L
   return (
     <input
       ref={phoneInputRef}
+      onBlur={onBlur}
       value={value}
       onKeyDown={(e) => {
         if (type === "tel" && ["Backspace", "Delete"].includes(e.key) && value.replace(/[\D]/g, "").length === 1) {

@@ -1,11 +1,11 @@
 import { ErrorMessage } from "formik";
 
-import { LoginInputTypeFormik } from "../../../../types/InputType.types";
+import { InputTypeFormik } from "../../../../types/InputType.types";
 import { FormInputFormik } from "../FormInputFormik";
 
 import cl from "./FormInputWithValidation.module.scss";
 
-export const FormInputWithValidationFormik = ({ text, type, id, name, required }: LoginInputTypeFormik) => {
+export const FormInputWithValidationFormik = ({ text, type, id, name, required }: InputTypeFormik) => {
   return (
     <div className={cl.inputWrapper}>
       <FormInputFormik required={required} id={id} name={name} type={type} text={text} />
