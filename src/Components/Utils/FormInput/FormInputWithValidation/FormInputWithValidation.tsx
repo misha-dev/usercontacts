@@ -8,14 +8,14 @@ export const FormInputWithValidation = ({ text, type, id, name, required, value,
   let validationRules = {};
 
   switch (name) {
-  case "name":
-    validationRules = { minLength: 3 };
-    break;
-  case "phoneNumber":
-    validationRules = {};
-    break;
-  default:
-    break;
+    case "name":
+      validationRules = { minLength: 3 };
+      break;
+    case "phoneNumber":
+      validationRules = { phoneValid: /((\+7|8) \(\d{3}\) \d{3}-\d{2}-\d{2})|(\+\d{7,16})/g };
+      break;
+    default:
+      break;
   }
 
   const nameInput = useFormInput(value, validationRules);
