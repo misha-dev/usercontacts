@@ -47,21 +47,25 @@ export const Login = () => {
       <div className={cl.formWrapper}>
         <GradientHeader text="Login" />
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-          <Form className={cl.registrationForm}>
-            <div className={cl.registrationInputs}>
-              <FormInputWithValidationFormik required={true} id="email" name="email" type="email" text="Email" />
+          {({ dirty, isValid }) => {
+            return (
+              <Form className={cl.registrationForm}>
+                <div className={cl.registrationInputs}>
+                  <FormInputWithValidationFormik required={true} id="email" name="email" type="email" text="Email" />
 
-              <FormInputWithValidationFormik required={true} id="password" name="password" type="password" text="Password" />
-            </div>
-            <div className={cl.loginWrapper}>
-              <div className={cl.formLogin}>
-                <SimpleLink link="/usercontacts" text="Register here" />
-              </div>
-              <div className={cl.formLogin}>
-                <GradientButton text="Login" type="submit" />
-              </div>
-            </div>
-          </Form>
+                  <FormInputWithValidationFormik required={true} id="password" name="password" type="password" text="Password" />
+                </div>
+                <div className={cl.loginWrapper}>
+                  <div className={cl.formLogin}>
+                    <SimpleLink link="/usercontacts" text="Register here" />
+                  </div>
+                  <div className={cl.formLogin}>
+                    <GradientButton disabled={!dirty || !isValid} text="Login" type="submit" />
+                  </div>
+                </div>
+              </Form>
+            );
+          }}
         </Formik>
       </div>
     </div>
