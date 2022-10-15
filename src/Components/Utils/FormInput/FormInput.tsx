@@ -1,10 +1,20 @@
+import { useEffect, useRef, useState } from "react";
+
 import { LoginInputType } from "../../../types/InputType.types";
 import { formatRussianNumber } from "../../../Utils/formatRussianNumber";
 
 import cl from "./FormInput.module.scss";
 export const FormInput = ({ text, type, id, name, required, value, setValue }: LoginInputType) => {
+  const phoneInputRef = useRef<HTMLInputElement>(null);
+  // for setting cursor after deleting in the middle of input
+  const [selectionStart, setSelectionStart] = useState(0);
+
+  useEffect(() => {
+    phoneInputRef.current?.setSelectionRange(selectionStart, selectionStart);
+  }, [selectionStart]);
   return (
     <input
+      ref={phoneInputRef}
       value={value}
       onKeyDown={(e) => {
         if (type === "tel" && ["Backspace", "Delete"].includes(e.key) && value.replace(/[\D]/g, "").length === 1) {
@@ -13,13 +23,19 @@ export const FormInput = ({ text, type, id, name, required, value, setValue }: L
       }}
       onChange={(e) => {
         const value = e.target.value;
-        const selectionStart = e.target.selectionStart;
+        const selectionPointer = e.target.selectionStart;
         if (type === "tel") {
           const phoneValue = value.replace(/[\D]/g, "");
-          if (value.length !== selectionStart) {
+          if (value.length !== selectionPointer) {
             const event = e.nativeEvent as InputEvent;
+
             if ((event.data && !/\D/g.test(event.data) && phoneValue.length <= 11) || event.data === null) {
-              setValue(value);
+              const v = formatRussianNumber(phoneValue);
+
+              if (v && selectionPointer) {
+                setValue(v);
+                setSelectionStart(selectionPointer);
+              }
               return;
             }
           }
