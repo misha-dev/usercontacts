@@ -74,5 +74,5 @@ export const useFormInput = (initialValue: string, validations: validationsType,
     }
   };
 
-  return { value, setValue, dirty, valid, onBlur, phoneInputRef, onChange };
+  return { value, setValue, dirty, valid, onBlur, phoneInputRef, onChange, setDirty };
 };

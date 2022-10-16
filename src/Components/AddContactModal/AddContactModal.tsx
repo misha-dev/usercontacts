@@ -17,13 +17,23 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
   const phoneNumber = useFormInput("", { phoneValid: /((\+7|8) \(\d{3}\) \d{3}-\d{2}-\d{2})|(\+\d{7,16})/g }, "tel");
   const [selectGroupType, setSelectGroupType] = useState("Friend");
 
+  const closeModal = () => {
+    setModalVisible(false);
+    name.setDirty(false);
+    name.setValue("");
+    phoneNumber.setDirty(false);
+    phoneNumber.setValue("");
+    surname.setDirty(false);
+    surname.setValue("");
+  };
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
 
   useEffect(() => {
     const escapeHandler = (e: KeyboardEvent) => {
       const value = e.key;
       if (value === "Escape") {
-        setModalVisible(false);
+        closeModal();
       }
     };
     document.addEventListener("keydown", escapeHandler);
@@ -36,7 +46,7 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
   return (
     <div
       onMouseDown={() => {
-        setModalVisible(false);
+        closeModal();
       }}
       className={`${cl.modalWrapper} ${modalVisible ? cl.active : ""}`}
     >
@@ -49,7 +59,7 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
         <ImCross
           className={cl.cross}
           onClick={() => {
-            setModalVisible(false);
+            closeModal();
           }}
         />
         <form onSubmit={onSubmit}>
