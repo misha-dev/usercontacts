@@ -20,14 +20,20 @@ export const MainRouter = () => {
     const userAuth: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
 
     const checkIfLogged = async () => {
-      const response = await fetch(`http://localhost:3001/600/users/${userAuth.id}`, {
-        method: "get",
-        headers: { Authorization: `Bearer ${userAuth.accessToken}` },
-      });
-      if (response.ok) {
-        const user = await response.json();
-        dispatch(setUser(user));
-      } else {
+      try {
+        const response = await fetch(`http://localhost:3001/600/users/${userAuth.id}`, {
+          method: "get",
+          headers: { Authorization: `Bearer ${userAuth.accessToken}` },
+        });
+        if (response.ok) {
+          const user = await response.json();
+          dispatch(setUser(user));
+        } else {
+          localStorage.clear();
+          dispatch(logOut());
+        }
+      } catch (error) {
+        console.log("server is unavailable");
         localStorage.clear();
         dispatch(logOut());
       }

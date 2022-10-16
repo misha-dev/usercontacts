@@ -1,6 +1,5 @@
 export type ContactType = {
-  id: number;
-  userId: string;
+  userId: number;
   fullName: string;
   phone: string;
   type: "Friend" | "Colleague" | "Family";

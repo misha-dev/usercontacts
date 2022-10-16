@@ -17,6 +17,6 @@ export type InputType = InputTypeFormik &
 export type InputFormType = InputType & { valid: { error: string }; dirty: boolean };
 
 export type SelectInputType = {
-  options: Array<string>;
+  options: Array<"Friend" | "Colleague" | "Family">;
 } & baseParams &
   stateHandler<string>;

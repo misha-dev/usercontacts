@@ -7,13 +7,13 @@ export const useValidation = (value: string, validations: validationsType) => {
   useEffect(() => {
     for (const validation in validations) {
       switch (validation) {
-        case "minLength":
-          value.length < validations[validation] ? setError(`Should be at least ${validations[validation]} letters!`) : setError("");
-          break;
+      case "minLength":
+        value.length < validations[validation] ? setError(`Should be at least ${validations[validation]} letters!`) : setError("");
+        break;
 
-        case "phoneValid":
-          (validations[validation] as RegExp).test(value) ? setError("") : setError("Enter correct phone number!");
-          break;
+      case "phoneValid":
+        (validations[validation] as RegExp).test(value) ? setError("") : setError("Enter correct phone number!");
+        break;
       }
     }
   }, [value]);
