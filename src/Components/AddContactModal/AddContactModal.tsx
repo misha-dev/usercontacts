@@ -93,7 +93,7 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
           />
           <SelectInput id="groupType" name="groupType" options={["Friend", "Colleague", "Family"]} required={true} value={selectGroupType} setValue={setSelectGroupType} />
 
-          <GradientButton disabled={!name.dirty || Boolean(name.valid.error) || phoneNumber.dirty || Boolean(phoneNumber.valid.error)} text="Add contact" type="submit" />
+          <GradientButton disabled={!name.dirty || Boolean(name.valid.error) || !phoneNumber.dirty || Boolean(phoneNumber.valid.error)} text="Add contact" type="submit" />
         </form>
       </div>
     </div>
