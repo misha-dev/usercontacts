@@ -11,9 +11,10 @@ export type InputTypeFormik = {
   type: "password" | "email" | "text" | "tel";
 } & baseParams;
 
-export type InputType = InputTypeFormik & stateHandler<string> & { onBlur: (e: React.FocusEvent<HTMLInputElement, Element>) => void };
+export type InputType = InputTypeFormik &
+  stateHandler<string> & { onBlur: (e: React.FocusEvent<HTMLInputElement, Element>) => void; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; inputRef?: React.RefObject<HTMLInputElement> };
 
-export type InputFormType = Omit<InputType, "onBlur">;
+export type InputFormType = InputType & { valid: { error: string }; dirty: boolean };
 
 export type SelectInputType = {
   options: Array<string>;
