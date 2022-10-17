@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+import contactsSlice from "./contactsSlice";
+
 import userSlice from "./userSlice";
 
 const store = configureStore({
   reducer: {
     user: userSlice,
+    contacts: contactsSlice,
   },
 });
 

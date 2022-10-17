@@ -1,6 +1,8 @@
+export type PersonType = "Friend" | "Colleague" | "Family";
+
 export type ContactType = {
   userId: number;
   fullName: string;
   phone: string;
-  type: "Friend" | "Colleague" | "Family";
+  type: PersonType;
 };

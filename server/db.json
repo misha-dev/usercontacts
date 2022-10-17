@@ -7,5 +7,181 @@
       "id": 1
     }
   ],
-  "contacts": []
+  "contacts": [
+    {
+      "fullName": "msiah skdfjsdf",
+      "phone": "+7 (999) 399-39-34",
+      "type": "Friend",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "fullName": "misha ksdjfdsj",
+      "phone": "+19923929123",
+      "type": "Friend",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "fullName": "kjasdkjaskj jasdkjadskj",
+      "phone": "+7 (991) 939-12-13",
+      "type": "Friend",
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "fullName": "kdjaksjjksad jksdjakaskjd",
+      "phone": "+7 (913) 912-39-12",
+      "type": "Friend",
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "fullName": "misha mkdfk",
+      "phone": "+7 (913) 913-29-32",
+      "type": "Friend",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "fullName": "kldlkskl ",
+      "phone": "+7 (939) 213-93-21",
+      "type": "Friend",
+      "userId": 1,
+      "id": 6
+    },
+    {
+      "fullName": "sadkdjdsjak ",
+      "phone": "+7 (912) 939-29-23",
+      "type": "Friend",
+      "userId": 1,
+      "id": 7
+    },
+    {
+      "fullName": "ndasdsjak askdjdskja",
+      "phone": "+1392319329139212",
+      "type": "Colleague",
+      "userId": 1,
+      "id": 8
+    },
+    {
+      "fullName": "jkjkjkj kjjkkj",
+      "phone": "+7 (999) 999-99-99",
+      "type": "Friend",
+      "userId": 1,
+      "id": 9
+    },
+    {
+      "fullName": "sajkdsjkjsda jkjkdskjdsjk",
+      "phone": "+7 (931) 992-39-31",
+      "type": "Friend",
+      "userId": 1,
+      "id": 10
+    },
+    {
+      "fullName": "kjjdsajasjk kasdkjsdajks",
+      "phone": "+7 (931) 939-12-39",
+      "type": "Friend",
+      "userId": 1,
+      "id": 11
+    },
+    {
+      "fullName": "kjjdsajasjk kasdkjsdajks",
+      "phone": "+7 (931) 939-12-39",
+      "type": "Friend",
+      "userId": 1,
+      "id": 12
+    },
+    {
+      "fullName": "kjjdsajasjk kasdkjsdajks",
+      "phone": "+7 (931) 939-12-39",
+      "type": "Friend",
+      "userId": 1,
+      "id": 13
+    },
+    {
+      "fullName": "kjjkdasjksaj kasdjksdajk",
+      "phone": "+7 (921) 392-39-12",
+      "type": "Friend",
+      "userId": 1,
+      "id": 14
+    },
+    {
+      "fullName": "kjjkdsajk jdskdsjk",
+      "phone": "+7 (923) 932-19-31",
+      "type": "Friend",
+      "userId": 1,
+      "id": 15
+    },
+    {
+      "fullName": "kjjkdsajk jdskdsjk",
+      "phone": "+7 (923) 932-19-31",
+      "type": "Friend",
+      "userId": 1,
+      "id": 16
+    },
+    {
+      "fullName": "kjasjkdasjkj sjakddksjajk",
+      "phone": "+7 (931) 932-19-32",
+      "type": "Friend",
+      "userId": 1,
+      "id": 17
+    },
+    {
+      "fullName": "jjdasjsdajk sasdadsjakks",
+      "phone": "+7 (923) 193-92-93",
+      "type": "Friend",
+      "userId": 1,
+      "id": 18
+    },
+    {
+      "fullName": "asdksajdkjsd sajkdjdsa",
+      "phone": "+239239239213",
+      "type": "Friend",
+      "userId": 1,
+      "id": 19
+    },
+    {
+      "fullName": "jkdsjkasjk asjddjskajka",
+      "phone": "+7 (993) 129-32-93",
+      "type": "Friend",
+      "userId": 1,
+      "id": 20
+    },
+    {
+      "fullName": "kdjksajkdsaj jsjksadjksa",
+      "phone": "+7 (931) 293-12-91",
+      "type": "Colleague",
+      "userId": 1,
+      "id": 21
+    },
+    {
+      "fullName": "jkkjjkasdjkd ksjdsjdakjds",
+      "phone": "+7 (912) 393-21-92",
+      "type": "Colleague",
+      "userId": 1,
+      "id": 22
+    },
+    {
+      "fullName": "jkjkjdskja jkjaksdjkdsa",
+      "phone": "+7 (939) 213-91-32",
+      "type": "Friend",
+      "userId": 1,
+      "id": 23
+    },
+    {
+      "fullName": "asdadjskkas jasdjasdjksa",
+      "phone": "+7 (913) 919-31-93",
+      "type": "Colleague",
+      "userId": 1,
+      "id": 24
+    },
+    {
+      "fullName": "skadjdsak123 JKDJKSAKJ",
+      "phone": "+239132912391329",
+      "type": "Family",
+      "userId": 1,
+      "id": 25
+    }
+  ]
 }

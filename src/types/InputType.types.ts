@@ -1,3 +1,5 @@
+import { PersonType } from "./ContactType";
+
 type baseParams = {
   id: string;
   name: string;
@@ -17,6 +19,6 @@ export type InputType = InputTypeFormik &
 export type InputFormType = InputType & { valid: { error: string }; dirty: boolean };
 
 export type SelectInputType = {
-  options: Array<"Friend" | "Colleague" | "Family">;
+  options: Array<PersonType>;
 } & baseParams &
-  stateHandler<string>;
+  stateHandler<PersonType>;

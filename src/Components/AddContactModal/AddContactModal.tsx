@@ -8,8 +8,9 @@ import { GradientButton } from "../Utils/Buttons/GradientButton/GradientButton";
 import { FormInputWithValidation } from "../Utils/FormInput/FormInputWithValidation/FormInputWithValidation";
 import { SelectInput } from "../Utils/FormInput/SelectInput/SelectInput";
 
-
-import { ContactType } from "../../types/ContactType";
+import { fetchAddContact, selectContacts } from "../../store/contactsSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { ContactType, PersonType } from "../../types/ContactType";
 
 import cl from "./AddContactModal.module.scss";
 
@@ -17,8 +18,10 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
   const name = useFormInput("", { minLength: 3 }, "text");
   const surname = useFormInput("", {}, "text");
   const phoneNumber = useFormInput("", { phoneValid: /((\+7|8) \(\d{3}\) \d{3}-\d{2}-\d{2})|(\+\d{7,16})/g }, "tel");
-  const [selectGroupType, setSelectGroupType] = useState("Friend");
+  const [selectGroupType, setSelectGroupType] = useState<PersonType>("Friend");
   const submitButtonIsDisabled = Boolean(name.valid.error) || Boolean(phoneNumber.valid.error);
+  const { loadingAdd } = useAppSelector(selectContacts);
+  const dispatch = useAppDispatch();
 
   const closeModal = () => {
     setModalVisible(false);
@@ -28,26 +31,20 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
     phoneNumber.setValue("");
     surname.setDirty(false);
     surname.setValue("");
+    setSelectGroupType("Friend");
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { id, accessToken }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
+    const { id }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
     if (!submitButtonIsDisabled) {
-      fetch("http://localhost:3001/660/contacts", {
-        method: "post",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
-        body: JSON.stringify({ fullName: `${name.value.trim()} ${surname.value.trim()}`, phone: phoneNumber.value, type: selectGroupType, userId: id } as ContactType),
-      })
-        .then((data) => {
-          return data.json();
-        })
-        .then((data: ContactType & { id: number }) => {
-          console.log(data);
-          closeModal();
-        })
-        .catch((error) => {
-          alert("Data is incorrect!");
+      const contact = { fullName: `${name.value.trim()} ${surname.value.trim()}`, phone: phoneNumber.value, type: selectGroupType, userId: id };
+      dispatch(fetchAddContact(contact))
+        .unwrap()
+        .then((data: ContactType) => {
+          if (data.userId) {
+            closeModal();
+          }
         });
     } else {
       alert("Data is incorrect!");
@@ -130,7 +127,7 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
           />
           <SelectInput id="groupType" name="groupType" options={["Friend", "Colleague", "Family"]} required={true} value={selectGroupType} setValue={setSelectGroupType} />
 
-          <GradientButton disabled={submitButtonIsDisabled} text="Add contact" type="submit" />
+          <GradientButton disabled={submitButtonIsDisabled || loadingAdd} text={loadingAdd ? "Posting" : "Add contact"} type="submit" />
         </form>
       </div>
     </div>

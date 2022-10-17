@@ -1,5 +1,7 @@
 import { BiDownArrow } from "react-icons/bi";
 
+import { PersonType } from "../../../../types/ContactType";
+
 import { SelectInputType } from "../../../../types/InputType.types";
 
 import cl from "./SelectInput.module.scss";
@@ -11,7 +13,7 @@ export const SelectInput = ({ id, name, options, required, value, setValue }: Se
         className={cl.selectInput}
         value={value}
         onChange={(e) => {
-          setValue(e.target.value);
+          setValue(e.target.value as PersonType);
         }}
         required={required}
         name={name}
