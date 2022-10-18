@@ -38,14 +38,16 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
     e.preventDefault();
     const { id }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
     if (!submitButtonIsDisabled) {
-      const contact = { fullName: `${name.value.trim()} ${surname.value.trim()}`, phone: phoneNumber.value, type: selectGroupType, userId: id };
-      dispatch(fetchAddContact(contact))
-        .unwrap()
-        .then((data: ContactType) => {
-          if (data.userId) {
-            closeModal();
-          }
-        });
+      if (!loadingAdd) {
+        const contact = { fullName: `${name.value.trim()} ${surname.value.trim()}`, phone: phoneNumber.value, type: selectGroupType, userId: id };
+        dispatch(fetchAddContact(contact))
+          .unwrap()
+          .then((data: ContactType) => {
+            if (data.userId) {
+              closeModal();
+            }
+          });
+      }
     } else {
       alert("Data is incorrect!");
     }
@@ -127,7 +129,7 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
           />
           <SelectInput id="groupType" name="groupType" options={["Friend", "Colleague", "Family"]} required={true} value={selectGroupType} setValue={setSelectGroupType} />
 
-          <GradientButton disabled={submitButtonIsDisabled || loadingAdd} text={loadingAdd ? "Posting" : "Add contact"} type="submit" />
+          <GradientButton disabled={submitButtonIsDisabled} text={loadingAdd ? "Posting" : "Add contact"} type="submit" />
         </form>
       </div>
     </div>
