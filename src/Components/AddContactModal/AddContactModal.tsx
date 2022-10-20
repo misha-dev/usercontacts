@@ -87,46 +87,9 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
           }}
         />
         <form onSubmit={onSubmit}>
-          <FormInputWithValidation
-            id="name"
-            name="name"
-            required={true}
-            text={"Name"}
-            type="text"
-            value={name.value}
-            setValue={name.setValue}
-            onBlur={name.onBlur}
-            onChange={name.onChange}
-            dirty={name.dirty}
-            valid={name.valid}
-          />
-          <FormInputWithValidation
-            id="surname"
-            name="surname"
-            required={false}
-            text={"Surname"}
-            type="text"
-            value={surname.value}
-            setValue={surname.setValue}
-            onBlur={surname.onBlur}
-            onChange={surname.onChange}
-            dirty={surname.dirty}
-            valid={surname.valid}
-          />
-          <FormInputWithValidation
-            id="phoneNumber"
-            name="phoneNumber"
-            required={true}
-            text={"Phone"}
-            type="tel"
-            value={phoneNumber.value}
-            setValue={phoneNumber.setValue}
-            onBlur={phoneNumber.onBlur}
-            onChange={phoneNumber.onChange}
-            dirty={phoneNumber.dirty}
-            valid={phoneNumber.valid}
-            inputRef={phoneNumber.phoneInputRef}
-          />
+          <FormInputWithValidation id="name" name="name" handler={name} required={true} text={"Name"} type="text" />
+          <FormInputWithValidation id="surname" name="surname" required={false} text={"Surname"} type="text" handler={surname} />
+          <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"Phone"} type="tel" handler={phoneNumber} inputRef={phoneNumber.phoneInputRef} />
           <SelectInput id="groupType" name="groupType" options={["Friend", "Colleague", "Family"]} required={true} value={selectGroupType} setValue={setSelectGroupType} />
 
           <GradientButton disabled={submitButtonIsDisabled} text={loadingAdd ? "Posting" : "Add contact"} type="submit" />

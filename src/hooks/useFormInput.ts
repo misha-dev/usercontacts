@@ -22,7 +22,7 @@ export const useValidation = (value: string, validations: validationsType) => {
 };
 
 export const useFormInput = (initialValue: string, validations: validationsType, type: "text" | "tel") => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(initialValue);
   const phoneInputRef = useRef<HTMLInputElement>(null);
   // for setting cursor after deleting in the middle of input
   const [selectionStartPhone, setSelectionStart] = useState(0);
