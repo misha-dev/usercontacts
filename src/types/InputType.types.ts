@@ -1,4 +1,5 @@
 import React from "react";
+
 import { PersonType } from "./ContactType";
 
 type baseParams = {

@@ -1,4 +1,5 @@
 import { Form, Formik } from "formik";
+import { useState } from "react";
 
 import * as Yup from "yup";
 
@@ -11,6 +12,7 @@ import { FormInputWithValidationFormik } from "../../Utils/FormInput/FormInputWi
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
 import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
 import { WhiteLink } from "../../Utils/Links/WhiteLink/WhiteLink";
+import { MuiCustomizedSnackBar } from "../../Utils/MuiCustomizedSnackBar/MuiCustomizedSnackBar";
 
 import cl from "./Registration.module.scss";
 
@@ -23,6 +25,8 @@ export const Registration = () => {
       body: JSON.stringify({ email, name, password }),
     })
       .then((res) => {
+        console.log(res);
+
         return res.json();
       })
       .then(({ user, accessToken }: { user: UserReduxType; accessToken: string }) => {
@@ -30,7 +34,7 @@ export const Registration = () => {
         dispatch(setUser(user));
       })
       .catch((error) => {
-        alert("Email is taken!");
+        setOpenSnackbar(true);
       });
   };
 
@@ -45,8 +49,11 @@ export const Registration = () => {
 
   const initialValues: userType & { confirmPassword: string } = { name: "", email: "", password: "", confirmPassword: "" };
 
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
   return (
     <div className={cl.mainWrapper}>
+      <MuiCustomizedSnackBar message="Email is taken!" severity="error" autoHide={2000} open={openSnackbar} setOpen={setOpenSnackbar} />
       <div className={cl.logoSection}>
         <div className={cl.logoWithText}>
           <img src={logo} alt="logo" />

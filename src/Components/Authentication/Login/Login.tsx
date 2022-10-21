@@ -1,4 +1,5 @@
 import { Form, Formik, FormikHelpers, FormikState } from "formik";
+import { useState } from "react";
 import * as Yup from "yup";
 
 import { useAppDispatch } from "../../../store/hooks";
@@ -9,6 +10,7 @@ import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButto
 import { FormInputWithValidationFormik } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidationFormik";
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
 import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
+import { MuiCustomizedSnackBar } from "../../Utils/MuiCustomizedSnackBar/MuiCustomizedSnackBar";
 
 import cl from "./Login.module.scss";
 export const Login = () => {
@@ -23,7 +25,9 @@ export const Login = () => {
     password: Yup.string().required("Required"),
   });
 
-  const onSubmit = (values: UserLogin, actions: FormikHelpers<any>) => {
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  const onSubmit = (values: UserLogin, actions: FormikHelpers<UserLogin>) => {
     fetch("http://localhost:3001/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -37,14 +41,15 @@ export const Login = () => {
         dispatch(setUser(user));
       })
       .catch((error) => {
-        actions.resetForm({ email: "", password: "" } as Partial<FormikState<any>>);
-        alert("Login or password are incorrect");
+        actions.resetForm({ values: { email: values.email, password: "" } } as Partial<FormikState<UserLogin>>);
+        setOpenSnackbar(true);
       });
   };
 
   return (
     <div className={cl.mainWrapper}>
       <div className={cl.formWrapper}>
+        <MuiCustomizedSnackBar message="Login or password is incorrect!" severity="error" autoHide={2000} open={openSnackbar} setOpen={setOpenSnackbar} />
         <GradientHeader text="Login" />
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
           {({ dirty, isValid }) => {
