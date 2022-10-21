@@ -10,7 +10,7 @@ import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButto
 import { FormInputWithValidationFormik } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidationFormik";
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
 import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
-import { MuiCustomizedSnackBar } from "../../Utils/MuiCustomizedSnackBar/MuiCustomizedSnackBar";
+import { MuiCustomizedSnackbar } from "../../Utils/MuiCustomizedSnackbar/MuiCustomizedSnackbar";
 
 import cl from "./Login.module.scss";
 export const Login = () => {
@@ -49,7 +49,14 @@ export const Login = () => {
   return (
     <div className={cl.mainWrapper}>
       <div className={cl.formWrapper}>
-        <MuiCustomizedSnackBar message="Login or password is incorrect!" severity="error" autoHide={2000} open={openSnackbar} setOpen={setOpenSnackbar} />
+        <MuiCustomizedSnackbar
+          originOfSnackbar={{ horizontal: "center", vertical: "top" }}
+          message="Login or password is incorrect!"
+          severity="error"
+          autoHide={2000}
+          open={openSnackbar}
+          setOpen={setOpenSnackbar}
+        />
         <GradientHeader text="Login" />
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
           {({ dirty, isValid }) => {

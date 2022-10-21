@@ -12,7 +12,7 @@ import { FormInputWithValidationFormik } from "../../Utils/FormInput/FormInputWi
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
 import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
 import { WhiteLink } from "../../Utils/Links/WhiteLink/WhiteLink";
-import { MuiCustomizedSnackBar } from "../../Utils/MuiCustomizedSnackBar/MuiCustomizedSnackBar";
+import { MuiCustomizedSnackbar } from "../../Utils/MuiCustomizedSnackbar/MuiCustomizedSnackbar";
 
 import cl from "./Registration.module.scss";
 
@@ -53,7 +53,7 @@ export const Registration = () => {
 
   return (
     <div className={cl.mainWrapper}>
-      <MuiCustomizedSnackBar message="Email is taken!" severity="error" autoHide={2000} open={openSnackbar} setOpen={setOpenSnackbar} />
+      <MuiCustomizedSnackbar originOfSnackbar={{ horizontal: "center", vertical: "top" }} message="Email is taken!" severity="error" autoHide={2000} open={openSnackbar} setOpen={setOpenSnackbar} />
       <div className={cl.logoSection}>
         <div className={cl.logoWithText}>
           <img src={logo} alt="logo" />
