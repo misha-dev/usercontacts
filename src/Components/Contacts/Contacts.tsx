@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 
 import { AddContactModal } from "../AddContactModal/AddContactModal";
+import { Contact } from "../Contact/Contact";
 
 import { SearchInput } from "../Utils/SearchInput/SearchInput";
 
@@ -22,6 +23,9 @@ export const Contacts = () => {
           <AiOutlinePlus className={cl.plus} />
         </div>
         <AddContactModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+      </div>
+      <div className={cl.contactsWrapper}>
+        <Contact id={1} fullName="Misha Shabatin" phone="+7 (951) 468 -85-97" type="Family" userId={1} />
       </div>
     </div>
   );
