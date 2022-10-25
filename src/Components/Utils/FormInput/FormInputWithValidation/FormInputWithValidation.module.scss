@@ -1,12 +1,13 @@
 .inputWrapper {
   position: relative;
+
   .registerFormError {
-    font-size: 0.95rem;
     position: absolute;
-    color: red;
-    user-select: none;
     left: 10px;
     top: -38%;
+    font-size: 0.95rem;
+    color: #f00;
+    user-select: none;
   }
 }
 

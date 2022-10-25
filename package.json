@@ -35,6 +35,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "json-server -w -p 3001 server/db.json -m ./node_modules/json-server-auth -r server/routes.json",
+    "stylelint": "stylelint \"**/*.module.scss\" --fix",
+    "prelint": "npm run stylelint",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix"
   },
@@ -51,6 +53,11 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.55.0"
+    "sass": "^1.55.0",
+    "stylelint": "^14.14.0",
+    "stylelint-config-recommended-scss": "^8.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.6.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.3.0"
   }
 }

@@ -2,13 +2,15 @@
 @import "../../styles/variables";
 
 .mainContent {
-  height: 100vh;
   position: relative;
-  @extend %flexCenter;
+  height: 100vh;
   background: $greenLinearGradient;
+
   .menuWrapper {
     position: absolute;
-    top: 40px;
     right: 40px;
+    top: 40px;
   }
+
+  @extend %flexCenter;
 }

@@ -1,32 +1,35 @@
 @import "../../../styles/templates";
 
 .mainWrapper {
-  @extend %flexCenter;
   align-items: stretch;
+
   .logoSection {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px 30px 130px 30px;
     margin-right: 10vw;
+    padding: 30px 30px 130px;
 
     .logoWithText {
-      @extend %flexCenter;
       flex-direction: column;
       margin-bottom: auto;
+
       img {
+        margin-right: 5px;
+        margin-bottom: 15px;
         width: 100px;
         height: 100px;
-        margin-right: 5px;
         object-fit: contain;
-        margin-bottom: 15px;
       }
+
       p {
         font-weight: 900;
         font-size: 2.5rem;
         line-height: 3rem;
         color: #fff;
       }
+
+      @extend %flexCenter;
     }
 
     .projectInfoWithText {
@@ -39,14 +42,15 @@
         font-size: 0.9rem;
         line-height: 25px;
         text-align: center;
+        color: #fff;
 
-        color: #ffffff;
         &:last-of-type {
           margin-bottom: 20px;
         }
       }
     }
   }
+
   .registrationSection {
     display: flex;
     flex-direction: column;
@@ -57,32 +61,37 @@
     background: url("../../../imgs/backgroundLogin.png") no-repeat center center/cover;
 
     .registrationForm {
-      @extend %flexCenter;
       flex-direction: column;
 
       .registrationInputs {
-        @extend %flexCenter;
         flex-direction: column;
+        justify-content: space-between;
         margin-bottom: 15px;
         height: 250px;
-        justify-content: space-between;
+
+        @extend %flexCenter;
       }
 
       .loginWrapper {
         display: flex;
-        width: 100%;
         flex-direction: column;
+        width: 100%;
 
         .formLogin {
-          margin-left: 15px;
           margin-bottom: 32px;
+          margin-left: 15px;
         }
+
         .formRegister {
           max-width: 200px;
         }
       }
+
+      @extend %flexCenter;
     }
   }
+
+  @extend %flexCenter;
 }
 
 @media (max-width: 1180px) {
@@ -92,16 +101,16 @@
 
     .logoSection {
       flex-direction: row;
-      justify-content: space-around;
-      padding: 0 0 20px 0;
       align-items: center;
+      justify-content: space-around;
       margin-right: 0;
+      padding: 0 0 20px;
 
       .logoWithText {
         img {
+          margin-bottom: 0;
           width: 70px;
           height: 70px;
-          margin-bottom: 0;
         }
 
         p {
@@ -112,6 +121,7 @@
       .projectInfoWithText {
         p {
           font-size: 0.8rem;
+
           &:last-of-type {
             margin-bottom: 5px;
           }
@@ -126,13 +136,15 @@
 
       .registrationForm {
         .registrationInputs {
-          height: 190px;
           margin-bottom: 3px;
+          height: 190px;
         }
+
         .loginWrapper {
           .formLogin {
             margin-bottom: 10px;
           }
+
           .formRegister {
           }
         }

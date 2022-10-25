@@ -1,43 +1,45 @@
 @import "../../styles/templates";
 
 .contactWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding: 7px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
   &:last-of-type {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .iconFullName {
-    @extend %flexCenter;
     .typeIcon {
+      border: 0.5px solid #0f0;
       border-radius: 50%;
-      height: 45px;
       width: 45px;
+      height: 45px;
       object-fit: contain;
-      border: 0.5px solid green;
     }
+
     .fullName {
-      font-size: 1.1rem;
-      margin-left: 5px;
       margin-top: 2px;
+      margin-left: 5px;
+      font-size: 1.1rem;
     }
+
+    @extend %flexCenter;
   }
 
   .phoneOptionsWrapper {
-    @extend %flexCenter;
-
     .phoneNumber {
-      font-size: 1.2rem;
-      font-family: "Open Sans", sans-serif;
       margin-right: 20px;
+      font-family: "Open Sans", sans-serif;
+      font-size: 1.2rem;
     }
 
     .deleteButton {
       margin-left: 18px;
     }
+
+    @extend %flexCenter;
   }
 }

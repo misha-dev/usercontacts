@@ -1,53 +1,60 @@
 @import "../../../styles/templates";
 
 .mainWrapper {
-  @extend %flexCenter;
   padding-bottom: 10px;
+
   .inputWrapper {
     position: relative;
-    @extend %flexCenter;
     width: 100%;
 
     .searchLogo {
       position: absolute;
-      top: 27%;
       left: 27%;
-      user-select: none;
+      top: 27%;
+      color: #808080;
       pointer-events: none;
-      color: grey;
+      user-select: none;
     }
+
     input {
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      border-radius: 35vmax;
+      padding: 5px 20px;
+      width: 50%;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
       font-family: "Open Sans", sans-serif;
       font-size: 1rem;
       background-color: #ebedea;
-      padding: 5px 20px;
-      width: 50%;
-      border-radius: 35vmax;
-      border: 1px solid rgba(0, 0, 0, 0.25);
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       transition: all 0.2s ease;
 
       &:focus,
       &:valid {
         width: 90%;
       }
+
       &:valid ~ .placeholder,
       &:focus ~ .placeholder {
         display: none;
       }
+
       &:valid ~ .searchLogo,
       &:focus ~ .searchLogo {
         display: none;
       }
     }
+
     .placeholder {
       position: absolute;
-      top: 50%;
       left: 50%;
+      top: 50%;
+      color: #808080;
       transform: translate(-50%, -59%);
-      user-select: none;
       pointer-events: none;
-      color: grey;
+      user-select: none;
     }
+
+    @extend %flexCenter;
   }
+
+  @extend %flexCenter;
 }
