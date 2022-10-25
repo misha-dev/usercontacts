@@ -2,11 +2,14 @@
 
 .contactWrapper {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 7px;
   display: flex;
-  //   justify-content: center;
+  justify-content: space-around;
   align-items: center;
+
+  &:last-of-type {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
 
   .iconFullName {
     @extend %flexCenter;
@@ -19,13 +22,21 @@
     }
     .fullName {
       font-size: 1.1rem;
-      margin-bottom: 10px;
       margin-left: 5px;
     }
   }
 
-  .phoneNumber {
-    font-size: 1.2rem;
-    font-family: "Open Sans", sans-serif;
+  .phoneOptionsWrapper {
+    @extend %flexCenter;
+
+    .phoneNumber {
+      font-size: 1.2rem;
+      font-family: "Open Sans", sans-serif;
+      margin-right: 20px;
+    }
+
+    .deleteButton {
+      margin-left: 15px;
+    }
   }
 }
