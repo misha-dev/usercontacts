@@ -21,7 +21,6 @@ const initialState: ContactsReduxType = {
 
 export const fetchContacts = createAsyncThunk("contacts/fetchContacts", () => {
   const { accessToken }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
-
   return fetch("http://localhost:3001/660/contacts", {
     method: "get",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
@@ -32,7 +31,6 @@ export const fetchContacts = createAsyncThunk("contacts/fetchContacts", () => {
 
 export const fetchAddContact = createAsyncThunk("contacts/addContact", (contact: ContactType) => {
   const { accessToken }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
-
   return fetch("http://localhost:3001/660/contacts", {
     method: "post",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
@@ -41,12 +39,22 @@ export const fetchAddContact = createAsyncThunk("contacts/addContact", (contact:
     return data.json();
   });
 });
+export const fetchDeleteContact = createAsyncThunk("contacts/fetchDeleteContact", (id: number) => {
+  const { accessToken }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
+  return fetch(`http://localhost:3001/660/contacts/${id}`, {
+    method: "delete",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
+  }).then((data) => {
+    return { id };
+  });
+});
 
 const contacts = createSlice({
   name: "contacts",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // fetch all comments
     builder
       .addCase(fetchContacts.pending, (state) => {
         state.loadingAll = true;
@@ -59,9 +67,10 @@ const contacts = createSlice({
       })
       .addCase(fetchContacts.rejected, (state) => {
         state.loadingAll = false;
-        state.error = "Server is not responding";
+        state.error = "Server is not responding!";
       });
 
+    // add contact
     builder
       .addCase(fetchAddContact.pending, (state) => {
         state.loadingAdd = true;
@@ -74,7 +83,16 @@ const contacts = createSlice({
       })
       .addCase(fetchAddContact.rejected, (state) => {
         state.loadingAdd = false;
-        state.error = "Could't add contact";
+        state.error = "Could't add contact!";
+      });
+
+    // delete contact
+    builder
+      .addCase(fetchDeleteContact.rejected, (state) => {
+        state.error = "Couldn't delete contact!";
+      })
+      .addCase(fetchDeleteContact.fulfilled, (state, action: PayloadAction<{ id: number }>) => {
+        state.contacts = state.contacts.filter((contact) => contact.id !== action.payload.id);
       });
   },
 });

@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
+
+import { fetchContacts, selectContacts } from "../../store/contactsSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 import { AddContactModal } from "../AddContactModal/AddContactModal";
 import { Contact } from "../Contact/Contact";
@@ -10,6 +13,13 @@ import cl from "./Contacts.module.scss";
 
 export const Contacts = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, []);
+  const { contacts, loadingAll, error } = useAppSelector(selectContacts);
+  console.log(loadingAll);
+
   return (
     <div className={cl.mainWrapper}>
       <SearchInput />
@@ -25,7 +35,11 @@ export const Contacts = () => {
         <AddContactModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
       </div>
       <div className={cl.contactsWrapper}>
-        <Contact id={1} fullName="Misha Shabatin" phone="+7 (951) 468 -85-97" type="Family" userId={1} />
+        {!loadingAll
+          ? contacts.map(({ userId, id, fullName, phone, type }) => {
+            return <Contact id={id} userId={userId} key={id} fullName={fullName} phone={phone} type={type} />;
+          })
+          : null}
       </div>
     </div>
   );

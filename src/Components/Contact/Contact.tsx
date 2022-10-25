@@ -6,6 +6,8 @@ import { Stack } from "@mui/system";
 import { useState } from "react";
 
 import familyIcon from "../../imgs/familyIcon.png";
+import { fetchDeleteContact } from "../../store/contactsSlice";
+import { useAppDispatch } from "../../store/hooks";
 import { ContactType } from "../../types/ContactType";
 import { MuiCustomizedSnackbar } from "../Utils/MuiCustomizedSnackbar/MuiCustomizedSnackbar";
 
@@ -13,6 +15,7 @@ import cl from "./Contact.module.scss";
 
 export const Contact = ({ id, fullName, phone, type }: ContactType) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const dispatch = useAppDispatch();
   return (
     <div className={cl.contactWrapper}>
       <div className={cl.iconFullName}>
@@ -40,7 +43,13 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
             </IconButton>
           </Link>
         </Stack>
-        <IconButton className={cl.deleteButton} aria-label="delete">
+        <IconButton
+          onClick={() => {
+            dispatch(fetchDeleteContact(id!));
+          }}
+          className={cl.deleteButton}
+          aria-label="delete"
+        >
           <DeleteIcon />
         </IconButton>
       </div>
