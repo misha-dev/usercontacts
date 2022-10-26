@@ -28,6 +28,34 @@
       "type": "Family",
       "userId": 1,
       "id": 6
+    },
+    {
+      "fullName": "jjkjkjk jkjkjjsjda",
+      "phone": "+7 (999) 999-99-99",
+      "type": "Friend",
+      "userId": 1,
+      "id": 7
+    },
+    {
+      "fullName": "ajsadjdsajsd jasdjsdjksda",
+      "phone": "+2139312932192139",
+      "type": "Friend",
+      "userId": 1,
+      "id": 8
+    },
+    {
+      "fullName": "jkaskjdsajkd jaskjsdakjds",
+      "phone": "+2913913291239129",
+      "type": "Friend",
+      "userId": 1,
+      "id": 9
+    },
+    {
+      "fullName": "jjkjkj jasjdsadsa",
+      "phone": "+7 (921) 923-92-93",
+      "type": "Friend",
+      "userId": 1,
+      "id": 10
     }
   ]
 }
