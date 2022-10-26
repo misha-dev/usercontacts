@@ -7,6 +7,7 @@ import logo from "../../../imgs/logo.png";
 import { useAppDispatch } from "../../../store/hooks";
 import { setUser } from "../../../store/userSlice";
 import { UserReduxType, userType } from "../../../types/UserType.types";
+import { JSON_API } from "../../../Utils/constants";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
 import { FormInputWithValidationFormik } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidationFormik";
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
@@ -19,7 +20,7 @@ import cl from "./Registration.module.scss";
 export const Registration = () => {
   const dispatch = useAppDispatch();
   const onSubmit = ({ email, name, password }: userType) => {
-    fetch("http://localhost:3001/register", {
+    fetch(`${JSON_API}/register`, {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, name, password }),

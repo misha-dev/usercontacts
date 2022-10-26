@@ -6,6 +6,7 @@ import { useAppDispatch } from "../../../store/hooks";
 import { setUser } from "../../../store/userSlice";
 
 import { UserLogin, UserReduxType } from "../../../types/UserType.types";
+import { JSON_API } from "../../../Utils/constants";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
 import { FormInputWithValidationFormik } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidationFormik";
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
@@ -28,7 +29,7 @@ export const Login = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const onSubmit = (values: UserLogin, actions: FormikHelpers<UserLogin>) => {
-    fetch("http://localhost:3001/login", {
+    fetch(`${JSON_API}/login`, {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),

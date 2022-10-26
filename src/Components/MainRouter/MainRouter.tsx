@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { logOut, setUser } from "../../store/userSlice";
 import { UserAuth } from "../../types/UserType.types";
+import { JSON_API } from "../../Utils/constants";
 
 import { Login } from "../Authentication/Login/Login";
 
@@ -21,7 +22,7 @@ export const MainRouter = () => {
 
     const checkIfLogged = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/600/users/${userAuth.id}`, {
+        const response = await fetch(`${JSON_API}/600/users/${userAuth.id}`, {
           method: "get",
           headers: { Authorization: `Bearer ${userAuth.accessToken}` },
         });

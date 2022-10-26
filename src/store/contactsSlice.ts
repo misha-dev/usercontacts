@@ -3,6 +3,8 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ContactType } from "../types/ContactType";
 import { UserAuth } from "../types/UserType.types";
 
+import { JSON_API } from "../Utils/constants";
+
 import { RootState } from ".";
 
 type ContactsReduxType = {
@@ -21,7 +23,7 @@ const initialState: ContactsReduxType = {
 
 export const fetchContacts = createAsyncThunk("contacts/fetchContacts", () => {
   const { accessToken }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
-  return fetch("http://localhost:3001/660/contacts", {
+  return fetch(`${JSON_API}/660/contacts`, {
     method: "get",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
   }).then((data) => {
@@ -31,7 +33,7 @@ export const fetchContacts = createAsyncThunk("contacts/fetchContacts", () => {
 
 export const fetchAddContact = createAsyncThunk("contacts/addContact", (contact: ContactType) => {
   const { accessToken }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
-  return fetch("http://localhost:3001/660/contacts", {
+  return fetch(`${JSON_API}/660/contacts`, {
     method: "post",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
     body: JSON.stringify(contact),
@@ -41,7 +43,7 @@ export const fetchAddContact = createAsyncThunk("contacts/addContact", (contact:
 });
 export const fetchDeleteContact = createAsyncThunk("contacts/fetchDeleteContact", (id: number) => {
   const { accessToken }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
-  return fetch(`http://localhost:3001/660/contacts/${id}`, {
+  return fetch(`${JSON_API}/660/contacts/${id}`, {
     method: "delete",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
   }).then((data) => {
