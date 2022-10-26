@@ -9,11 +9,25 @@
   ],
   "contacts": [
     {
-      "fullName": "Misha Shabatin",
-      "phone": "+7 (912) 312-93-91",
+      "fullName": "msiha sdfjsadfjk",
+      "phone": "+7 (919) 213-93-91",
       "type": "Colleague",
       "userId": 1,
-      "id": 1
+      "id": 4
+    },
+    {
+      "fullName": "misha kjdsajadsjk",
+      "phone": "+2193912391329",
+      "type": "Friend",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "fullName": "kdsjdsaj jsakdjkdaskj",
+      "phone": "+7 (912) 392-39-21",
+      "type": "Family",
+      "userId": 1,
+      "id": 6
     }
   ]
 }
