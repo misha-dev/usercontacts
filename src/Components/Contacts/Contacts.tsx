@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import { useScrollbar } from "../../hooks/useScrollbar";
 
@@ -47,11 +48,17 @@ export const Contacts = () => {
       </div>
       <div ref={contactsWrapper} className={cl.contactsWrapper}>
         <div>
-          {!loadingAll
-            ? filteredContacts.map(({ userId, id, fullName, phone, type }) => {
-                return <Contact id={id} userId={userId} key={id} fullName={fullName} phone={phone} type={type} />;
-              })
-            : null}
+          {!loadingAll ? (
+            <TransitionGroup>
+              {filteredContacts.map(({ userId, id, fullName, phone, type }) => {
+                return (
+                  <CSSTransition key={id} timeout={500} classNames={"contactTransitionGroup"}>
+                    <Contact id={id} userId={userId} key={id} fullName={fullName} phone={phone} type={type} />
+                  </CSSTransition>
+                );
+              })}
+            </TransitionGroup>
+          ) : null}
         </div>
       </div>
     </div>

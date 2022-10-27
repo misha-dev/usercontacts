@@ -13,7 +13,7 @@ server.use(
     users: 600,
     messages: 640,
     "/api/*": "/$1",
-  })
+  }),
 );
 server.use(auth);
 server.use(router);

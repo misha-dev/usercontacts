@@ -13,7 +13,7 @@ export const SearchInput = ({ setSearchString }: props) => {
     debounce((str: string) => {
       setSearchString(str);
     }),
-    []
+    [],
   );
 
   return (

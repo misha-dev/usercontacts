@@ -9,25 +9,32 @@
   ],
   "contacts": [
     {
-      "fullName": "msiha sdfjsadfjk",
-      "phone": "+7 (919) 213-93-91",
-      "type": "Colleague",
+      "fullName": "jkasjksdajks djkdsajksdaj",
+      "phone": "+32193919239213",
+      "type": "Friend",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "fullName": "kasdjksa asjksdajkdsa",
+      "phone": "+7 (923) 923-19-23",
+      "type": "Friend",
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "fullName": "misha msha",
+      "phone": "+1293321923921392",
+      "type": "Friend",
       "userId": 1,
       "id": 4
     },
     {
-      "fullName": "mikola jsasjdajksda",
-      "phone": "+7 (932) 932-19-21",
-      "type": "Colleague",
+      "fullName": "shaba shaba",
+      "phone": "+213993219239213",
+      "type": "Friend",
       "userId": 1,
       "id": 5
-    },
-    {
-      "fullName": "gamer m",
-      "phone": "+7 (999) 999-99-99",
-      "type": "Family",
-      "userId": 1,
-      "id": 6
     }
   ]
 }
