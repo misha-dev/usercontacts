@@ -7,6 +7,7 @@ import { useScrollbar } from "../../hooks/useScrollbar";
 import { fetchContacts, selectContacts } from "../../store/contactsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { searchSort } from "../../Utils/searchSort";
+import "./ContactsAnimation.scss";
 
 import { AddContactModal } from "../AddContactModal/AddContactModal";
 import { Contact } from "../Contact/Contact";
@@ -52,7 +53,7 @@ export const Contacts = () => {
             <TransitionGroup>
               {filteredContacts.map(({ userId, id, fullName, phone, type }) => {
                 return (
-                  <CSSTransition key={id} timeout={500} classNames={"contactTransitionGroup"}>
+                  <CSSTransition key={id} timeout={250} classNames={"contactTransitionGroup"}>
                     <Contact id={id} userId={userId} key={id} fullName={fullName} phone={phone} type={type} />
                   </CSSTransition>
                 );

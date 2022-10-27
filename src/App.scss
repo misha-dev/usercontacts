@@ -3,25 +3,4 @@
 
 body {
   font-family: "Merriweather", serif;
-
-  .contactTransitionGroup {
-  }
-
-  .contactTransitionGroup-enter {
-    opacity: 0;
-  }
-
-  .contactTransitionGroup-enter-active {
-    opacity: 1;
-    transition: opacity 300ms ease-in;
-  }
-
-  .contactTransitionGroup-exit {
-    opacity: 1;
-  }
-
-  .contactTransitionGroup-exit-active {
-    opacity: 0;
-    transition: opacity 300ms ease-in;
-  }
 }
