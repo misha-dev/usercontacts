@@ -38,7 +38,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "json-server -w -p 3001 server/db.json -m ./node_modules/json-server-auth -r server/routes.json",
-    "stylelint": "stylelint \"**/*.module.scss\" --fix",
+    "stylelint": "stylelint \"**/*.scss\" --fix",
     "prelint": "npm run stylelint",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix"

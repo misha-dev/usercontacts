@@ -14,7 +14,7 @@ server.use(
     messages: 640,
     "/api/*": "/$1",
     
-  })
+  }),
 );
 server.use(router);
 server.use(auth);
