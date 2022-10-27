@@ -16,11 +16,18 @@
       "id": 4
     },
     {
-      "fullName": "ksajkaskjdsk sdjsdkjakjds",
-      "phone": "+7 (992) 139-13-29",
-      "type": "Friend",
+      "fullName": "mikola jsasjdajksda",
+      "phone": "+7 (932) 932-19-21",
+      "type": "Colleague",
       "userId": 1,
       "id": 5
+    },
+    {
+      "fullName": "gamer m",
+      "phone": "+7 (999) 999-99-99",
+      "type": "Family",
+      "userId": 1,
+      "id": 6
     }
   ]
 }

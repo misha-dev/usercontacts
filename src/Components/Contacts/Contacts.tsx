@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 
 import { useScrollbar } from "../../hooks/useScrollbar";
 
 import { fetchContacts, selectContacts } from "../../store/contactsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { searchSort } from "../../Utils/searchSort";
 
 import { AddContactModal } from "../AddContactModal/AddContactModal";
 import { Contact } from "../Contact/Contact";
@@ -21,14 +22,18 @@ export const Contacts = () => {
     dispatch(fetchContacts());
   }, []);
   const { contacts, loadingAll, error } = useAppSelector(selectContacts);
-  const [filteredContacts, setFilteredContacts] = useState(contacts);
   const [searchString, setSearchString] = useState("");
 
   useScrollbar(contactsWrapper, contacts.length > 4);
 
+  const filteredContacts = useMemo(() => {
+    const sortedContacts = [...contacts].sort(searchSort);
+    return sortedContacts.filter((contact) => contact.fullName.toLowerCase().includes(searchString.toLowerCase()));
+  }, [contacts, searchString]);
+
   return (
     <div className={cl.mainWrapper}>
-      <SearchInput searchString={searchString} setSearchString={setSearchString} />
+      <SearchInput setSearchString={setSearchString} />
       <div className={cl.addContact}>
         <div
           onClick={() => {
@@ -43,7 +48,7 @@ export const Contacts = () => {
       <div ref={contactsWrapper} className={cl.contactsWrapper}>
         <div>
           {!loadingAll
-            ? contacts.map(({ userId, id, fullName, phone, type }) => {
+            ? filteredContacts.map(({ userId, id, fullName, phone, type }) => {
                 return <Contact id={id} userId={userId} key={id} fullName={fullName} phone={phone} type={type} />;
               })
             : null}

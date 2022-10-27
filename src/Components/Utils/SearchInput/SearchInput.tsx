@@ -5,11 +5,10 @@ import { BiSearch } from "react-icons/bi";
 import cl from "./SearchInput.module.scss";
 
 type props = {
-  searchString: string;
   setSearchString: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export const SearchInput = ({ searchString, setSearchString }: props) => {
+export const SearchInput = ({ setSearchString }: props) => {
   const debouncedSetSearchString = useCallback(
     debounce((str: string) => {
       setSearchString(str);
