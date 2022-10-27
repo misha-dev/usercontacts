@@ -21,12 +21,14 @@ export const Contacts = () => {
     dispatch(fetchContacts());
   }, []);
   const { contacts, loadingAll, error } = useAppSelector(selectContacts);
+  const [filteredContacts, setFilteredContacts] = useState(contacts);
+  const [searchString, setSearchString] = useState("");
 
   useScrollbar(contactsWrapper, contacts.length > 4);
 
   return (
     <div className={cl.mainWrapper}>
-      <SearchInput />
+      <SearchInput searchString={searchString} setSearchString={setSearchString} />
       <div className={cl.addContact}>
         <div
           onClick={() => {
@@ -42,8 +44,8 @@ export const Contacts = () => {
         <div>
           {!loadingAll
             ? contacts.map(({ userId, id, fullName, phone, type }) => {
-              return <Contact id={id} userId={userId} key={id} fullName={fullName} phone={phone} type={type} />;
-            })
+                return <Contact id={id} userId={userId} key={id} fullName={fullName} phone={phone} type={type} />;
+              })
             : null}
         </div>
       </div>
