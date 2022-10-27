@@ -13,11 +13,10 @@ server.use(
     users: 600,
     messages: 640,
     "/api/*": "/$1",
-    
-  }),
+  })
 );
-server.use(router);
 server.use(auth);
+server.use(router);
 server.listen(PORT, () => {
   console.log("Server is running");
 });
