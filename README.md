@@ -1,6 +1,6 @@
 # User contacts project :computer:
 
-## Web page: [User contacts:link:](0)
+## Web page: [User contacts:link:](https://usercontacts.herokuapp.com/)
 
 ## About the project
 
@@ -47,6 +47,7 @@ This project implements contact list.
 - Custom phone number formatting, form (Contacts page)
 - Redux (Typescript)
 - Jest
+- Heroku
 
 ## Contributing:star2:
 
