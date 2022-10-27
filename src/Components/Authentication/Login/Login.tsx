@@ -8,10 +8,10 @@ import { setUser } from "../../../store/userSlice";
 import { UserLogin, UserReduxType } from "../../../types/UserType.types";
 import { JSON_API } from "../../../Utils/constants";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
+import { CustomizedSnackbar } from "../../Utils/CustomizedSnackbar/CustomizedSnackbar";
 import { FormInputWithValidationFormik } from "../../Utils/FormInput/FormInputWithValidation/FormInputWithValidationFormik";
 import { GradientHeader } from "../../Utils/Headers/GradientHeader/GradientHeader";
 import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
-import { MuiCustomizedSnackbar } from "../../Utils/MuiCustomizedSnackbar/MuiCustomizedSnackbar";
 
 import cl from "./Login.module.scss";
 export const Login = () => {
@@ -50,7 +50,7 @@ export const Login = () => {
   return (
     <div className={cl.mainWrapper}>
       <div className={cl.formWrapper}>
-        <MuiCustomizedSnackbar
+        <CustomizedSnackbar
           originOfSnackbar={{ horizontal: "center", vertical: "top" }}
           message="Login or password is incorrect!"
           severity="error"
