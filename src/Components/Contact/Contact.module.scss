@@ -46,9 +46,12 @@
 
 @media (max-width: 1180px) {
   .contactWrapper {
-    padding: 4px 5px;
+    flex-direction: column;
+    padding: 6px 5px;
 
     .iconFullName {
+      align-self: flex-start;
+
       .typeIcon {
         width: 35px;
         height: 35px;
@@ -56,14 +59,21 @@
 
       .fullName {
         margin: 2px 7px 0 3px;
-        font-size: 0.8rem;
+        font-size: 0.95rem;
       }
     }
 
     .phoneOptionsWrapper {
+      margin-top: 5px;
+      width: 100%;
+
       .phoneNumber {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-right: 2px;
-        font-size: 0.95rem;
+        width: 60%;
+        font-size: 1.15rem;
       }
 
       .deleteButton {

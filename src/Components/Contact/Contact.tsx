@@ -50,17 +50,17 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
               <PhoneIcon sx={{ fontSize: `${isMobile ? "1rem" : "1.5rem"} ` }} />
             </IconButton>
           </Link>
+          <IconButton
+            onClick={() => {
+              dispatch(fetchDeleteContact(id!));
+            }}
+            className={cl.deleteButton}
+            aria-label="delete"
+            sx={{ padding: `${isMobile ? "5px" : "8px"}` }}
+          >
+            <DeleteIcon sx={{ fontSize: `${isMobile ? "1rem" : "1.5rem"} ` }} />
+          </IconButton>
         </Stack>
-        <IconButton
-          onClick={() => {
-            dispatch(fetchDeleteContact(id!));
-          }}
-          className={cl.deleteButton}
-          aria-label="delete"
-          sx={{ padding: `${isMobile ? "5px" : "8px"}` }}
-        >
-          <DeleteIcon sx={{ fontSize: `${isMobile ? "1rem" : "1.5rem"} ` }} />
-        </IconButton>
       </div>
     </div>
   );
