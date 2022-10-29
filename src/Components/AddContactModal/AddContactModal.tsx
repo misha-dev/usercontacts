@@ -18,7 +18,7 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
   const name = useFormInput("", { minLength: 3 }, "text");
   const surname = useFormInput("", {}, "text");
   const phoneNumber = useFormInput("", { phoneValid: /((\+7|8) \(\d{3}\) \d{3}-\d{2}-\d{2})|(\+\d{7,16})/g }, "tel");
-  const [selectGroupType, setSelectGroupType] = useState<PersonType>("Friend");
+  const [selectGroupType, setSelectGroupType] = useState<PersonType>("friend");
   const submitButtonIsDisabled = Boolean(name.valid.error) || Boolean(phoneNumber.valid.error);
   const { loadingAdd } = useAppSelector(selectContacts);
   const dispatch = useAppDispatch();
@@ -31,7 +31,7 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
     phoneNumber.setValue("");
     surname.setDirty(false);
     surname.setValue("");
-    setSelectGroupType("Friend");
+    setSelectGroupType("friend");
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -90,7 +90,7 @@ export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisibl
           <FormInputWithValidation id="name" name="name" handler={name} required={true} text={"Name"} type="text" />
           <FormInputWithValidation id="surname" name="surname" required={false} text={"Surname"} type="text" handler={surname} />
           <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"Phone"} type="tel" handler={phoneNumber} inputRef={phoneNumber.phoneInputRef} />
-          <SelectInput id="groupType" name="groupType" options={["Friend", "Colleague", "Family"]} required={true} value={selectGroupType} setValue={setSelectGroupType} />
+          <SelectInput id="groupType" name="groupType" options={["friend", "colleague", "family"]} required={true} value={selectGroupType} setValue={setSelectGroupType} />
 
           <GradientButton disabled={submitButtonIsDisabled} text={loadingAdd ? "Posting" : "Add contact"} type="submit" />
         </form>

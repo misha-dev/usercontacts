@@ -14,6 +14,9 @@ import { Contact } from "../Contact/Contact";
 
 import { SearchInput } from "../Utils/SearchInput/SearchInput";
 
+import { ContactType } from "../../types/ContactType";
+import { ContactsFilter } from "../ContactsFilter/ContactsFilter";
+
 import cl from "./Contacts.module.scss";
 
 export const Contacts = () => {
@@ -24,11 +27,12 @@ export const Contacts = () => {
     dispatch(fetchContacts());
   }, []);
   const { contacts, loadingAll, error } = useAppSelector(selectContacts);
+  const [typeSelected, setTypeSelected] = useState<ContactType | null>(null);
   const [searchString, setSearchString] = useState("");
 
   useScrollbar(contactsWrapper, contacts.length > 4);
 
-  const filteredContacts = useMemo(() => {
+  const searchedContacts = useMemo(() => {
     const sortedContacts = [...contacts].sort(searchSort);
     return sortedContacts.filter((contact) => contact.fullName.toLowerCase().includes(searchString.toLowerCase()));
   }, [contacts, searchString]);
@@ -47,11 +51,12 @@ export const Contacts = () => {
         </div>
         <AddContactModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
       </div>
+      <ContactsFilter typeSelected={typeSelected} filterTypes={["family", "colleague", "friend"]} setType={setTypeSelected} />
       <div ref={contactsWrapper} className={cl.contactsWrapper}>
         <div>
           {!loadingAll ? (
             <TransitionGroup>
-              {filteredContacts.map(({ userId, id, fullName, phone, type }) => {
+              {searchedContacts.map(({ userId, id, fullName, phone, type }) => {
                 return (
                   <CSSTransition key={id} timeout={250} classNames={"contactTransitionGroup"}>
                     <Contact id={id} userId={userId} key={id} fullName={fullName} phone={phone} type={type} />

@@ -22,7 +22,7 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
   return (
     <div className={cl.contactWrapper}>
       <div className={cl.iconFullName}>
-        <img className={cl.typeIcon} src={type === "Family" ? familyIcon : type === "Colleague" ? colleagueIcon : friendIcon} alt="" />
+        <img className={cl.typeIcon} src={type === "family" ? familyIcon : type === "colleague" ? colleagueIcon : friendIcon} alt="" />
         <div className={cl.fullName}>{fullName}</div>
       </div>
 

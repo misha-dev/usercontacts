@@ -9,18 +9,18 @@
   ],
   "contacts": [
     {
-      "fullName": "kasdjksa asjksdajkdsa",
-      "phone": "+7 (923) 923-19-23",
-      "type": "Friend",
+      "fullName": "kjasdjksajk djsajdkaskj",
+      "phone": "+321919322913",
+      "type": "colleague",
       "userId": 1,
-      "id": 3
+      "id": 1
     },
     {
-      "fullName": "shaba shaba",
-      "phone": "+213993219239213",
-      "type": "Friend",
+      "fullName": "misha misha",
+      "phone": "+7 (993) 219-21-39",
+      "type": "family",
       "userId": 1,
-      "id": 5
+      "id": 2
     }
   ]
 }

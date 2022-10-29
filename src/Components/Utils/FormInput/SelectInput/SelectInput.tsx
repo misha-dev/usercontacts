@@ -1,3 +1,4 @@
+import { capitalize } from "@mui/material";
 import { BiDownArrow } from "react-icons/bi";
 
 import { PersonType } from "../../../../types/ContactType";
@@ -22,7 +23,7 @@ export const SelectInput = ({ id, name, options, required, value, setValue }: Se
         {options.map((option) => {
           return (
             <option key={option} value={option}>
-              {option}
+              {capitalize(option)}
             </option>
           );
         })}
