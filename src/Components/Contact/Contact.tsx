@@ -45,7 +45,7 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
           >
             <ContentCopyIcon sx={{ fontSize: `${isMobile ? "1rem" : "1.5rem"} ` }} />
           </IconButton>
-          <Link href={`tel:${phone}`}>
+          <Link sx={{ marginLeft: "0px !important" }} href={`tel:${phone}`}>
             <IconButton sx={{ padding: `${isMobile ? "5px" : "8px"}` }} aria-label="phone">
               <PhoneIcon sx={{ fontSize: `${isMobile ? "1rem" : "1.5rem"} ` }} />
             </IconButton>
