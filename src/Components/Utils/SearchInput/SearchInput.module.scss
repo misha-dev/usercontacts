@@ -58,3 +58,21 @@
 
   @extend %flexCenter;
 }
+
+@media (max-width: 1180px) {
+  .mainWrapper {
+    padding-bottom: 5px;
+
+    .inputWrapper {
+      .searchLogo {
+        top: 25%;
+        color: #808080;
+      }
+
+      input {
+        padding: 5px 15px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

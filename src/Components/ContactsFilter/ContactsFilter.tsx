@@ -1,10 +1,11 @@
 import { capitalize, Stack, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import React from "react";
 
+import { useMatchMedia } from "../../hooks/useMatchMedia";
+
 import { PersonType } from "../../types/ContactType";
 
 import cl from "./ContactsFilter.module.scss";
-
 
 type props = {
   filterTypes: Array<PersonType>;
@@ -13,6 +14,8 @@ type props = {
 };
 
 export const ContactsFilter = ({ filterTypes, typeSelected, setType }: props) => {
+  const { isMobile } = useMatchMedia();
+
   return (
     <div>
       <Stack mt={"30px"} mb={"20px"} direction={"row"} alignItems="center" justifyContent="center">
@@ -24,7 +27,7 @@ export const ContactsFilter = ({ filterTypes, typeSelected, setType }: props) =>
           aria-label="contactsFilters"
           value={typeSelected}
           exclusive
-          size="medium"
+          size={isMobile ? "small" : "medium"}
         >
           {filterTypes.map((filterType, i) => (
             <ToggleButton className={cl.filterButton} key={i} value={filterType}>

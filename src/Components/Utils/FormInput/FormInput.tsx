@@ -21,7 +21,7 @@ export const FormInput = ({ text, type, id, name, required, handler, inputRef }:
       className={cl.loginInput}
       autoComplete={"off"}
       autoCorrect={"off"}
-      autoCapitalize={"false"}
+      autoCapitalize={"off"}
     />
   );
 };

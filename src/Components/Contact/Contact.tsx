@@ -5,6 +5,8 @@ import { IconButton, Link } from "@mui/material";
 import { Stack } from "@mui/system";
 import { useState } from "react";
 
+import { useMatchMedia } from "../../hooks/useMatchMedia";
+
 import colleagueIcon from "../../imgs/colleagueIcon.png";
 import familyIcon from "../../imgs/familyIcon.png";
 import friendIcon from "../../imgs/friendIcon.png";
@@ -18,6 +20,8 @@ import cl from "./Contact.module.scss";
 export const Contact = ({ id, fullName, phone, type }: ContactType) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const dispatch = useAppDispatch();
+
+  const { isMobile } = useMatchMedia();
 
   return (
     <div className={cl.contactWrapper}>
@@ -37,12 +41,13 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
               });
             }}
             aria-label="copy"
+            sx={{ padding: `${isMobile ? "5px" : "8px"}` }}
           >
-            <ContentCopyIcon />
+            <ContentCopyIcon sx={{ fontSize: `${isMobile ? "1rem" : "1.5rem"} ` }} />
           </IconButton>
           <Link href={`tel:${phone}`}>
-            <IconButton aria-label="phone">
-              <PhoneIcon />
+            <IconButton sx={{ padding: `${isMobile ? "5px" : "8px"}` }} aria-label="phone">
+              <PhoneIcon sx={{ fontSize: `${isMobile ? "1rem" : "1.5rem"} ` }} />
             </IconButton>
           </Link>
         </Stack>
@@ -52,8 +57,9 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
           }}
           className={cl.deleteButton}
           aria-label="delete"
+          sx={{ padding: `${isMobile ? "5px" : "8px"}` }}
         >
-          <DeleteIcon />
+          <DeleteIcon sx={{ fontSize: `${isMobile ? "1rem" : "1.5rem"} ` }} />
         </IconButton>
       </div>
     </div>
