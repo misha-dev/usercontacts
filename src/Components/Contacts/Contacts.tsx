@@ -14,7 +14,7 @@ import { Contact } from "../Contact/Contact";
 
 import { SearchInput } from "../Utils/SearchInput/SearchInput";
 
-import { ContactType } from "../../types/ContactType";
+import { PersonType } from "../../types/ContactType";
 import { ContactsFilter } from "../ContactsFilter/ContactsFilter";
 
 import cl from "./Contacts.module.scss";
@@ -27,10 +27,17 @@ export const Contacts = () => {
     dispatch(fetchContacts());
   }, []);
   const { contacts, loadingAll, error } = useAppSelector(selectContacts);
-  const [typeSelected, setTypeSelected] = useState<ContactType | null>(null);
+  const [typeSelected, setTypeSelected] = useState<PersonType | null>(null);
   const [searchString, setSearchString] = useState("");
 
   useScrollbar(contactsWrapper, contacts.length > 4);
+
+  const filterOnTypeContacts = useMemo(() => {
+    const sortedContacts = [...contacts].sort(searchSort);
+    if (typeSelected !== null) {
+      return sortedContacts.filter((contact) => contact.type === typeSelected);
+    }
+  }, [contacts, typeSelected]);
 
   const searchedContacts = useMemo(() => {
     const sortedContacts = [...contacts].sort(searchSort);

@@ -1,4 +1,4 @@
-export type PersonType = ("friend" | "colleague" | "family") & string;
+export type PersonType = ("friend" | "colleague" | "family");
 
 export type ContactType = {
   id?: number;

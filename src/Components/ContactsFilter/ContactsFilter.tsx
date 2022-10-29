@@ -1,12 +1,15 @@
 import { capitalize, Stack, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import React from "react";
 
-import { ContactType } from "../../types/ContactType";
+import { PersonType } from "../../types/ContactType";
+
+import cl from "./ContactsFilter.module.scss";
+
 
 type props = {
-  filterTypes: Array<string>;
-  typeSelected: ContactType | null;
-  setType: React.Dispatch<React.SetStateAction<ContactType | null>>;
+  filterTypes: Array<PersonType>;
+  typeSelected: PersonType | null;
+  setType: React.Dispatch<React.SetStateAction<PersonType | null>>;
 };
 
 export const ContactsFilter = ({ filterTypes, typeSelected, setType }: props) => {
@@ -24,7 +27,7 @@ export const ContactsFilter = ({ filterTypes, typeSelected, setType }: props) =>
           size="medium"
         >
           {filterTypes.map((filterType, i) => (
-            <ToggleButton key={i} value={filterType}>
+            <ToggleButton className={cl.filterButton} key={i} value={filterType}>
               {capitalize(filterType) + `${filterType === "family" ? "" : "s"}`}
             </ToggleButton>
           ))}
