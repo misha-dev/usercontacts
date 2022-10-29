@@ -5,7 +5,7 @@ export function filterContactsOnSearchString(contacts: ContactType[], searchStri
     if (Number.isNaN(Number(searchString)) && searchString[0] !== "+") {
       return contact.fullName.toLowerCase().includes(searchString.toLowerCase());
     } else {
-      return contact.phone.includes(searchString);
+      return contact.phone.replace(/[ )(-]/g, "").includes(searchString);
     }
   });
 }

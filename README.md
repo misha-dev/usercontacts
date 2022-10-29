@@ -47,6 +47,9 @@ This project implements contact list.
 - Custom phone number formatting, form (Contacts page)
 - Redux (Typescript)
 - Jest
+- Material-UI
+- React-transition-group
+- Overlayscrollbars
 - Heroku
 
 ## Contributing:star2:
