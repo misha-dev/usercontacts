@@ -32,17 +32,13 @@ export const Contacts = () => {
 
   useScrollbar(contactsWrapper, contacts.length > 4);
 
-  const filterOnTypeContacts = useMemo(() => {
-    const sortedContacts = [...contacts].sort(searchSort);
+  const filteredContacts = useMemo(() => {
+    let sortedContacts = [...contacts].sort(searchSort);
     if (typeSelected !== null) {
-      return sortedContacts.filter((contact) => contact.type === typeSelected);
+      sortedContacts = sortedContacts.filter((contact) => contact.type === typeSelected);
     }
-  }, [contacts, typeSelected]);
-
-  const searchedContacts = useMemo(() => {
-    const sortedContacts = [...contacts].sort(searchSort);
     return sortedContacts.filter((contact) => contact.fullName.toLowerCase().includes(searchString.toLowerCase()));
-  }, [contacts, searchString]);
+  }, [contacts, searchString, typeSelected]);
 
   return (
     <div className={cl.mainWrapper}>
@@ -63,7 +59,7 @@ export const Contacts = () => {
         <div>
           {!loadingAll ? (
             <TransitionGroup>
-              {searchedContacts.map(({ userId, id, fullName, phone, type }) => {
+              {filteredContacts.map(({ userId, id, fullName, phone, type }) => {
                 return (
                   <CSSTransition key={id} timeout={250} classNames={"contactTransitionGroup"}>
                     <Contact id={id} userId={userId} key={id} fullName={fullName} phone={phone} type={type} />
