@@ -17,6 +17,8 @@ import { SearchInput } from "../Utils/SearchInput/SearchInput";
 import { PersonType } from "../../types/ContactType";
 import { ContactsFilter } from "../ContactsFilter/ContactsFilter";
 
+import { filterContactsOnSearchString } from "../../Utils/filterContactsOnSearchString";
+
 import cl from "./Contacts.module.scss";
 
 export const Contacts = () => {
@@ -37,7 +39,7 @@ export const Contacts = () => {
     if (typeSelected !== null) {
       sortedContacts = sortedContacts.filter((contact) => contact.type === typeSelected);
     }
-    return sortedContacts.filter((contact) => contact.fullName.toLowerCase().includes(searchString.toLowerCase()));
+    return filterContactsOnSearchString(sortedContacts, searchString);
   }, [contacts, searchString, typeSelected]);
 
   return (
