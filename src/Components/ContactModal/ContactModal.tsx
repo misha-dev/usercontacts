@@ -12,9 +12,9 @@ import { fetchAddContact, selectContacts } from "../../store/contactsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { ContactType, PersonType } from "../../types/ContactType";
 
-import cl from "./AddContactModal.module.scss";
+import cl from "./ContactModal.module.scss";
 
-export const AddContactModal = ({ modalVisible, setModalVisible }: { modalVisible: boolean; setModalVisible: React.Dispatch<React.SetStateAction<boolean>> }) => {
+export const ContactModal = ({ modalVisible, setModalVisible }: { modalVisible: boolean; setModalVisible: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const name = useFormInput("", { minLength: 3 }, "text");
   const surname = useFormInput("", {}, "text");
   const phoneNumber = useFormInput("", { phoneValid: /((\+7|8) \(\d{3}\) \d{3}-\d{2}-\d{2})|(\+\d{7,16})/g }, "tel");

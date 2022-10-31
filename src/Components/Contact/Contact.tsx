@@ -14,6 +14,7 @@ import friendIcon from "../../imgs/friendIcon.png";
 import { fetchDeleteContact } from "../../store/contactsSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { ContactType } from "../../types/ContactType";
+import { ContactModal } from "../ContactModal/ContactModal";
 import { CustomizedSnackbar } from "../Utils/CustomizedSnackbar/CustomizedSnackbar";
 
 import cl from "./Contact.module.scss";
@@ -21,15 +22,24 @@ import cl from "./Contact.module.scss";
 export const Contact = ({ id, fullName, phone, type }: ContactType) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const dispatch = useAppDispatch();
+  const [openEditModal, setOpenEditModal] = useState(false);
 
   const { isMobile } = useMatchMedia();
 
   return (
     <div className={cl.contactWrapper}>
+      {openEditModal ? <ContactModal modalVisible={openEditModal} setModalVisible={setOpenEditModal} /> : null}
       <div className={cl.iconFullName}>
         <img className={cl.typeIcon} src={type === "family" ? familyIcon : type === "colleague" ? colleagueIcon : friendIcon} alt="" />
         <div className={cl.fullName}>{fullName}</div>
-        <IconButton onClick={() => {}} disableRipple aria-label="edit" sx={{ padding: `${isMobile ? "3px" : "6px"}` }}>
+        <IconButton
+          onClick={() => {
+            setOpenEditModal(true);
+          }}
+          disableRipple
+          aria-label="edit"
+          sx={{ padding: `${isMobile ? "3px" : "6px"}` }}
+        >
           <EditIcon sx={{ fontSize: `${isMobile ? "1rem" : "1.2rem"} ` }} />
         </IconButton>
       </div>

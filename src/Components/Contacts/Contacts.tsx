@@ -9,8 +9,8 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { searchSort } from "../../Utils/searchSort";
 import "./ContactsAnimation.scss";
 
-import { AddContactModal } from "../AddContactModal/AddContactModal";
 import { Contact } from "../Contact/Contact";
+import { ContactModal } from "../ContactModal/ContactModal";
 
 import { SearchInput } from "../Utils/SearchInput/SearchInput";
 
@@ -54,7 +54,7 @@ export const Contacts = () => {
         >
           <AiOutlinePlus className={cl.plus} />
         </div>
-        <AddContactModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+        <ContactModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
       </div>
       <ContactsFilter typeSelected={typeSelected} filterTypes={["family", "colleague", "friend"]} setType={setTypeSelected} />
       <div ref={contactsWrapper} className={cl.contactsWrapper}>
