@@ -1,5 +1,6 @@
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { IconButton, Link } from "@mui/material";
 import { Stack } from "@mui/system";
@@ -28,6 +29,9 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
       <div className={cl.iconFullName}>
         <img className={cl.typeIcon} src={type === "family" ? familyIcon : type === "colleague" ? colleagueIcon : friendIcon} alt="" />
         <div className={cl.fullName}>{fullName}</div>
+        <IconButton onClick={() => {}} disableRipple aria-label="edit" sx={{ padding: `${isMobile ? "3px" : "6px"}` }}>
+          <EditIcon sx={{ fontSize: `${isMobile ? "1rem" : "1.2rem"} ` }} />
+        </IconButton>
       </div>
 
       <div className={cl.phoneOptionsWrapper}>
