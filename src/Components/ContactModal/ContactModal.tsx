@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { ImCross } from "react-icons/im";
 
@@ -13,12 +13,31 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { ContactType, PersonType } from "../../types/ContactType";
 
 import cl from "./ContactModal.module.scss";
+type props = {
+  modalVisible: boolean;
+  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  fullName: string;
+  phoneNumberText: string;
+  selectGroupTypeText: PersonType;
+  submitText: string;
+};
 
-export const ContactModal = ({ modalVisible, setModalVisible }: { modalVisible: boolean; setModalVisible: React.Dispatch<React.SetStateAction<boolean>> }) => {
-  const name = useFormInput("", { minLength: 3 }, "text");
-  const surname = useFormInput("", {}, "text");
-  const phoneNumber = useFormInput("", { phoneValid: /((\+7|8) \(\d{3}\) \d{3}-\d{2}-\d{2})|(\+\d{7,16})/g }, "tel");
-  const [selectGroupType, setSelectGroupType] = useState<PersonType>("friend");
+export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNumberText, selectGroupTypeText, submitText }: props) => {
+  useEffect(() => {
+    if (submitText === "Update") {
+      name.setDirty(true);
+      surname.setDirty(true);
+      phoneNumber.setDirty(true);
+    }
+  }, []);
+  const [nameText = "", surnameText = ""] = fullName.split(" ");
+  const name = useFormInput(nameText, { minLength: 3 }, "text");
+
+  const surname = useFormInput(surnameText, {}, "text");
+
+  const phoneNumber = useFormInput(phoneNumberText, { phoneValid: 1 }, "tel");
+
+  const [selectGroupType, setSelectGroupType] = useState<PersonType>(selectGroupTypeText);
   const submitButtonIsDisabled = Boolean(name.valid.error) || Boolean(phoneNumber.valid.error);
   const { loadingAdd } = useAppSelector(selectContacts);
   const dispatch = useAppDispatch();
@@ -92,7 +111,7 @@ export const ContactModal = ({ modalVisible, setModalVisible }: { modalVisible: 
           <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"Phone"} type="tel" handler={phoneNumber} inputRef={phoneNumber.phoneInputRef} />
           <SelectInput id="groupType" name="groupType" options={["friend", "colleague", "family"]} required={true} value={selectGroupType} setValue={setSelectGroupType} />
 
-          <GradientButton disabled={submitButtonIsDisabled} text={loadingAdd ? "Posting" : "Add contact"} type="submit" />
+          <GradientButton disabled={submitButtonIsDisabled} text={loadingAdd ? "Posting" : submitText} type="submit" />
         </form>
       </div>
     </div>

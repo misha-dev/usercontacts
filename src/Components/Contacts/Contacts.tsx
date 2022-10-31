@@ -54,7 +54,7 @@ export const Contacts = () => {
         >
           <AiOutlinePlus className={cl.plus} />
         </div>
-        <ContactModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+        <ContactModal modalVisible={modalVisible} fullName={""} phoneNumberText={""} selectGroupTypeText={"friend"} submitText={"Add contact"} setModalVisible={setModalVisible} />
       </div>
       <ContactsFilter typeSelected={typeSelected} filterTypes={["family", "colleague", "friend"]} setType={setTypeSelected} />
       <div ref={contactsWrapper} className={cl.contactsWrapper}>

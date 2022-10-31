@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { formatRussianNumber } from "../Utils/formatRussianNumber";
-type validationsType = { [key: string]: number | RegExp };
+type validationsType = { [key: string]: number };
 export const useValidation = (value: string, validations: validationsType) => {
   const [error, setError] = useState("");
   useEffect(() => {
@@ -12,7 +12,8 @@ export const useValidation = (value: string, validations: validationsType) => {
         break;
 
       case "phoneValid":
-        (validations[validation] as RegExp).test(value) ? setError("") : setError("Enter correct phone number!");
+        /((\+7|8) \(\d{3}\) \d{3}-\d{2}-\d{2})|(\+\d{7,15})/g.test(value) ? setError(() => "") : setError(() => "Enter correct phone number!");
+
         break;
       }
     }
@@ -32,6 +33,7 @@ export const useFormInput = (initialValue: string, validations: validationsType,
   }, [selectionStartPhone]);
   const [dirty, setDirty] = useState(false);
   const valid = useValidation(value, validations);
+
   const onBlur = (e: React.FocusEvent<HTMLInputElement, Element>) => {
     setDirty(true);
   };
