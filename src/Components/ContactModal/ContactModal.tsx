@@ -8,7 +8,7 @@ import { GradientButton } from "../Utils/Buttons/GradientButton/GradientButton";
 import { FormInputWithValidation } from "../Utils/FormInput/FormInputWithValidation/FormInputWithValidation";
 import { SelectInput } from "../Utils/FormInput/SelectInput/SelectInput";
 
-import { fetchAddContact, selectContacts } from "../../store/contactsSlice";
+import { fetchAddContact, fetchEditContact, selectContacts } from "../../store/contactsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { ContactType, PersonType } from "../../types/ContactType";
 
@@ -16,13 +16,14 @@ import cl from "./ContactModal.module.scss";
 type props = {
   modalVisible: boolean;
   setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  contactId?: number;
   fullName: string;
   phoneNumberText: string;
   selectGroupTypeText: PersonType;
   submitText: string;
 };
 
-export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNumberText, selectGroupTypeText, submitText }: props) => {
+export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNumberText, selectGroupTypeText, submitText, contactId }: props) => {
   useEffect(() => {
     if (submitText === "Update") {
       name.setDirty(true);
@@ -39,7 +40,7 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
 
   const [selectGroupType, setSelectGroupType] = useState<PersonType>(selectGroupTypeText);
   const submitButtonIsDisabled = Boolean(name.valid.error) || Boolean(phoneNumber.valid.error);
-  const { loadingAdd } = useAppSelector(selectContacts);
+  const { loadingModify } = useAppSelector(selectContacts);
   const dispatch = useAppDispatch();
 
   const closeModal = () => {
@@ -57,15 +58,26 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
     e.preventDefault();
     const { userId }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
     if (!submitButtonIsDisabled) {
-      if (!loadingAdd) {
+      if (!loadingModify) {
         const contact: ContactType = { fullName: `${name.value.trim()} ${surname.value.trim()}`, phone: phoneNumber.value, type: selectGroupType, userId };
-        dispatch(fetchAddContact(contact))
-          .unwrap()
-          .then((data: ContactType) => {
-            if (data.userId) {
-              closeModal();
-            }
-          });
+        if (contactId) {
+          contact.id = contactId;
+          dispatch(fetchEditContact(contact))
+            .unwrap()
+            .then((data: ContactType) => {
+              if (data.userId) {
+                closeModal();
+              }
+            });
+        } else {
+          dispatch(fetchAddContact(contact))
+            .unwrap()
+            .then((data: ContactType) => {
+              if (data.userId) {
+                closeModal();
+              }
+            });
+        }
       }
     } else {
       alert("Data is incorrect!");
@@ -111,7 +123,7 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
           <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"Phone"} type="tel" handler={phoneNumber} inputRef={phoneNumber.phoneInputRef} />
           <SelectInput id="groupType" name="groupType" options={["friend", "colleague", "family"]} required={true} value={selectGroupType} setValue={setSelectGroupType} />
 
-          <GradientButton disabled={submitButtonIsDisabled} text={loadingAdd ? "Posting" : submitText} type="submit" />
+          <GradientButton disabled={submitButtonIsDisabled} text={loadingModify ? "Posting" : submitText} type="submit" />
         </form>
       </div>
     </div>

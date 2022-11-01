@@ -9,14 +9,14 @@ import { RootState } from ".";
 
 type ContactsReduxType = {
   loadingAll: boolean;
-  loadingAdd: boolean;
+  loadingModify: boolean;
   contacts: Array<ContactType>;
   error: string;
 };
 
 const initialState: ContactsReduxType = {
   loadingAll: false,
-  loadingAdd: false,
+  loadingModify: false,
   contacts: [] as Array<ContactType>,
   error: "",
 };
@@ -41,6 +41,18 @@ export const fetchAddContact = createAsyncThunk("contacts/addContact", (contact:
     return data.json();
   });
 });
+
+export const fetchEditContact = createAsyncThunk("contacts/editContact", (contact: ContactType) => {
+  const { accessToken }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
+  return fetch(`${JSON_API}/660/contacts/${contact.id}`, {
+    method: "put",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
+    body: JSON.stringify(contact),
+  }).then((data) => {
+    return data.json();
+  });
+});
+
 export const fetchDeleteContact = createAsyncThunk("contacts/fetchDeleteContact", (id: number) => {
   const { accessToken }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
   return fetch(`${JSON_API}/660/contacts/${id}`, {
@@ -56,6 +68,7 @@ const contacts = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    
     // fetch all comments
     builder
       .addCase(fetchContacts.pending, (state) => {
@@ -75,17 +88,37 @@ const contacts = createSlice({
     // add contact
     builder
       .addCase(fetchAddContact.pending, (state) => {
-        state.loadingAdd = true;
+        state.loadingModify = true;
         state.error = "";
       })
       .addCase(fetchAddContact.fulfilled, (state, action: PayloadAction<ContactType & { id: number }>) => {
-        state.loadingAdd = false;
+        state.loadingModify = false;
         state.error = "";
         state.contacts = state.contacts.concat(action.payload);
       })
       .addCase(fetchAddContact.rejected, (state) => {
-        state.loadingAdd = false;
+        state.loadingModify = false;
         state.error = "Could't add contact!";
+      });
+
+    // edit contact
+    builder
+      .addCase(fetchEditContact.pending, (state) => {
+        state.loadingModify = true;
+        state.error = "";
+      })
+      .addCase(fetchEditContact.fulfilled, (state, action: PayloadAction<ContactType>) => {
+        state.loadingModify = false;
+        state.error = "";
+        state.contacts.forEach((contact, i) => {
+          if (contact.id === action.payload.id) {
+            state.contacts[i] = action.payload;
+          }
+        });
+      })
+      .addCase(fetchEditContact.rejected, (state) => {
+        state.loadingModify = false;
+        state.error = "Couldn't edit contact!";
       });
 
     // delete contact

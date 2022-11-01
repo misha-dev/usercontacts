@@ -29,7 +29,7 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
   return (
     <div className={cl.contactWrapper}>
       {openEditModal ? (
-        <ContactModal fullName={fullName} phoneNumberText={phone} selectGroupTypeText={type} submitText={"Update"} modalVisible={openEditModal} setModalVisible={setOpenEditModal} />
+        <ContactModal contactId={id} fullName={fullName} phoneNumberText={phone} selectGroupTypeText={type} submitText={"Update"} modalVisible={openEditModal} setModalVisible={setOpenEditModal} />
       ) : null}
       <div className={cl.iconFullName}>
         <img className={cl.typeIcon} src={type === "family" ? familyIcon : type === "colleague" ? colleagueIcon : friendIcon} alt="" />
