@@ -8,7 +8,7 @@ export type userType = {
 } & UserLogin;
 
 export type UserAuth = {
-  id: number;
+  userId: number;
   accessToken: string;
 };
 

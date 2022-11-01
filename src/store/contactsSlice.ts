@@ -22,8 +22,8 @@ const initialState: ContactsReduxType = {
 };
 
 export const fetchContacts = createAsyncThunk("contacts/fetchContacts", () => {
-  const { accessToken }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
-  return fetch(`${JSON_API}/660/contacts`, {
+  const { accessToken, userId }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
+  return fetch(`${JSON_API}/660/contacts?userId=${userId}`, {
     method: "get",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
   }).then((data) => {

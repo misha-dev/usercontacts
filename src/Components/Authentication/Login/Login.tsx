@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { useAppDispatch } from "../../../store/hooks";
 import { setUser } from "../../../store/userSlice";
 
-import { UserLogin, UserReduxType } from "../../../types/UserType.types";
+import { UserAuth, UserLogin, UserReduxType } from "../../../types/UserType.types";
 import { JSON_API } from "../../../Utils/constants";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
 import { CustomizedSnackbar } from "../../Utils/CustomizedSnackbar/CustomizedSnackbar";
@@ -38,7 +38,7 @@ export const Login = () => {
         return res.json();
       })
       .then(({ user, accessToken }: { user: UserReduxType; accessToken: string }) => {
-        localStorage.setItem("userAuth", JSON.stringify({ accessToken, id: user.id }));
+        localStorage.setItem("userAuth", JSON.stringify({ accessToken, userId: user.id } as UserAuth));
         dispatch(setUser(user));
       })
       .catch((error) => {

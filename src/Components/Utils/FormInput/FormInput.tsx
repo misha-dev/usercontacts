@@ -2,8 +2,6 @@ import { InputType } from "../../../types/InputType.types";
 
 import cl from "./FormInput.module.scss";
 export const FormInput = ({ text, type, id, name, required, handler, inputRef }: InputType) => {
-
-
   return (
     <input
       ref={inputRef ? inputRef : null}

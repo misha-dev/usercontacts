@@ -22,7 +22,7 @@ export const MainRouter = () => {
 
     const checkIfLogged = async () => {
       try {
-        const response = await fetch(`${JSON_API}/600/users/${userAuth.id}`, {
+        const response = await fetch(`${JSON_API}/600/users/${userAuth.userId}`, {
           method: "get",
           headers: { Authorization: `Bearer ${userAuth.accessToken}` },
         });

@@ -55,10 +55,10 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { id }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
+    const { userId }: UserAuth = JSON.parse(localStorage.getItem("userAuth")!);
     if (!submitButtonIsDisabled) {
       if (!loadingAdd) {
-        const contact: ContactType = { fullName: `${name.value.trim()} ${surname.value.trim()}`, phone: phoneNumber.value, type: selectGroupType, userId: id };
+        const contact: ContactType = { fullName: `${name.value.trim()} ${surname.value.trim()}`, phone: phoneNumber.value, type: selectGroupType, userId };
         dispatch(fetchAddContact(contact))
           .unwrap()
           .then((data: ContactType) => {

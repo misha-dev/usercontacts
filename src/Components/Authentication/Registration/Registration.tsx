@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import logo from "../../../imgs/logo.png";
 import { useAppDispatch } from "../../../store/hooks";
 import { setUser } from "../../../store/userSlice";
-import { UserReduxType, userType } from "../../../types/UserType.types";
+import { UserAuth, UserReduxType, userType } from "../../../types/UserType.types";
 import { JSON_API } from "../../../Utils/constants";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
 import { CustomizedSnackbar } from "../../Utils/CustomizedSnackbar/CustomizedSnackbar";
@@ -26,11 +26,10 @@ export const Registration = () => {
       body: JSON.stringify({ email, name, password }),
     })
       .then((res) => {
-
         return res.json();
       })
       .then(({ user, accessToken }: { user: UserReduxType; accessToken: string }) => {
-        localStorage.setItem("userAuth", JSON.stringify({ accessToken, id: user.id }));
+        localStorage.setItem("userAuth", JSON.stringify({ accessToken, userId: user.id } as UserAuth));
         dispatch(setUser(user));
       })
       .catch((error) => {
