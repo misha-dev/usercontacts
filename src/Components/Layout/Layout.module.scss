@@ -2,24 +2,25 @@
 @import "../../styles/variables";
 
 .mainContent {
-  position: relative;
-  height: 100vh;
   background: $greenLinearGradient;
 
   .menuWrapper {
-    position: absolute;
-    right: 40px;
-    top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 40px 30px 0 0;
+    height: 60px;
   }
 
-  @extend %flexCenter;
+  .contentWrapper {
+    @extend %flexCenter;
+  }
 }
 
 @media (max-width: 1180px) {
   .mainContent {
     .menuWrapper {
-      right: 20px;
-      top: 20px;
+      padding: 20px 20px 0 0;
     }
   }
 }

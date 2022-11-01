@@ -14,7 +14,9 @@ export const Layout = () => {
           <LogoutButton text="Logout" type="button" />
         </div>
       )}
-      <Outlet />
+      <div style={{ height: `${user.id ? "calc(100vh - 60px)" : "100vh"}` }} className={cl.contentWrapper}>
+        <Outlet />
+      </div>
     </div>
   );
 };
