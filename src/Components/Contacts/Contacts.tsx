@@ -32,7 +32,7 @@ export const Contacts = () => {
   const [typeSelected, setTypeSelected] = useState<PersonType | null>(null);
   const [searchString, setSearchString] = useState("");
 
-  useScrollbar(contactsWrapper, contacts.length > 4);
+  useScrollbar(contactsWrapper, contacts.length > 0);
 
   const filteredContacts = useMemo(() => {
     let sortedContacts = [...contacts].sort(searchSort);
