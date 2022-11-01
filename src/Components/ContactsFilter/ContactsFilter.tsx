@@ -18,7 +18,7 @@ export const ContactsFilter = ({ filterTypes, typeSelected, setType }: props) =>
 
   return (
     <div>
-      <Stack mt={"30px"} mb={"20px"} direction={"row"} alignItems="center" justifyContent="center">
+      <Stack className={cl.filterButtonsWrapper} direction={"row"} alignItems="center" justifyContent="center">
         <ToggleButtonGroup
           onChange={(e, updatedFilter) => {
             setType(updatedFilter);

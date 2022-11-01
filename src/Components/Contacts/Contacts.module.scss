@@ -3,8 +3,9 @@
 
 .mainWrapper {
   border-radius: 10px;
-  padding: 20px 0 5px;
+  padding: 20px 0 0;
   width: 680px;
+  height: 60vh;
   box-shadow: 5px 6px 8px rgba(0, 0, 0, 0.25);
   background-color: #eaece9;
 
@@ -41,8 +42,8 @@
   }
 
   .contactsWrapper {
-    padding: 0 10px;
-    height: 370px;
+    padding: 0 10px 3px 0;
+    height: calc(100% - 170px);
   }
 }
 
@@ -52,8 +53,8 @@
     width: 350px;
 
     .contactsWrapper {
-      padding: 0 10px;
-      height: 350px;
+      padding: 0 10px 3px 0;
+      height: calc(100% - 146px);
     }
   }
 }
