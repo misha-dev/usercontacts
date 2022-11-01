@@ -42,7 +42,7 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
           aria-label="edit"
           sx={{ padding: `${isMobile ? "3px" : "6px"}` }}
         >
-          <EditIcon sx={{ fontSize: `${isMobile ? "1rem" : "1.2rem"} ` }} />
+          <EditIcon sx={{ fontSize: `${isMobile ? "1.05rem" : "1.2rem"} ` }} />
         </IconButton>
       </div>
 
@@ -59,11 +59,11 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
             aria-label="copy"
             sx={{ padding: `${isMobile ? "5px" : "8px"}` }}
           >
-            <ContentCopyIcon sx={{ fontSize: `${isMobile ? "1.1rem" : "1.5rem"} ` }} />
+            <ContentCopyIcon sx={{ fontSize: `${isMobile ? "1.2rem" : "1.5rem"} ` }} />
           </IconButton>
           <Link sx={{ marginLeft: "0px !important" }} href={`tel:${phone}`}>
             <IconButton sx={{ padding: `${isMobile ? "5px" : "8px"}` }} aria-label="phone">
-              <PhoneIcon sx={{ fontSize: `${isMobile ? "1.1rem" : "1.5rem"} ` }} />
+              <PhoneIcon sx={{ fontSize: `${isMobile ? "1.2rem" : "1.5rem"} ` }} />
             </IconButton>
           </Link>
           <IconButton
@@ -74,7 +74,7 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
             aria-label="delete"
             sx={{ padding: `${isMobile ? "5px" : "8px"}` }}
           >
-            <DeleteIcon sx={{ fontSize: `${isMobile ? "1.1rem" : "1.5rem"} ` }} />
+            <DeleteIcon sx={{ fontSize: `${isMobile ? "1.2rem" : "1.5rem"} ` }} />
           </IconButton>
         </Stack>
       </div>
