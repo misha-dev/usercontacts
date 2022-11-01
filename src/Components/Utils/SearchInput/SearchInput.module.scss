@@ -33,13 +33,16 @@
       }
 
       &:valid ~ .placeholder,
-      &:focus ~ .placeholder {
-        display: none;
-      }
-
+      &:focus ~ .placeholder,
       &:valid ~ .searchLogo,
       &:focus ~ .searchLogo {
         display: none;
+      }
+
+      &:valid ~ .closeButton,
+      &:focus ~ .closeButton {
+        opacity: 1;
+        visibility: visible;
       }
     }
 
@@ -51,6 +54,15 @@
       transform: translate(-50%, -59%);
       pointer-events: none;
       user-select: none;
+    }
+
+    .closeButton {
+      position: absolute;
+      right: 10%;
+      top: 3.5%;
+      opacity: 0;
+      visibility: hidden;
+      transition: visibility 0s ease, opacity 0.5s ease;
     }
 
     @extend %flexCenter;
@@ -76,6 +88,10 @@
 
       .placeholder {
         transform: translate(-50%, -56%);
+      }
+
+      .closeButton {
+        top: 0.5%;
       }
     }
   }
