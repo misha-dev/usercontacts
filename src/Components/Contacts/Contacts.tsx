@@ -24,7 +24,7 @@ import { LoaderCircle } from "../Utils/LoaderCircle/LoaderCircle";
 import cl from "./Contacts.module.scss";
 
 export const Contacts = () => {
-  const contactsWrapperRef = useRef<HTMLDivElement>(null);
+  const contactsRef = useRef<HTMLDivElement>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -34,7 +34,7 @@ export const Contacts = () => {
   const [typeSelected, setTypeSelected] = useState<PersonType | null>(null);
   const [searchString, setSearchString] = useState("");
 
-  useScrollbar(contactsWrapperRef, contacts.length > 0);
+  useScrollbar(contactsRef, contacts.length > 0);
 
   const filteredContacts = useMemo(() => {
     let sortedContacts = [...contacts].sort(searchSort);
@@ -61,7 +61,7 @@ export const Contacts = () => {
       <ContactsFilter typeSelected={typeSelected} filterTypes={["family", "colleague", "friend"]} setType={setTypeSelected} />
       <div className={cl.contactsWrapper}>
         {!loadingAll ? (
-          <div ref={contactsWrapperRef} className={cl.contacts}>
+          <div ref={contactsRef} className={cl.contacts}>
             <div>
               <TransitionGroup>
                 {filteredContacts.map(({ userId, id, fullName, phone, type }) => {
