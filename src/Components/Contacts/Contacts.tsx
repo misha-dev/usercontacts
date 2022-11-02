@@ -24,7 +24,7 @@ import { LoaderCircle } from "../Utils/LoaderCircle/LoaderCircle";
 import cl from "./Contacts.module.scss";
 
 export const Contacts = () => {
-  const contactsWrapper = useRef<HTMLDivElement>(null);
+  const contactsWrapperRef = useRef<HTMLDivElement>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -34,7 +34,7 @@ export const Contacts = () => {
   const [typeSelected, setTypeSelected] = useState<PersonType | null>(null);
   const [searchString, setSearchString] = useState("");
 
-  useScrollbar(contactsWrapper, contacts.length > 0);
+  useScrollbar(contactsWrapperRef, contacts.length > 0);
 
   const filteredContacts = useMemo(() => {
     let sortedContacts = [...contacts].sort(searchSort);
@@ -59,18 +59,20 @@ export const Contacts = () => {
         <ContactModal modalVisible={modalVisible} fullName={""} phoneNumberText={""} selectGroupTypeText={"friend"} submitText={"Add contact"} setModalVisible={setModalVisible} />
       </div>
       <ContactsFilter typeSelected={typeSelected} filterTypes={["family", "colleague", "friend"]} setType={setTypeSelected} />
-      <div ref={contactsWrapper} className={cl.contactsWrapper}>
+      <div className={cl.contactsWrapper}>
         {!loadingAll ? (
-          <div className={cl.contacts}>
-            <TransitionGroup>
-              {filteredContacts.map(({ userId, id, fullName, phone, type }) => {
-                return (
-                  <CSSTransition key={id} timeout={250} classNames={"contactTransitionGroup"}>
-                    <Contact id={id} userId={userId} key={id} fullName={fullName} phone={phone} type={type} />
-                  </CSSTransition>
-                );
-              })}
-            </TransitionGroup>
+          <div ref={contactsWrapperRef} className={cl.contacts}>
+            <div>
+              <TransitionGroup>
+                {filteredContacts.map(({ userId, id, fullName, phone, type }) => {
+                  return (
+                    <CSSTransition key={id} timeout={250} classNames={"contactTransitionGroup"}>
+                      <Contact id={id} userId={userId} key={id} fullName={fullName} phone={phone} type={type} />
+                    </CSSTransition>
+                  );
+                })}
+              </TransitionGroup>
+            </div>
           </div>
         ) : (
           <LoaderCircle size={5} />

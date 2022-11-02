@@ -14,5 +14,5 @@ export const useScrollbar = (root: React.RefObject<HTMLDivElement>, hasScroll: b
         scrollBars.destroy();
       }
     };
-  }, [root, hasScroll]);
+  }, [root, root.current, hasScroll]);
 };
