@@ -4,7 +4,7 @@
 
 ## About the project
 
-This project implements contact list.
+This project implements contact list for each registered user.
 
 ## Getting Started
 

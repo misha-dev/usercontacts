@@ -31,6 +31,9 @@ export const SearchInput = ({ setSearchString }: props) => {
           }}
           required
           type="text"
+          autoComplete={"off"}
+          autoCorrect={"off"}
+          autoCapitalize={"off"}
         />
         <BiSearch className={cl.searchLogo} />
         <div className={cl.placeholder}>Search</div>
