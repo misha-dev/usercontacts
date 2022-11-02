@@ -19,6 +19,8 @@ import { ContactsFilter } from "../ContactsFilter/ContactsFilter";
 
 import { filterContactsOnSearchString } from "../../Utils/filterContactsOnSearchString";
 
+import { LoaderCircle } from "../Utils/LoaderCircle/LoaderCircle";
+
 import cl from "./Contacts.module.scss";
 
 export const Contacts = () => {
@@ -58,8 +60,8 @@ export const Contacts = () => {
       </div>
       <ContactsFilter typeSelected={typeSelected} filterTypes={["family", "colleague", "friend"]} setType={setTypeSelected} />
       <div ref={contactsWrapper} className={cl.contactsWrapper}>
-        <div>
-          {!loadingAll ? (
+        {!loadingAll ? (
+          <div className={cl.contacts}>
             <TransitionGroup>
               {filteredContacts.map(({ userId, id, fullName, phone, type }) => {
                 return (
@@ -69,8 +71,10 @@ export const Contacts = () => {
                 );
               })}
             </TransitionGroup>
-          ) : null}
-        </div>
+          </div>
+        ) : (
+          <LoaderCircle size={5} />
+        )}
       </div>
     </div>
   );

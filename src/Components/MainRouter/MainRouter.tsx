@@ -11,6 +11,7 @@ import { Login } from "../Authentication/Login/Login";
 import { Registration } from "../Authentication/Registration/Registration";
 import { Contacts } from "../Contacts/Contacts";
 import { Layout } from "../Layout/Layout";
+import { LoaderCircle } from "../Utils/LoaderCircle/LoaderCircle";
 
 export const MainRouter = () => {
   const user = useAppSelector((state) => state.user);
@@ -64,7 +65,11 @@ export const MainRouter = () => {
           </Route>
           <Route path="*" element={<Navigate to={"/usercontacts"} />} />
         </Routes>
-      ) : null}
+      ) : (
+        <div style={{ height: "100vh" }}>
+          <LoaderCircle size={9} />
+        </div>
+      )}
     </>
   );
 };

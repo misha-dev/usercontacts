@@ -42,8 +42,11 @@
   }
 
   .contactsWrapper {
-    padding: 0 10px 3px 0;
-    height: calc(100% - 170px);
+    height: calc(100% - 172px);
+
+    .contacts {
+      padding: 0 10px 3px 0;
+    }
   }
 }
 
@@ -53,8 +56,11 @@
     width: 350px;
 
     .contactsWrapper {
-      padding: 0 10px 3px 0;
-      height: calc(100% - 146px);
+      height: calc(100% - 145px);
+
+      .contacts {
+        padding: 0 10px 3px 0;
+      }
     }
   }
 }
