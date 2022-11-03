@@ -16,7 +16,7 @@ export const SearchInput = ({ setSearchString }: props) => {
   const debouncedSetSearchString = useCallback(
     debounce((str: string) => {
       setSearchString(str);
-    }),
+    }, 200),
     [],
   );
 
@@ -30,6 +30,7 @@ export const SearchInput = ({ setSearchString }: props) => {
             debouncedSetSearchString(e.target.value);
           }}
           required
+          aria-label="search"
           type="text"
           autoComplete={"off"}
           autoCorrect={"off"}

@@ -27,7 +27,7 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
   const { isMobile } = useMatchMedia();
 
   return (
-    <div className={cl.contactWrapper}>
+    <div className={cl.contactWrapper} data-testid="contact">
       {openEditModal ? (
         <ContactModal contactId={id} fullName={fullName} phoneNumberText={phone} selectGroupTypeText={type} submitText={"Update"} modalVisible={openEditModal} setModalVisible={setOpenEditModal} />
       ) : null}
