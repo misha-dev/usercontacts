@@ -15,6 +15,7 @@ import { SimpleLink } from "../../Utils/Links/SimpleLink/SimpleLink";
 
 import cl from "./Login.module.scss";
 export const Login = () => {
+  const [loginButtonText, setLoginButtonText] = useState("Login");
   const dispatch = useAppDispatch();
   const initialValues: UserLogin = {
     email: "",
@@ -29,6 +30,7 @@ export const Login = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const onSubmit = (values: UserLogin, actions: FormikHelpers<UserLogin>) => {
+    setLoginButtonText("Logging...");
     fetch(`${JSON_API}/login`, {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -43,6 +45,7 @@ export const Login = () => {
       })
       .catch((error) => {
         actions.resetForm({ values: { email: values.email, password: "" } } as Partial<FormikState<UserLogin>>);
+        setLoginButtonText("Login");
         setOpenSnackbar(true);
       });
   };
@@ -73,7 +76,7 @@ export const Login = () => {
                     <SimpleLink link="/usercontacts" text="Register here" />
                   </div>
                   <div className={cl.formLogin}>
-                    <GradientButton disabled={!dirty || !isValid} text="Login" type="submit" />
+                    <GradientButton disabled={!dirty || !isValid} text={loginButtonText} type="submit" />
                   </div>
                 </div>
               </Form>

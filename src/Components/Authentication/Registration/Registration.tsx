@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import logo from "../../../imgs/logo.png";
 import { useAppDispatch } from "../../../store/hooks";
 import { setUser } from "../../../store/userSlice";
-import { UserAuth, UserReduxType, userType } from "../../../types/UserType.types";
+import { UserAuth, UserReduxType, UserType } from "../../../types/UserType.types";
 import { JSON_API } from "../../../Utils/constants";
 import { GradientButton } from "../../Utils/Buttons/GradientButton/GradientButton";
 import { CustomizedSnackbar } from "../../Utils/CustomizedSnackbar/CustomizedSnackbar";
@@ -18,8 +18,10 @@ import { WhiteLink } from "../../Utils/Links/WhiteLink/WhiteLink";
 import cl from "./Registration.module.scss";
 
 export const Registration = () => {
+  const [registerButtonText, setRegisterButtonText] = useState("Register");
   const dispatch = useAppDispatch();
-  const onSubmit = ({ email, name, password }: userType) => {
+  const onSubmit = ({ email, name, password }: UserType) => {
+    setRegisterButtonText("Loading...");
     fetch(`${JSON_API}/register`, {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -33,6 +35,7 @@ export const Registration = () => {
         dispatch(setUser(user));
       })
       .catch((error) => {
+        setRegisterButtonText("Register");
         setOpenSnackbar(true);
       });
   };
@@ -46,7 +49,7 @@ export const Registration = () => {
       .oneOf([Yup.ref("password")], "Password is not the same!"),
   });
 
-  const initialValues: userType & { confirmPassword: string } = { name: "", email: "", password: "", confirmPassword: "" };
+  const initialValues: UserType & { confirmPassword: string } = { name: "", email: "", password: "", confirmPassword: "" };
 
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
@@ -86,7 +89,7 @@ export const Registration = () => {
                     <SimpleLink link="/usercontacts/login" text="Log in here" />
                   </div>
                   <div className={cl.formRegister}>
-                    <GradientButton disabled={!dirty || !isValid} text="Register" type="submit" />
+                    <GradientButton disabled={!dirty || !isValid} text={registerButtonText} type="submit" />
                   </div>
                 </div>
               </Form>

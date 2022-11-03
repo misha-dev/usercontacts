@@ -3,7 +3,7 @@ export type UserLogin = {
   password: string;
 };
 
-export type userType = {
+export type UserType = {
   name: string;
 } & UserLogin;
 
@@ -12,4 +12,4 @@ export type UserAuth = {
   accessToken: string;
 };
 
-export type UserReduxType = Omit<userType, "password"> & { id: number };
+export type UserReduxType = Omit<UserType, "password"> & { id: number };
