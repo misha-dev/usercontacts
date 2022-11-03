@@ -1,18 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { ContactType } from "../types/ContactType";
+import { ContactsReduxType, ContactType } from "../types/ContactType";
 import { UserAuth } from "../types/UserType.types";
 
 import { JSON_API } from "../Utils/constants";
 
 import { RootState } from ".";
-
-type ContactsReduxType = {
-  loadingAll: boolean;
-  loadingModify: boolean;
-  contacts: Array<ContactType>;
-  error: string;
-};
 
 const initialState: ContactsReduxType = {
   loadingAll: false,
@@ -68,7 +61,6 @@ const contacts = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    
     // fetch all comments
     builder
       .addCase(fetchContacts.pending, (state) => {

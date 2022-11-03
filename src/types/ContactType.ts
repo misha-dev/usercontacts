@@ -1,4 +1,4 @@
-export type PersonType = ("friend" | "colleague" | "family");
+export type PersonType = "friend" | "colleague" | "family";
 
 export type ContactType = {
   id?: number;
@@ -6,4 +6,10 @@ export type ContactType = {
   fullName: string;
   phone: string;
   type: PersonType;
+};
+export type ContactsReduxType = {
+  loadingAll: boolean;
+  loadingModify: boolean;
+  contacts: Array<ContactType>;
+  error: string;
 };

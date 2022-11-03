@@ -10,6 +10,4 @@ const state: RootState = {
   },
 };
 
-export const testUseAppSelector = (f: (state: RootState) => void) => {
-  f(state);
-};
+export const testUseAppSelector = (f: (state: RootState) => unknown) => f(state);
