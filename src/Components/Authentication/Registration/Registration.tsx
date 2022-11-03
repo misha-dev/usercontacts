@@ -60,7 +60,7 @@ export const Registration = () => {
         </div>
 
         <div className={cl.projectInfoWithText}>
-          <p>See how is project</p>
+          <p>See how project</p>
           <p>is implemented</p>
           <p>on GitHub</p>
           <WhiteLink text="About Project" link="https://github.com/misha-dev/usercontacts" />
