@@ -37,13 +37,13 @@ describe("Contacts", () => {
     userEvent.type(searchInput, "misha");
     expect(searchInput).toHaveValue("misha");
     // have to wait due to debounce function
-    await new Promise((resolve) => setTimeout(resolve, 700));
+    await new Promise((resolve) => setTimeout(resolve, 800));
     const friendContacts = screen.getAllByTestId("contact");
 
     expect(friendContacts.length).toEqual(2);
     userEvent.click(crossButton);
     // have to wait due to debounce function
-    await new Promise((resolve) => setTimeout(resolve, 700));
+    await new Promise((resolve) => setTimeout(resolve, 800));
     const contacts = screen.getAllByTestId("contact");
 
     expect(searchInput).toHaveValue("");

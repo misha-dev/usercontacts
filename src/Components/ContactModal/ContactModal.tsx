@@ -12,6 +12,8 @@ import { fetchAddContact, fetchEditContact, selectContacts } from "../../store/c
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { ContactType, PersonType } from "../../types/ContactType";
 
+import Portal from "../Utils/Portal/Portal";
+
 import cl from "./ContactModal.module.scss";
 type props = {
   modalVisible: boolean;
@@ -99,33 +101,35 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
   }, []);
 
   return (
-    <div
-      onMouseDown={() => {
-        closeModal();
-      }}
-      className={`${cl.modalWrapper} ${modalVisible ? cl.active : ""}`}
-    >
+    <Portal>
       <div
-        onMouseDown={(e) => {
-          e.stopPropagation();
+        onMouseDown={() => {
+          closeModal();
         }}
-        className={cl.modalContent}
+        className={`${cl.modalWrapper} ${modalVisible ? cl.active : ""}`}
       >
-        <ImCross
-          className={cl.cross}
-          onClick={() => {
-            closeModal();
+        <div
+          onMouseDown={(e) => {
+            e.stopPropagation();
           }}
-        />
-        <form onSubmit={onSubmit}>
-          <FormInputWithValidation id="name" name="name" handler={name} required={true} text={"Name"} type="text" />
-          <FormInputWithValidation id="surname" name="surname" required={false} text={"Surname"} type="text" handler={surname} />
-          <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"Phone"} type="tel" handler={phoneNumber} inputRef={phoneNumber.phoneInputRef} />
-          <SelectInput id="groupType" name="groupType" options={["friend", "colleague", "family"]} required={true} value={selectGroupType} setValue={setSelectGroupType} />
+          className={cl.modalContent}
+        >
+          <ImCross
+            className={cl.cross}
+            onClick={() => {
+              closeModal();
+            }}
+          />
+          <form onSubmit={onSubmit}>
+            <FormInputWithValidation id="name" name="name" handler={name} required={true} text={"Name"} type="text" />
+            <FormInputWithValidation id="surname" name="surname" required={false} text={"Surname"} type="text" handler={surname} />
+            <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"Phone"} type="tel" handler={phoneNumber} inputRef={phoneNumber.phoneInputRef} />
+            <SelectInput id="groupType" name="groupType" options={["friend", "colleague", "family"]} required={true} value={selectGroupType} setValue={setSelectGroupType} />
 
-          <GradientButton disabled={submitButtonIsDisabled} text={loadingModify ? "Posting" : submitText} type="submit" />
-        </form>
+            <GradientButton disabled={submitButtonIsDisabled} text={loadingModify ? "Posting" : submitText} type="submit" />
+          </form>
+        </div>
       </div>
-    </div>
+    </Portal>
   );
 };
