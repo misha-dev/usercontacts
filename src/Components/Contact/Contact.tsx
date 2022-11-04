@@ -25,6 +25,7 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
   const [openEditModal, setOpenEditModal] = useState(false);
   const fullNameRef = useRef<HTMLDivElement>(null!);
   const [applyMinContentToFullName, setApplyMinContentToFullName] = useState(false);
+  const [deleteButtonDisabled, setDeleteButtonDisabled] = useState(false);
   useEffect(() => {
     setApplyMinContentToFullName(fullNameRef.current.offsetWidth >= 216);
   }, [fullName]);
@@ -72,7 +73,9 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
             </IconButton>
           </Link>
           <IconButton
+            disabled={deleteButtonDisabled}
             onClick={() => {
+              setDeleteButtonDisabled(true);
               dispatch(fetchDeleteContact(id!));
             }}
             className={cl.deleteButton}

@@ -76,7 +76,7 @@ export const Login = () => {
                     <SimpleLink link="/usercontacts" text="Register here" />
                   </div>
                   <div className={cl.formLogin}>
-                    <GradientButton disabled={!dirty || !isValid} text={loginButtonText} type="submit" />
+                    <GradientButton disabled={!dirty || !isValid || loginButtonText === "Logging..."} text={loginButtonText} type="submit" />
                   </div>
                 </div>
               </Form>

@@ -133,7 +133,7 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
             <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"Phone"} type="tel" handler={phoneNumber} />
             <SelectInput id="groupType" name="groupType" options={["friend", "colleague", "family"]} required={true} value={selectGroupType} setValue={setSelectGroupType} />
 
-            <GradientButton disabled={submitButtonIsDisabled} text={loadingModify ? "Posting" : submitText} type="submit" />
+            <GradientButton disabled={submitButtonIsDisabled || loadingModify} text={loadingModify ? "Posting" : submitText} type="submit" />
           </form>
         </div>
       </div>
