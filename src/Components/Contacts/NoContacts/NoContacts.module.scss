@@ -1,0 +1,13 @@
+@import "../../../styles/templates";
+
+.wrapper {
+  height: 100%;
+
+  .text {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #4acc9d;
+  }
+
+  @extend %flexCenter;
+}

@@ -22,6 +22,7 @@ import { filterContactsOnSearchString } from "../../Utils/filterContactsOnSearch
 import { LoaderCircle } from "../Utils/LoaderCircle/LoaderCircle";
 
 import cl from "./Contacts.module.scss";
+import { NoContacts } from "./NoContacts/NoContacts";
 
 export const Contacts = () => {
   const contactsRef = useRef<HTMLDivElement>(null);
@@ -61,19 +62,23 @@ export const Contacts = () => {
       <ContactsFilter typeSelected={typeSelected} filterTypes={["family", "colleague", "friend"]} setType={setTypeSelected} />
       <div className={cl.contactsWrapper}>
         {!loadingAll ? (
-          <div ref={contactsRef} className={cl.contacts}>
-            <div>
-              <TransitionGroup>
-                {filteredContacts.map(({ userId, id, fullName, phone, type }) => {
-                  return (
-                    <CSSTransition key={id} timeout={300} classNames={"contactTransitionGroup"}>
-                      <Contact id={id} userId={userId} fullName={fullName} phone={phone} type={type} />
-                    </CSSTransition>
-                  );
-                })}
-              </TransitionGroup>
+          filteredContacts.length !== 0 ? (
+            <div ref={contactsRef} className={cl.contacts}>
+              <div>
+                <TransitionGroup>
+                  {filteredContacts.map(({ userId, id, fullName, phone, type }) => {
+                    return (
+                      <CSSTransition key={id} timeout={300} classNames={"contactTransitionGroup"}>
+                        <Contact id={id} userId={userId} fullName={fullName} phone={phone} type={type} />
+                      </CSSTransition>
+                    );
+                  })}
+                </TransitionGroup>
+              </div>
             </div>
-          </div>
+          ) : (
+            <NoContacts text="No contacts!" />
+          )
         ) : (
           <LoaderCircle size={5} />
         )}
