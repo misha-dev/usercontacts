@@ -46,14 +46,19 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
   const dispatch = useAppDispatch();
 
   const closeModal = () => {
+    // prevent from receiving an error "Enter correct phone number!" when user sends form by pressing enter or closes with escape on focused phone number input field
+    phoneNumber.phoneInputRef.current?.blur();
+    if (submitText === "Add contact") {
+      name.setDirty(false);
+      name.setValue("");
+      phoneNumber.setDirty(false);
+      phoneNumber.setValue("");
+      surname.setDirty(false);
+      surname.setValue("");
+      setSelectGroupType("friend");
+    }
+
     setModalVisible(false);
-    name.setDirty(false);
-    name.setValue("");
-    phoneNumber.setDirty(false);
-    phoneNumber.setValue("");
-    surname.setDirty(false);
-    surname.setValue("");
-    setSelectGroupType("friend");
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {

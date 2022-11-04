@@ -67,7 +67,7 @@ export const Contacts = () => {
                 {filteredContacts.map(({ userId, id, fullName, phone, type }) => {
                   return (
                     <CSSTransition key={id} timeout={300} classNames={"contactTransitionGroup"}>
-                      <Contact id={id} userId={userId} key={id} fullName={fullName} phone={phone} type={type} />
+                      <Contact id={id} userId={userId} fullName={fullName} phone={phone} type={type} />
                     </CSSTransition>
                   );
                 })}

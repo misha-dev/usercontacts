@@ -65,12 +65,12 @@ export const useFormInput = (initialValue: string, validations: validationsType,
           if (russianNumber) {
             setValue(russianNumber);
           }
-        } else if (phoneValue.length <= 16 && !isRussian) {
+        } else if (phoneValue.length <= 14 && !isRussian) {
           setValue(`+${phoneValue}`);
         }
       }
     } else {
-      if ((/^[a-zA-Zа-яА-Я](\w\w*)*/g.test(value) && value.length <= 12) || value === "") {
+      if ((/^[a-zA-Zа-яА-Я](\w\w*)*/g.test(value) && value.length <= 8) || value === "") {
         setValue(value);
       }
     }
