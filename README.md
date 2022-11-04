@@ -10,6 +10,7 @@ This project implements contact list for each registered user.
 
 ### Prerequisites
 
+- node v15+
 - npm
   ```sh
   npm install npm@latest -g
@@ -50,6 +51,7 @@ This project implements contact list for each registered user.
 - Material-UI
 - React-transition-group
 - Overlayscrollbars
+- matchMedia
 - Heroku
 
 ## Contributing:star2:
