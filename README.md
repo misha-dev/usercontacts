@@ -4,7 +4,7 @@
 
 ## About the project
 
-This project implements contact list for each registered user.
+This project implements contact list for each registered user. You can view/copy/delete/search/filter/edit/add contacts!
 
 ## Getting Started
 
