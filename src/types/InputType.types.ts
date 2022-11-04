@@ -15,7 +15,7 @@ export type InputTypeFormik = {
   type: "password" | "email" | "text" | "tel";
 } & baseParams;
 
-export type InputType = InputTypeFormik & { handler: useFormType; inputRef?: React.RefObject<HTMLInputElement> };
+export type InputType = InputTypeFormik & { handler: useFormType };
 
 export type SelectInputType = {
   options: Array<PersonType>;
@@ -28,7 +28,7 @@ export type useFormType = {
     error: string;
   };
   onBlur: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
-  phoneInputRef: React.RefObject<HTMLInputElement>;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   setDirty: React.Dispatch<React.SetStateAction<boolean>>;
+  inputRef: React.RefObject<HTMLInputElement>;
 } & HandlerState<string>;

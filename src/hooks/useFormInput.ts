@@ -24,12 +24,14 @@ export const useValidation = (value: string, validations: validationsType) => {
 
 export const useFormInput = (initialValue: string, validations: validationsType, type: "text" | "tel") => {
   const [value, setValue] = useState(initialValue);
-  const phoneInputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   // for setting cursor after deleting in the middle of input
   const [selectionStartPhone, setSelectionStart] = useState(0);
 
   useEffect(() => {
-    phoneInputRef.current?.setSelectionRange(selectionStartPhone, selectionStartPhone);
+    if (type === "tel") {
+      inputRef.current?.setSelectionRange(selectionStartPhone, selectionStartPhone);
+    }
   }, [selectionStartPhone]);
   const [dirty, setDirty] = useState(false);
   const valid = useValidation(value, validations);
@@ -70,11 +72,11 @@ export const useFormInput = (initialValue: string, validations: validationsType,
         }
       }
     } else {
-      if ((/^[a-zA-Zа-яА-Я](\w\w*)*/g.test(value) && value.length <= 8) || value === "") {
+      if ((/^[a-zA-Zа-яА-Я][A-Za-zа-яА-Я0-9]*$/g.test(value) && value.length <= 10) || value === "") {
         setValue(value);
       }
     }
   };
 
-  return { value, setValue, dirty, valid, onBlur, phoneInputRef, onChange, setDirty };
+  return { value, setValue, dirty, valid, onBlur, inputRef, onChange, setDirty };
 };

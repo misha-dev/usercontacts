@@ -46,8 +46,10 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
   const dispatch = useAppDispatch();
 
   const closeModal = () => {
-    // prevent from receiving an error "Enter correct phone number!" when user sends form by pressing enter or closes with escape on focused phone number input field
-    phoneNumber.phoneInputRef.current?.blur();
+    // prevent from receiving an errors when user sends form by pressing enter or closes with escape on focused phone number input field
+    [name, surname, phoneNumber].forEach((ref) => {
+      ref.inputRef.current?.blur();
+    });
     if (submitText === "Add contact") {
       name.setDirty(false);
       name.setValue("");
@@ -128,7 +130,7 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
           <form onSubmit={onSubmit}>
             <FormInputWithValidation id="name" name="name" handler={name} required={true} text={"Name"} type="text" />
             <FormInputWithValidation id="surname" name="surname" required={false} text={"Surname"} type="text" handler={surname} />
-            <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"Phone"} type="tel" handler={phoneNumber} inputRef={phoneNumber.phoneInputRef} />
+            <FormInputWithValidation id="phoneNumber" name="phoneNumber" required={true} text={"Phone"} type="tel" handler={phoneNumber} />
             <SelectInput id="groupType" name="groupType" options={["friend", "colleague", "family"]} required={true} value={selectGroupType} setValue={setSelectGroupType} />
 
             <GradientButton disabled={submitButtonIsDisabled} text={loadingModify ? "Posting" : submitText} type="submit" />

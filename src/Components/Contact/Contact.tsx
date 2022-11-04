@@ -4,7 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { IconButton, Link } from "@mui/material";
 import { Stack } from "@mui/system";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useMatchMedia } from "../../hooks/useMatchMedia";
 
@@ -23,6 +23,11 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const dispatch = useAppDispatch();
   const [openEditModal, setOpenEditModal] = useState(false);
+  const fullNameRef = useRef<HTMLDivElement>(null!);
+  const [applyMinContentToFullName, setApplyMinContentToFullName] = useState(false);
+  useEffect(() => {
+    setApplyMinContentToFullName(fullNameRef.current.offsetWidth >= 216);
+  }, [fullName]);
 
   const { isMobile } = useMatchMedia();
 
@@ -31,7 +36,9 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
       <ContactModal contactId={id} fullName={fullName} phoneNumberText={phone} selectGroupTypeText={type} submitText={"Update"} modalVisible={openEditModal} setModalVisible={setOpenEditModal} />
       <div className={cl.iconFullName}>
         <img className={cl.typeIcon} src={type === "family" ? familyIcon : type === "colleague" ? colleagueIcon : friendIcon} alt="" />
-        <div className={cl.fullName}>{fullName}</div>
+        <div ref={fullNameRef} style={{ width: `${applyMinContentToFullName ? "min-content" : ""}` }} className={cl.fullName}>
+          {fullName}
+        </div>
         <IconButton
           onClick={() => {
             setOpenEditModal(true);
