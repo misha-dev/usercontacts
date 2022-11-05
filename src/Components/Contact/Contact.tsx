@@ -82,7 +82,7 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
           </Link>
           <CustomizedSnackbar
             originOfSnackbar={{ horizontal: "left", vertical: "top" }}
-            message="Couldn't delete phone"
+            message="Couldn't delete contact!"
             severity="error"
             autoHide={1500}
             open={openErrorSnackbar}
