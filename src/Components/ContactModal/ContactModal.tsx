@@ -14,6 +14,8 @@ import { ContactType, PersonType } from "../../types/ContactType";
 
 import Portal from "../Utils/Portal/Portal";
 
+import { CustomizedSnackbar } from "../Utils/CustomizedSnackbar/CustomizedSnackbar";
+
 import cl from "./ContactModal.module.scss";
 type props = {
   modalVisible: boolean;
@@ -42,7 +44,8 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
 
   const [selectGroupType, setSelectGroupType] = useState<PersonType>(selectGroupTypeText);
   const submitButtonIsDisabled = Boolean(name.valid.error) || Boolean(phoneNumber.valid.error);
-  const { loadingModify } = useAppSelector(selectContacts);
+  const { loadingModify, error } = useAppSelector(selectContacts);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
   const dispatch = useAppDispatch();
 
   const closeModal = () => {
@@ -77,6 +80,9 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
               if (data.userId) {
                 closeModal();
               }
+            })
+            .catch((error) => {
+              setOpenSnackbar(true);
             });
         } else {
           dispatch(fetchAddContact(contact))
@@ -85,11 +91,14 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
               if (data.userId) {
                 closeModal();
               }
+            })
+            .catch((error) => {
+              setOpenSnackbar(true);
             });
         }
       }
     } else {
-      alert("Data is incorrect!");
+      setOpenSnackbar(true);
     }
   };
 
@@ -109,6 +118,7 @@ export const ContactModal = ({ modalVisible, setModalVisible, fullName, phoneNum
 
   return (
     <Portal>
+      <CustomizedSnackbar originOfSnackbar={{ horizontal: "left", vertical: "top" }} message="Couldn't update data!" severity="error" autoHide={1500} open={openSnackbar} setOpen={setOpenSnackbar} />
       <div
         onMouseDown={() => {
           closeModal();

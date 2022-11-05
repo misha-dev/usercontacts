@@ -20,7 +20,8 @@ import { CustomizedSnackbar } from "../Utils/CustomizedSnackbar/CustomizedSnackb
 import cl from "./Contact.module.scss";
 
 export const Contact = ({ id, fullName, phone, type }: ContactType) => {
-  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [openCopySnackbar, setOpenCopySnackbar] = useState(false);
+  const [openErrorSnackbar, setOpenErrorSnackbar] = useState(false);
   const dispatch = useAppDispatch();
   const [openEditModal, setOpenEditModal] = useState(false);
   const fullNameRef = useRef<HTMLDivElement>(null!);
@@ -53,13 +54,20 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
       </div>
 
       <div className={cl.phoneOptionsWrapper}>
-        <CustomizedSnackbar originOfSnackbar={{ horizontal: "left", vertical: "bottom" }} message="Phone copied!" severity="success" autoHide={1500} open={openSnackbar} setOpen={setOpenSnackbar} />
+        <CustomizedSnackbar
+          originOfSnackbar={{ horizontal: "left", vertical: "bottom" }}
+          message="Phone copied!"
+          severity="success"
+          autoHide={1500}
+          open={openCopySnackbar}
+          setOpen={setOpenCopySnackbar}
+        />
         <div className={cl.phoneNumber}>{phone}</div>
         <Stack spacing={0.5} direction={"row"}>
           <IconButton
             onClick={() => {
               navigator.clipboard.writeText(phone.replace(/\D/g, "")).then(() => {
-                setOpenSnackbar(true);
+                setOpenCopySnackbar(true);
               });
             }}
             aria-label="copy"
@@ -72,11 +80,24 @@ export const Contact = ({ id, fullName, phone, type }: ContactType) => {
               <PhoneIcon sx={{ fontSize: `${isMobile ? "1.2rem" : "1.5rem"} ` }} />
             </IconButton>
           </Link>
+          <CustomizedSnackbar
+            originOfSnackbar={{ horizontal: "left", vertical: "top" }}
+            message="Couldn't delete phone"
+            severity="error"
+            autoHide={1500}
+            open={openErrorSnackbar}
+            setOpen={setOpenErrorSnackbar}
+          />
           <IconButton
             disabled={deleteButtonDisabled}
             onClick={() => {
               setDeleteButtonDisabled(true);
-              dispatch(fetchDeleteContact(id!));
+              dispatch(fetchDeleteContact(id!))
+                .unwrap()
+                .catch((error) => {
+                  setOpenErrorSnackbar(true);
+                  setDeleteButtonDisabled(false);
+                });
             }}
             className={cl.deleteButton}
             aria-label="delete"

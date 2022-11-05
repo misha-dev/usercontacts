@@ -62,7 +62,9 @@ export const Contacts = () => {
       <ContactsFilter typeSelected={typeSelected} filterTypes={["family", "colleague", "friend"]} setType={setTypeSelected} />
       <div className={cl.contactsWrapper}>
         {!loadingAll ? (
-          filteredContacts.length !== 0 ? (
+          error === "Server is not responding!" ? (
+            <NoContacts text="Server is not responding" />
+          ) : filteredContacts.length !== 0 ? (
             <div ref={contactsRef} className={cl.contacts}>
               <div>
                 <TransitionGroup>
@@ -77,7 +79,7 @@ export const Contacts = () => {
               </div>
             </div>
           ) : (
-            <NoContacts text="No contacts!" />
+            <NoContacts text="No contacts" />
           )
         ) : (
           <LoaderCircle size={5} />
