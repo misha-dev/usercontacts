@@ -2,7 +2,6 @@ import { capitalize, Stack, ToggleButton, ToggleButtonGroup } from "@mui/materia
 import React from "react";
 
 import { useMatchMedia } from "../../hooks/useMatchMedia";
-
 import { PersonType } from "../../types/ContactType";
 
 import cl from "./ContactsFilter.module.scss";
