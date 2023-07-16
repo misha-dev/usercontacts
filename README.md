@@ -1,6 +1,6 @@
 # User contacts project :computer:
 
-## Web page: [User contacts:link:](https://usercontacts.herokuapp.com/)
+## Web page: [User contacts:link:](https://usercontacts.vercel.app/#/usercontacts)
 
 ## About the project
 
