@@ -2,17 +2,16 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import { fetchContacts, selectContacts } from "store/contactsSlice";
-import { PersonType } from "types";
-import { filterContactsOnSearchString, searchSort } from "utils";
-import { useScrollbar } from "hooks";
 import { LoaderCircle, SearchInput } from "components";
 import { Contact, ContactModal, ContactsFilter } from "features";
+import { filterContactsOnSearchString, searchSort } from "helpers";
+import { useScrollbar } from "hooks";
+import { fetchContacts, selectContacts } from "store/contactsSlice";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { PersonType } from "types";
 
-import { NoContacts } from "./NoContacts/NoContacts";
 import cl from "./ContactsPage.module.scss";
+import { NoContacts } from "./NoContacts/NoContacts";
 
 export const ContactsPage = () => {
   const contactsRef = useRef<HTMLDivElement>(null);

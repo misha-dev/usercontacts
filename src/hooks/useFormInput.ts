@@ -1,6 +1,5 @@
+import { formatRussianNumber } from "helpers";
 import { useEffect, useRef, useState } from "react";
-import { formatRussianNumber } from "utils";
-
 
 type validationsType = { [key: string]: number };
 export const useValidation = (value: string, validations: validationsType) => {
@@ -8,14 +7,14 @@ export const useValidation = (value: string, validations: validationsType) => {
   useEffect(() => {
     for (const validation in validations) {
       switch (validation) {
-      case "minLength":
-        value.length < validations[validation] ? setError(`Should be at least ${validations[validation]} letters!`) : setError("");
-        break;
+        case "minLength":
+          value.length < validations[validation] ? setError(`Should be at least ${validations[validation]} letters!`) : setError("");
+          break;
 
-      case "phoneValid":
-        /((\+7|8) \(\d{3}\) \d{3}-\d{2}-\d{2})|(\+\d{7,15})/g.test(value) ? setError(() => "") : setError(() => "Enter correct phone number!");
+        case "phoneValid":
+          /((\+7|8) \(\d{3}\) \d{3}-\d{2}-\d{2})|(\+\d{7,15})/g.test(value) ? setError(() => "") : setError(() => "Enter correct phone number!");
 
-        break;
+          break;
       }
     }
   }, [value]);
