@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { ContactsReduxType, ContactType } from "../types/ContactType";
-import { UserAuth } from "../types/UserType.types";
 
-import { JSON_API } from "../Utils/constants";
+
+import { ContactsReduxType, ContactType, UserAuth } from "types";
+import { JSON_API } from "data";
 
 import { RootState } from ".";
 

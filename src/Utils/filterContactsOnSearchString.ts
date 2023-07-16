@@ -1,4 +1,4 @@
-import { ContactType } from "../types/ContactType";
+import { ContactType } from "../types/ContactType.types";
 
 export function filterContactsOnSearchString(contacts: ContactType[], searchString: string) {
   return contacts.filter((contact) => {

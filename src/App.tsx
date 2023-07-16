@@ -1,5 +1,6 @@
+import { MainRouter } from "features";
 import "./App.scss";
-import { MainRouter } from "./Components/MainRouter/MainRouter";
+
 
 function App() {
   return (

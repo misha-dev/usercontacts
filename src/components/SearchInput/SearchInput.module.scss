@@ -1,0 +1,98 @@
+@import "../../styles/templates";
+
+.mainWrapper {
+  padding-bottom: 10px;
+
+  .inputWrapper {
+    position: relative;
+    width: 100%;
+
+    .searchLogo {
+      position: absolute;
+      left: 27%;
+      top: 27%;
+      color: #808080;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    input {
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      border-radius: 35vmax;
+      padding: 5px 20px;
+      width: 50%;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      font-family: "Open Sans", sans-serif;
+      font-size: 1rem;
+      background-color: #ebedea;
+      transition: all 0.2s ease;
+
+      &:focus,
+      &:valid {
+        width: 90%;
+      }
+
+      &:valid ~ .placeholder,
+      &:focus ~ .placeholder,
+      &:valid ~ .searchLogo,
+      &:focus ~ .searchLogo {
+        display: none;
+      }
+
+      &:valid ~ .closeButton,
+      &:focus ~ .closeButton {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    .placeholder {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      color: #808080;
+      transform: translate(-50%, -59%);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .closeButton {
+      position: absolute;
+      right: 10%;
+      top: 3.5%;
+      opacity: 0;
+      visibility: hidden;
+      transition: visibility 0s ease, opacity 0.5s ease;
+    }
+
+    @extend %flexCenter;
+  }
+
+  @extend %flexCenter;
+}
+
+@media (max-width: 1180px) {
+  .mainWrapper {
+    padding-bottom: 5px;
+
+    .inputWrapper {
+      .searchLogo {
+        top: 25%;
+        color: #808080;
+      }
+
+      input {
+        padding: 5px 15px;
+        font-size: 0.9rem;
+      }
+
+      .placeholder {
+        transform: translate(-50%, -56%);
+      }
+
+      .closeButton {
+        top: 0.5%;
+      }
+    }
+  }
+}

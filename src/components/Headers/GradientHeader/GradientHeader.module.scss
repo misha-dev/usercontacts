@@ -1,0 +1,18 @@
+.header {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2.2rem;
+  line-height: 50px;
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(264.92deg, #00cb6a 45.92%, #4dc9fe 68.02%);
+  background-clip: text;
+}
+
+@media (max-width: 1180px) {
+  .header {
+    margin-bottom: 0;
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,38 @@
+input.loginInput {
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 12px;
+  width: 380px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 1rem;
+  background: #fff;
+  transition: all 0.2s ease;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+input[type="tel"] {
+  font-family: "Open Sans", sans-serif;
+
+  &::placeholder {
+    font-family: "Merriweather", serif;
+  }
+}
+
+input[type="password"].loginInput {
+  font-family: "Verdana", sans-serif;
+}
+
+input:focus.loginInput {
+  border: 2px solid rgba($color: #53cbce, $alpha: 0.75);
+}
+
+@media (max-width: 1180px) {
+  input.loginInput {
+    padding: 7px;
+    width: 240px;
+    font-size: 0.85rem;
+  }
+}

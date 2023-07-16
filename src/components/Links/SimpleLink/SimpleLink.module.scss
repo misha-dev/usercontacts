@@ -1,0 +1,16 @@
+a.loginLink {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #4dc9fe;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #80e6ff;
+  }
+}
+
+@media (max-width: 1180px) {
+  a.loginLink {
+    font-size: 0.8rem;
+  }
+}

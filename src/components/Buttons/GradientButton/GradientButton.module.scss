@@ -1,0 +1,47 @@
+@import "../../../styles/variables";
+
+.gradientButton {
+  border-radius: 20px;
+  padding: 8px 62px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  background: $greenLinearGradient;
+  transition: all 0.2s ease;
+  user-select: none;
+
+  &:hover {
+    background-size: 200% 200%;
+    animation: gradient 0.5s ease forwards;
+  }
+
+  &:disabled {
+    color: #b3b3b2;
+    background: #dfdfde;
+    pointer-events: none;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 41%;
+  }
+
+  50% {
+    background-position: 100% 60%;
+  }
+
+  100% {
+    background-position: 0% 41%;
+  }
+}
+
+@media (max-width: 1180px) {
+  .gradientButton {
+    padding: 8px 30px;
+    font-size: 1rem;
+    line-height: 20px;
+  }
+}

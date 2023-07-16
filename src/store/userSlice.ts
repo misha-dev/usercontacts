@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { UserReduxType } from "../types/UserType.types";
+
+
+import { UserReduxType } from "types";
 
 import { RootState } from ".";
 

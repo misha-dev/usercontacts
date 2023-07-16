@@ -5,6 +5,12 @@
       "password": "$2a$10$gkX7JIFXcyNxasuQVkmSfe6./S2hGTdKOoTAVF/VOt70aNn8fMx6G",
       "name": "misha",
       "id": 1
+    },
+    {
+      "email": "m@mail.ru",
+      "password": "$2a$10$oyNurNNVhjuwAf8yKKzEh.3LrJzaEFkwx2/okGqj0mvM.srOgOj/y",
+      "name": "m@mail.ru",
+      "id": 2
     }
   ],
   "contacts": [
@@ -28,6 +34,13 @@
       "type": "family",
       "userId": 1,
       "id": 3
+    },
+    {
+      "fullName": "mihsas adjkdksjad",
+      "phone": "+7 (912) 392-93-92",
+      "type": "friend",
+      "userId": 2,
+      "id": 4
     }
   ]
 }

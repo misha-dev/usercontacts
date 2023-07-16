@@ -1,0 +1,15 @@
+/* stylelint-disable declaration-no-important */
+.filterButtonsWrapper {
+  margin: 30px 0 20px;
+
+  .filterButton {
+    padding: 8px !important;
+    font-weight: 550 !important;
+  }
+}
+
+@media (max-width: 1180px) {
+  .filterButtonsWrapper {
+    margin: 25px 0 15px;
+  }
+}

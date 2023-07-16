@@ -1,0 +1,48 @@
+.mainWrapper {
+  position: relative;
+
+  .selectInput {
+    appearance: none;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 12px;
+    width: 380px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "Merriweather", serif;
+    font-size: 1rem;
+    background: #fff;
+    transition: all 0.2s ease;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .selectInput:focus {
+    border: 2px solid rgba($color: #53cbce, $alpha: 0.75);
+  }
+
+  .arrow {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    font-size: 1.2rem;
+    color: #75807e;
+    transform: translateY(-45%);
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 1180px) {
+  .mainWrapper {
+    .selectInput {
+      padding: 7px;
+      width: 240px;
+      font-size: 0.85rem;
+    }
+
+    .arrow {
+      font-size: 1rem;
+    }
+  }
+}

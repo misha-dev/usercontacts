@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PersonType } from "./ContactType";
+import { PersonType } from "./ContactType.types";
 
 type baseParams = {
   id: string;

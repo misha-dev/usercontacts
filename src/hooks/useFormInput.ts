@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import { formatRussianNumber } from "utils";
 
-import { formatRussianNumber } from "../Utils/formatRussianNumber";
+
 type validationsType = { [key: string]: number };
 export const useValidation = (value: string, validations: validationsType) => {
   const [error, setError] = useState("");
